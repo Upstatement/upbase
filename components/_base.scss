@@ -39,11 +39,11 @@
 
 // =============================================
 
-// Reset styles
-@import "reset"
-
 // All variables, including Upstatement defaults 
 @import "variables";
+
+// Reset styles
+@import "reset";
 
 // Universal Upstatement Mixins
 @import "mixins";
