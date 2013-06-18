@@ -43,13 +43,10 @@
 @import "reset";
 
 // All variables, including Upstatement defaults 
-@import "project/variables";
+@import "variables";
 
 // Universal Upstatement Mixins
 @import "mixins";
-
-// Custom Typefaces, if necessary
-@import "project/fonts";
 
 // Layout modules, column widths, responsive baselines, etc.
 @import "layout";
