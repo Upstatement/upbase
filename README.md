@@ -7,7 +7,10 @@ This is a CSS helper library for the stuff we do pretty often. There are a numbe
 - Should be tested and compatible with all browsers OR have known and documented compatibility
 - Will think of more guidelines. 
 
-### If you want to use this from inside the components folder
+### Usage
+The primary usage for this right now is to deploy it with Yeoman using the Upbase generator found here: https://github.com/Upstatement/generator-upbase/
+
+### If you're not using Yeoman, but still want to install with Bower:
 Add this line to your `config.rb`:   
 `add_import_path "./components/upbase/components"`
 
