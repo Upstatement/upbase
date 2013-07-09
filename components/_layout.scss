@@ -336,15 +336,15 @@ $margin-r: 5%;
 
 //Jeff's universal ui-grid layout mixin
 
-@mixin ui-grid($ui-grid-num: 2, $width-1: 0, $width-2: 0, $width-3: 0, $width-4: 0, $width-last: 0, $margin-r:5% ) {
+@mixin cols($col-num: 2, $width-1: 0, $width-2: 0, $width-3: 0, $width-4: 0, $width-last: 0, $margin-r:5% ) {
 	
 	@include pie-clearfix;
+	$var-list: $col-num, $width-1, $width-2, $width-3, $width-4, $width-last, $margin-r;
  
-	//Margin as last option. Margin would have to be after ui-grid-num otherwise.
-	$var-list: $width-1, $width-2, $width-3, $width-4, $width-last, $margin-r;
+	//Discovers margin option
 	@for $num from 1 through length($var-list) {
 		$value: nth($var-list, $num);
-		@if $num == ($ui-grid-num + 1){
+		@if $num == ($col-num + 2){
 			@if $num < length($var-list) {
 				@if type_of($value) == number {
 					@if unit($value) == "%" {
@@ -357,13 +357,12 @@ $margin-r: 5%;
  
 	//Flip functionality
 	$flip: false;
-	$flippable-var-list: $ui-grid-num, $margin-r, $width-1, $width-2, $width-3, $width-4;
-	@each $var in $flippable-var-list {
+	@each $var in $var-list {
 		@if $var == flip {
 			$flip: true;
 		}
 	}
-	@if $ui-grid-num == flip { $ui-grid-num: 2; }
+	@if $col-num == flip { $col-num: 2; }
 	@if $margin-r == flip { $margin-r: 5%; }
 	@if $width-1 == flip { $width-1: 0; }
 	@if $width-2 == flip { $width-2: 0; }
@@ -372,48 +371,43 @@ $margin-r: 5%;
 	//eo flip functionality
  
 	//Default values given no supplied values
-	@if $width-1 == 0 { $width-1: 100% / $ui-grid-num; }
-	@if $width-2 == 0 { $width-2: 100% / $ui-grid-num; }
-	@if $width-3 == 0 { $width-3: 100% / $ui-grid-num; }
-	@if $width-4 == 0 { $width-4: 100% / $ui-grid-num; }
-	@if $width-last == 0 { $width-last: 100% / $ui-grid-num; }
+	@if $width-1 == 0 { $width-1: 100% / $col-num; }
+	@if $width-2 == 0 { $width-2: 100% / $col-num; }
+	@if $width-3 == 0 { $width-3: 100% / $col-num; }
+	@if $width-4 == 0 { $width-4: 100% / $col-num; }
+	@if $width-last == 0 { $width-last: 100% / $col-num; }
  
 	//width-last needs to be determined no matter what, in case it's not supplied
-	@if $ui-grid-num == 5 { $width-last: 100% - $width-4 - $width-3 - $width-2 - $width-1; }
-	@if $ui-grid-num == 4 { $width-last: 100% - $width-3 - $width-2 - $width-1; }
-	@if $ui-grid-num == 3 { $width-last: 100% - $width-2 - $width-1; }
-	@if $ui-grid-num == 2 { $width-last: 100% - $width-1; }
+	@if $col-num == 5 { $width-last: 100% - $width-4 - $width-3 - $width-2 - $width-1; }
+	@if $col-num == 4 { $width-last: 100% - $width-3 - $width-2 - $width-1; }
+	@if $col-num == 3 { $width-last: 100% - $width-2 - $width-1; }
+	@if $col-num == 2 { $width-last: 100% - $width-1; }
  
-	//Got dicey when math placed in @for function
-	$ui-grid-num-less-one: $ui-grid-num - 1;
+	//Needed to reset var-list for some reason
+	$var-list: $col-num, $width-1, $width-2, $width-3, $width-4, $width-last, $margin-r;
+	$name-list: first, second, third, fourth, fifth;
  
-	//ui-block-1 is a nice given
-	> .ui-block-1,
-	> .ui-block.first {
-		width: $width-1 - ($margin-r/$ui-grid-num);
-		@if $flip == true {
-			@include float-right;
-		} @else {
+	//First col - second-to-last col
+	@for $num from 2 through $col-num {
+		$width: nth($var-list, $num);
+		$name: nth($name-list, ($num - 1));
+		$col: $num - 1;
+		> .col-#{$col},
+		> .col.#{$name} {
+			margin-right: $margin-r/($col-num - 1);
+			width: $width - ($margin-r/$col-num);
 			@include float-left;
-			margin-right: $margin-r/($ui-grid-num - 1);
-		}
-	}
- 
-	//ui-block-2 through x, whatever necessary
-	$widths-list: $width-1, $width-2, $width-3, $width-4;
-	@for $num from 2 through $ui-grid-num-less-one {
-		$width: nth($widths-list, $num);
-		> .ui-block-#{$num} {
-			width: $width - ($margin-r/$ui-grid-num);
-			@include float-left;
-			margin-right: $margin-r/($ui-grid-num - 1);
+			@if $flip == true {
+				@include float-right;
+			}
 		}
 	}	
  
-	//ui-block-(last) derived
-	> .ui-block-#{$ui-grid-num},
-	> .ui-block.last {
-		width: $width-last - ($margin-r/$ui-grid-num);
+	//Last col
+	> .col-#{$col-num},
+	> .col.#{nth($name-list, $col-num)},
+	> .col.last {
+		width: $width-last - ($margin-r/$col-num);
 		@include float-left;
 		margin-right: 0;		
 	}
