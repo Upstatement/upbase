@@ -7,4 +7,9 @@ This is a CSS helper library for the stuff we do pretty often. There are a numbe
 - Should be tested and compatible with all browsers OR have known and documented compatibility
 - Will think of more guidelines. 
 
+### If you want to use this from inside the components folder
+Add this line to your `config.rb`:   
+`add_import_path "./components/upbase/components"`
+
+
 
