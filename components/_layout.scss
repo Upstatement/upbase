@@ -488,7 +488,7 @@ $margin-r: 5%;
 			width: $art-width;
 			@if $direction == right {
 				float: right;
-			} else {
+			} @else {
 				float: left;
 			}
 			margin: 0;
@@ -499,7 +499,7 @@ $margin-r: 5%;
 		.txt-bd {
 			@if $direction == right {
 				margin-right: $gutter;
-			} else {
+			} @else {
 				margin-left: $gutter;
 			}
 		}		
