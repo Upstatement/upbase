@@ -4,10 +4,6 @@
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-// Layout container width for use as universal variable with em calculators
-$context: 960 !default;
-
-
 // Flexible Grid Proportion Calculator
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Figuring out the ideal percentage of a responsive container.
@@ -16,18 +12,26 @@ $context: 960 !default;
 // WHY: Math is easier this way.
 // REF: http://www.lukew.com/ff/entry.asp?1167
 // USE: width: resp(300px);
-@function resp($target, $context){
+@function resp($target, $context: 960){
 	@return percentage($target / $context); 
 }
 
 // Em Calculator
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Filling psuedo-clases :before, :after with blank content
-// WHY: Psuedo classes won't appear unless you fill them with content.
-// This mixin includes the difficult-to-recall cross-browser character code for "blank". 
-// USE: @include content;
-@function em($px, $doc:13){
-	@return #{($px/$doc)}em;	
+// FOR: Simply writing ems while allowing you to think in more straightforward px values
+// WHY: I don't think in ems. Do you?
+// NOTE: Ems calculated using the document base; override by providing optional second value
+// REF: http://bourbon.io/docs/#px-to-em
+// USE: em(12);
+
+@function em($pxval, $base: 13) {
+  @if not unitless($pxval) {
+      $pxval: strip-units($pxval);
+  }
+  @if not unitless($base) {
+      $base: strip-units($base);
+  }
+  @return ($pxval / $base) * 1em;
 }
 
 // Responsive Images
@@ -86,6 +90,97 @@ $context: 960 !default;
 	&:after {
 		display: initial;
 		clear: none;
+	}
+}
+
+
+// Size
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Applying width & height in a single declaration
+// WHY: Faster. Less typing. Easier to deal with squares.
+// NOTE: If you supply a single value, the result is a square  
+// REF: http://bourbon.io/docs/#size
+// USE: @include size(50px 100px);
+ 
+@mixin size($size) {
+  @if length($size) == 1 {
+    @if $size == auto {
+      width:  $size;
+      height: $size;
+    }
+ 
+    @else if unitless($size) {
+      width:  $size + px;
+      height: $size + px;
+    }
+ 
+    @else if not(unitless($size)) {
+      width:  $size;
+      height: $size;
+    }
+  }
+ 
+  // Width x Height
+  @if length($size) == 2 {
+    $width:  nth($size, 1);
+    $height: nth($size, 2);
+ 
+    @if $width == auto {
+      width: $width;
+    }
+    @else if not(unitless($width)) {
+      width: $width;
+    }
+    @else if unitless($width) {
+      width: $width + px;
+    }
+ 
+    @if $height == auto {
+      height: $height;
+    }
+    @else if not(unitless($height)) {
+      height: $height;
+    }
+    @else if unitless($height) {
+      height: $height + px;
+    }
+  }
+}
+
+
+// Tint & Shade 
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: More reliable color manipulation
+// WHY: Built-in SASS color functions can be limited and unpredictable
+// This functions more like swatch tints in Adobe programs
+// HOW: Adds a percentage of black or white to the base color
+// REF: http://bourbon.io/docs/#tint-shade
+// USE: @include tint(red, 40%);
+
+// Add percentage of white to a color
+@function tint($color, $percent){
+  @return mix(white, $color, $percent);
+}
+
+// Add percentage of black to a color
+@function shade($color, $percent){
+  @return mix(black, $color, $percent);
+}
+
+
+// Input Defaults 
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Zero'ing out the style on an input field (text input, radio button, etc)
+// WHY: It's a lot to write and remember all these characteristics
+// USE: @include input-default;
+@mixin input-default {
+	border: 0;
+	background-color: transparent;
+	@include box-shadow(none);
+	@include border-radius(0);
+	-webkit-appearance: none;
+	&:focus {
+		outline: 0;
 	}
 }
 
