@@ -167,6 +167,17 @@
   @return mix(black, $color, $percent);
 }
 
+@function black($amt : 50){
+	$pct : ($amt / 100);
+	$pct : 1 - $pct;
+	@return rgb(255 * $pct, 255 * $pct, 255*$pct);
+}
+
+@function white($amt : 50){
+	$pct : ($amt / 100);
+	@return rgb(255 * $pct, 255 * $pct, 255*$pct);
+}
+
 
 // Input Defaults 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
