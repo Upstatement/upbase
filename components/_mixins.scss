@@ -34,6 +34,15 @@
   @return #{($pxval/$base)}em;
 }
 
+// Strip Units
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Removing the unit from a number and returning the raw value
+// REF: https://github.com/nex3/sass/issues/533
+// REF: http://stackoverflow.com/questions/12328259/how-do-you-strip-the-unit-from-any-number-in-sass/12335841#12335841
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+ }
+
 // Responsive Images
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Setting the default properties of a responsive image
