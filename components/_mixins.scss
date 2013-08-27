@@ -60,8 +60,8 @@
 // WHY: This are our most common defaults
 // USE: @include trans;
 // USE: @include trans(.1s, opacity, linear);
-@mixin trans($trans-time: .2s, $trans-property: all, $trans-function: ease-in) {
-	@include single-transition(#{$trans-property}, #{$trans-time}, #{$trans-function}, false);
+@mixin trans($time: .2s, $property: all, $timing-function: ease-in) {
+	@include single-transition(#{$property}, #{$time}, #{$timing-function}, false);
 }
 
 // User Select
