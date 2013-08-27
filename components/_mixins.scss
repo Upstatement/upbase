@@ -376,13 +376,6 @@
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Setting safe fallbacks for RGBA background colors (black & white only)
 // WHY: Saves time and typing; guaranteed to work across devices 
-// NOTE: Requires including transparent background PNGs from ... I dunno where yet
-// USE: @include rgba-bg(.5, black);
-
-// RGBA Background Fallback Pattern
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Setting safe fallbacks for RGBA background colors (black & white only)
-// WHY: Saves time and typing; guaranteed to work across devices 
 // USE: @include rgba-bg(black, .5);
 
 @mixin rgba-bg($color: white, $alpha: .1) {
