@@ -350,9 +350,8 @@
 
 @mixin svg($image) {
 	// Variables
-	$path: "_icons/";
-	$svg: $path + $image + ".svg";
-	$png: $path + $image + ".png";
+	$svg: $svg-path + $image + ".svg";
+	$png: $svg-path + $image + ".png";
 	$ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+ image-url($png) +"', sizingMethod='scale')";
 
 	// Universal properties
@@ -377,12 +376,27 @@
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Setting safe fallbacks for RGBA background colors (black & white only)
 // WHY: Saves time and typing; guaranteed to work across devices 
-// USE: @include bg(.5, black);
+// NOTE: Requires including transparent background PNGs from ... I dunno where yet
+// USE: @include rgba-bg(.5, black);
 
-@mixin bg($color: white, $alpha: .1) {
-	// Turn decimal into whole number
+// RGBA Background Fallback Pattern
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Setting safe fallbacks for RGBA background colors (black & white only)
+// WHY: Saves time and typing; guaranteed to work across devices 
+// USE: @include rgba-bg(black, .5);
+
+@mixin rgba-bg($color: white, $alpha: .1) {
+	// Strip units from alpha in case user tries to pass a percentage ...
+	$alpha: strip-units($alpha);
+	@if $alpha > 1 {
+		$alpha: $alpha * .01;
+	}
+
+	// Turn decimal into whole number for use with fallback
 	$a-integer: $alpha * 100;
 
+	// Set fallback background image, including path 
+	$fallback-bg: '#{$rgba-bg-path}#{$color}-#{$a-integer}' + '.png';
 
 	@if $color == transparent {
 		background-color: transparent;
@@ -393,7 +407,7 @@
 	@else {
 		background-color: $color;
 
-		@if $color == white {
+		@if $color == white or $color == #fff or $color == #ffffff  {
 			background-color: rgba(255,255,255,$alpha);
 		}
 		@else {
@@ -401,7 +415,7 @@
 		}
 
 		.no-rgba & {
-			background: transparent image-url('_bg/#{$color}-#{$a-integer}.png') 50% 50% repeat;
+			background: transparent image-url(#{$fallback-bg}) 50% 50% repeat;
 		}
 	}
 }

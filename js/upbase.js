@@ -38,10 +38,10 @@ var upBase;
 		}
 		$("table tr:odd").addClass("odd");
 		//nth-child fixes for media-grid
-		$(".media-block:nth-child(2n+3)").addClass("n3");
-		$(".media-block:nth-child(3n+4)").addClass("n4");
-		$(".media-block:nth-child(4n+5)").addClass("n5");
-		$(".media-block:nth-child(5n+6)").addClass("n6");
+		$(".media-block:nth-of-type(2n+3)").addClass("n3");
+		$(".media-block:nth-of-type(3n+4)").addClass("n4");
+		$(".media-block:nth-of-type(4n+5)").addClass("n5");
+		$(".media-block:nth-of-type(5n+6)").addClass("n6");
 	}
 
 	UpBase.prototype.initTabs = function(){
