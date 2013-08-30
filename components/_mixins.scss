@@ -1,6 +1,6 @@
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-//	Mixins							 			   
+//	Functions							 			   
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
@@ -43,6 +43,66 @@
   @return $number / ($number * 0 + 1);
  }
 
+ // Prefixer
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Easily applying range of vendor prefixes when rolling
+// your own mixins. This comes straight from Bourbon.io 
+// USE: @include prefixer(border-radius, $radii, webkit ms spec);
+
+$prefix-for-webkit:    true !default;
+$prefix-for-mozilla:   true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera:     true !default;
+$prefix-for-spec:      true !default; // required for keyframe mixin
+
+@mixin prefixer ($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit {
+      @if $prefix-for-webkit {
+        -webkit-#{$property}: $value;
+      }
+    }
+    @else if $prefix == moz {
+      @if $prefix-for-mozilla {
+        -moz-#{$property}: $value;
+      }
+    }
+    @else if $prefix == ms {
+      @if $prefix-for-microsoft {
+        -ms-#{$property}: $value;
+      }
+    }
+    @else if $prefix == o {
+      @if $prefix-for-opera {
+        -o-#{$property}: $value;
+      }
+    }
+    @else if $prefix == spec {
+      @if $prefix-for-spec {
+        #{$property}: $value;
+      }
+    }
+    @else  {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}
+
+@mixin disable-prefix-for-all() {
+  $prefix-for-webkit:    false;
+  $prefix-for-mozilla:   false;
+  $prefix-for-microsoft: false;
+  $prefix-for-opera:     false;
+  $prefix-for-spec:      false;
+}
+
+
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
+//	Helpers							 			   
+
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
 // Responsive Images
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Setting the default properties of a responsive image
@@ -61,6 +121,19 @@
 // USE: @include content;
 @mixin content($content: \0020) {
 	content: "#{$content}";
+}
+
+// Hide Text
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Visually Hiding Text  
+// WHY: Says exactly what it does. Easier than remembering and writing each time. 
+// The newest proper way to hide text (not the text-indent method anymore)
+// USE: @include hide-text;
+ 
+@mixin hide-text {
+  color:            transparent;
+  font:             0/0 a;
+  text-shadow:      none;
 }
 
 // Transitions
@@ -304,6 +377,17 @@
 	left: auto;
 }
 
+// Psuedo
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Quickly pasting three essential and commonly used properties that make psuedo classes work 
+// WHY: Easier than remembering and writing each time. Should cut down on mistakes/debugging.
+// USE: @include pseudo;
+@mixin psuedo($coordinates: n n n n) {
+	@include content;
+	display: block;
+	@include absolute($coordinates); 
+}
+
 // Ellipsis
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Truncating text with an ellipsis the CSS way
@@ -315,6 +399,42 @@
 	white-space: nowrap;
 }
 
+// Placeholder
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Applying placeholder and making it cross-browser
+// compatible. This comes straight from Bourbon.io 
+// USE: Nested inside of another selector
+// USE: @include pholder { color: red };
+
+$placeholders: '-webkit-input-placeholder',
+               '-moz-placeholder',
+               '-ms-input-placeholder';
+
+@mixin placeholder {
+  @each $placeholder in $placeholders {
+    @if $placeholder == "-webkit-input-placeholder" {
+      &::#{$placeholder} {
+        @content;
+      }
+    }
+    @else if $placeholder == "-moz-placeholder" {
+      // FF 18-
+      &:#{$placeholder} {
+        @content;
+      }
+
+      // FF 19+
+      &::#{$placeholder} {
+        @content;
+      }
+    }
+    @else {
+      &:#{$placeholder} {
+        @content;
+      }
+    }
+  }
+}
 
 // Placeholder Text
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
@@ -322,7 +442,7 @@
 // WHY: Provides a shortcut for writing the code, which is necessarily long
 // because selectors cannot be combined. Also a cross-browser solution.
 // USE: @include placholder(#999, #999, #222);
-@mixin placeholder($default: inherit, $hover: $default, $focus: $default){
+@mixin placeholder-state($default: inherit, $hover: $default, $focus: $default){
 	// You have to declare these separately in order to work
 	&::-webkit-input-placeholder {
 	    color: $default;
@@ -490,6 +610,79 @@
   }
 }
 
+// Animation Mixin
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Writing animation properties and having them work everywhere
+// WHY: Ensure compability. It's time-consuming to write cross-browser.
+// USE: @include animation(fadedown 4s ease);
+// REF: http://www.w3.org/TR/css3-animations/#the-animation-name-property-
+
+// NOTE: Each of these mixins support comma separated lists of values, 
+// which allows different transitions for individual properties 
+// to be described in a single style rule. Each value in the list 
+// corresponds to the value at that same position in the other properties.
+
+// Official animation shorthand property.
+@mixin animation ($animations...) {
+  @include prefixer(animation, $animations, webkit moz spec);
+}
+
+// Individual Animation Properties
+@mixin animation-name ($names...) {
+  @include prefixer(animation-name, $names, webkit moz spec);
+}
+
+
+@mixin animation-duration ($times...) {
+  @include prefixer(animation-duration, $times, webkit moz spec);
+}
+
+
+@mixin animation-timing-function ($motions...) {
+// ease | linear | ease-in | ease-out | ease-in-out
+  @include prefixer(animation-timing-function, $motions, webkit moz spec);
+}
+
+
+@mixin animation-iteration-count ($values...) {
+// infinite | <number>
+  @include prefixer(animation-iteration-count, $values, webkit moz spec);
+}
+
+
+@mixin animation-direction ($directions...) {
+// normal | alternate
+  @include prefixer(animation-direction, $directions, webkit moz spec);
+}
+
+
+@mixin animation-play-state ($states...) {
+// running | paused
+  @include prefixer(animation-play-state, $states, webkit moz spec);
+}
+
+
+@mixin animation-delay ($times...) {
+  @include prefixer(animation-delay, $times, webkit moz spec);
+}
+
+
+@mixin animation-fill-mode ($modes...) {
+// none | forwards | backwards | both
+  @include prefixer(animation-fill-mode, $modes, webkit moz spec);
+}
+
+@mixin keyframes($name) {
+  @-webkit-input-keyframes $name {
+	@content;
+  }
+  @-moz-keyframes $name {
+    @content;
+  }
+  @keyframes $name {
+    @content;
+  }
+}
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 //
