@@ -336,10 +336,10 @@ $margin-r: 5%;
 
 //Jeff's universal ui-grid layout mixin
 
-@mixin cols($col-num: 2, $width-1: 0, $width-2: 0, $width-3: 0, $width-4: 0, $width-last: 0, $margin-r:5% ) {
-	
+@mixin cols($col-num: 2, $width-1: 0, $width-2: 0, $width-3: 0, $width-4: 0, $width-5: 0, $width-last: 0, $margin-r:5% ) {
+  
 	@include pie-clearfix;
-	$var-list: $col-num, $width-1, $width-2, $width-3, $width-4, $width-last, $margin-r;
+	$var-list: $col-num, $width-1, $width-2, $width-3, $width-4, $width-5, $width-last, $margin-r;
  
 	//Discovers margin option
 	@for $num from 1 through length($var-list) {
@@ -368,6 +368,7 @@ $margin-r: 5%;
 	@if $width-2 == flip { $width-2: 0; }
 	@if $width-3 == flip { $width-3: 0; }
 	@if $width-4 == flip { $width-4: 0; }
+	@if $width-5 == flip { $width-5: 0; }
 	//eo flip functionality
  
 	//Default values given no supplied values
@@ -375,17 +376,19 @@ $margin-r: 5%;
 	@if $width-2 == 0 { $width-2: 100% / $col-num; }
 	@if $width-3 == 0 { $width-3: 100% / $col-num; }
 	@if $width-4 == 0 { $width-4: 100% / $col-num; }
+	@if $width-5 == 0 { $width-5: 100% / $col-num; }
 	@if $width-last == 0 { $width-last: 100% / $col-num; }
  
 	//width-last needs to be determined no matter what, in case it's not supplied
+	@if $col-num == 6 { $width-last: 100% - $width-5 - $width-4 - $width-3 - $width-2 - $width-1; }
 	@if $col-num == 5 { $width-last: 100% - $width-4 - $width-3 - $width-2 - $width-1; }
 	@if $col-num == 4 { $width-last: 100% - $width-3 - $width-2 - $width-1; }
 	@if $col-num == 3 { $width-last: 100% - $width-2 - $width-1; }
 	@if $col-num == 2 { $width-last: 100% - $width-1; }
  
 	//Needed to reset var-list for some reason
-	$var-list: $col-num, $width-1, $width-2, $width-3, $width-4, $width-last, $margin-r;
-	$name-list: first, second, third, fourth, fifth;
+	$var-list: $col-num, $width-1, $width-2, $width-3, $width-4, $width-5, $width-last, $margin-r;
+	$name-list: first, second, third, fourth, fifth, sixth;
  
 	//First col - second-to-last col
 	@for $num from 2 through $col-num {
