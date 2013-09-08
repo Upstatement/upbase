@@ -1,24 +1,19 @@
-/* !============================================= */
+//
+// Universal 
+//
 
-/* ! Universal						   			  */ 
-
-/* !============================================= */
-
-
-/* Kill the margin on the last column */
-
+// Kill the margin on the last column
 .ui-block:last-child,
 .ui-block.last {
 	margin-right: 0;
 }
 
 
+// ============================================= //
 
-/* !============================================= */
+// Media Grid							   		 // 
 
-/* ! Media Grid							   			  */ 
-
-/* !============================================= */
+// ============================================= //
 
 @mixin media-grid($num: 2, $pad: em(20), $target:'.media-block') {
 	margin-left: -#{$pad};
@@ -70,11 +65,11 @@
 } //media-grid
 
 
-/* !============================================= */
+// ============================================= //
 
-/* ! UI Grids							   		  */ 
+// UI Grids							   		     // 
 
-/* !============================================= */
+// ============================================= //
 
 // Static Column Grid Variation
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
@@ -418,11 +413,11 @@ $margin-r: 5%;
 
 
 
-/* !============================================= */
+// ============================================= //
 
-/* ! Micro Layouts						   		  */ 
+// Micro Layouts						   		 // 
 
-/* !============================================= */
+// ============================================= //
 
 
 // Art & Text Pairs
@@ -513,13 +508,13 @@ $margin-r: 5%;
 } //pair	
 
 	
-/* !============================================= */
+// ============================================= //
 
-/* ! Spacers						   			  */ 
+// Spacers						   			     // 
 
-/* !============================================= */
+// ============================================= //
 
-/* Variables & Mixins */
+// Variables
 
 $spacer: 50px;
 $spacer-small: round($spacer/5);
@@ -536,54 +531,20 @@ $spacer-bottom: inherit !default;
 }
 
 
-/* Selectors */
+// Selectors
 
-.spacer {
+%spacer {
 	margin-bottom: $spacer;
 }
 
-.spacer-small {
+%spacer-small {
 	margin-bottom: $spacer-small;
 }
 
-.spacer-med {
+%spacer-med {
 	margin-bottom: $spacer-med;
 }
 
-.spacer-large {
+%spacer-large {
 	margin-bottom: $spacer-large;
-}
-	
-	
-/* !============================================= */
-
-/* ! Image Blocks						   		  */ 
-
-/* !============================================= */
-
-.imageblock {
-	@extend clearfix;
-}
-
-.imageblock-image {
-	float: left;
-	margin: 0 10px 0 0;	
-}
-
-.imageblock-image-right {
-	float: right;
-	margin: 0 0 0 10px;
-}
-
-.imageblock-content {
-	display: table-cell;
-	vertical-align: top;
-	width: 1000em;
-}
-	
-.ie6 .imageblock-content,
-.ie7 .imageblock-content {
-	display: block;
-	width: auto;
-	zoom: 1;
 }
