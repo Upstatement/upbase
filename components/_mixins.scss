@@ -153,13 +153,14 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 // which can confuse the user intent. This is especially true on touch interfaces. 
 // This mixin is an easy cross-browser way to repress text selection.
 // USE: @include user-select;
-@mixin user-select($user-select: none) {
-	-webkit-user-select: #{$user-select};
-	-khtml-user-select: #{$user-select};
-	-moz-user-select: #{$user-select};
-	-ms-user-select: #{$user-select};
-	-o-user-select: #{$user-select};
-	user-select: #{$user-select};
+@mixin user-select($value: none) {
+  @include prefixer(user-select, $value, webkit moz ms o spec);
+}
+
+// Appearance
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+@mixin appearance ($value) {
+  @include prefixer(appearance, $value, webkit moz ms o spec);
 }
 
 
