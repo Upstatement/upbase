@@ -674,7 +674,7 @@ $placeholders: '-webkit-input-placeholder',
 }
 
 @mixin keyframes($name) {
-  @-webkit-input-keyframes $name {
+  @-webkit-keyframes $name {
 	@content;
   }
   @-moz-keyframes $name {
