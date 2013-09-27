@@ -42,6 +42,7 @@ var upBase;
 		$(".media-block:nth-of-type(3n+4)").addClass("n4");
 		$(".media-block:nth-of-type(4n+5)").addClass("n5");
 		$(".media-block:nth-of-type(5n+6)").addClass("n6");
+		$(".media-block:nth-of-type(6n+7)").addClass("n7");
 	}
 
 	UpBase.prototype.initTabs = function(){

@@ -61,6 +61,18 @@
 				clear: left;
 			}
 		}
+		@if $num == 6 or $num == "six" {
+			&:nth-of-type(6n+7) {
+				clear: left;
+			}
+			width: 16.666%;
+			.ie7 & {
+				width: 16%;
+			}
+			&.n7 {
+				clear: left;
+			}
+		}
 	}
 } //media-grid
 
