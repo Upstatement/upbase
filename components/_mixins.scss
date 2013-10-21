@@ -478,7 +478,7 @@ $placeholders: '-webkit-input-placeholder',
 // REF: http://compass-style.org/reference/compass/helpers/urls
 // USE: @include svg(imageName);
 
-@mixin svg($image) {
+@mixin svg($image, $cover: true) {
 	// Variables
 	$svg: $svg-path + $image + ".svg";
 	$png: $svg-path + $image + ".png";
@@ -491,10 +491,12 @@ $placeholders: '-webkit-input-placeholder',
 	// Fallback pattern
 	.no-svg & {
 		background-image: image-url($png);
-		// Makes sure that image scales if necessary, works for IE9
-		@include background-size(cover);
-		filter: $ms-filter;
-		-ms-filter: $ms-filter;
+    @if $cover == true {
+  		// Makes sure that image scales if necessary, works for IE9
+  		@include background-size(cover);
+  		filter: $ms-filter;
+  		-ms-filter: $ms-filter;
+    }
 	}
 	.svg & {
 		background-image: image-url($svg);
