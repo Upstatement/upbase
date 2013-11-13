@@ -103,6 +103,29 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
+// The Media Query Mixin
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Write less verbose Media Queries with variables 
+// or using straight figures (eg 320px)
+// WHY: Faster to write. More flexible. Lets you write 
+// media query variables on the fly.
+// USE: @include mq(320px, 798px);
+// USE: @include mq($tablet, $desktop);
+
+@mixin mq($breakpoint-1, $breakpoint-2: 0) {
+  @if $breakpoint-1 == "max" {
+    @media (max-width:$breakpoint-2 - 1) { @content; }
+  }
+
+  @elseif unitless($breakpoint-2) {
+    @media (min-width: $breakpoint-1) { @content; }
+  } //single breakpoint
+
+  @else {
+    @media (min-width: $breakpoint-1) and (max-width:$breakpoint-2 - 1) { @content; }
+  } //bracketed breakpoint
+}
+
 // Responsive Images
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Setting the default properties of a responsive image
