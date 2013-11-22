@@ -495,37 +495,37 @@ $placeholders: '-webkit-input-placeholder',
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Setting PNG fallbacks for SVG background images
 // WHY: Saves time and typing and is guaranteed to work across devices 
-// NOTE 1: You still need to set the display (inline-block or block) 
+// NOTE 1: This uses multiple background images as a proxy for SVG support
+// NOTE 2: You still need to set the display (inline-block or block) 
 // and a height/width for the container
-// NOTE 2: "image-url" is a helper that automatically creates a relative link to the _img folder
+// NOTE 3: "image-url" is a helper that automatically creates a relative link to the _img folder
 // from wherever it's called. This function is built-in to Compass. It's rare that you'll need
 // change the base folder (_img) but it can be done in the config.rb file in the root 
+// REF: http://css-tricks.com/svg-fallbacks/
 // REF: http://compass-style.org/reference/compass/helpers/urls
 // USE: @include svg(imageName);
 
 @mixin svg($image, $cover: true) {
-	// Variables
-	$svg: $svg-path + $image + ".svg";
-	$png: $svg-path + $image + ".png";
-	$ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+ image-url($png) +"', sizingMethod='scale')";
+  // Variables
+  $svg: $svg-path + $image + ".svg";
+  $png: $svg-path + $image + ".png";
+  $ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+ image-url($png) +"', sizingMethod='scale')";
 
-	// Universal properties
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
+  // Universal properties
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 
-	// Fallback pattern
-	.no-svg & {
-		background-image: image-url($png);
-    @if $cover == true {
-  		// Makes sure that image scales if necessary, works for IE9
-  		@include background-size(cover);
-  		filter: $ms-filter;
-  		-ms-filter: $ms-filter;
-    }
-	}
-	.svg & {
-		background-image: image-url($svg);
-	}
+  // Fallback pattern
+  background-image: image-url($png);
+  background-image: image-url($svg), none;
+
+  @if $cover == true {
+    // Makes sure that image scales if necessary, works for IE9
+    @include background-size(cover);
+    filter: $ms-filter;
+    -ms-filter: $ms-filter;
+  }
+
 } // svg
 
 
