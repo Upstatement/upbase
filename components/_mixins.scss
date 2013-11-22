@@ -638,6 +638,52 @@ $placeholders: '-webkit-input-placeholder',
   }
 }
 
+
+// Absolute Centering
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Centering (both horizontally & vertically) 
+// absolutely positioned items
+// WHY: This does the math for you
+// USE: @include resp-img;
+@mixin absolute-center($dimensions) {
+  // If only one value is supplied, 
+  // default to center the width
+  @if length($dimensions) == 1 {
+    $dimensions: $dimensions n;
+  }
+
+  $width: nth($dimensions, 1);
+  $height: nth($dimensions, 2);
+
+  position: absolute;
+
+  @if $width != n {
+    @if not(unitless($width)) {
+      width: $width;
+      margin-left: (-$width / 2);
+    }
+    @if unitless($width) {
+      width: $width + px;
+      margin-left: (-$width / 2) + px;
+    }
+    left: 50%;
+  }
+
+  @if $height != n {
+    @if not(unitless($height)) {
+      height: $height;
+      margin-top: (-$height / 2);
+    }
+    @if unitless($height) {
+      height: $height + px;
+      margin-top: (-$height / 2) + px;
+    }
+    top: 50%;
+  }
+} // absolute-center
+
+
+
 // Animation Mixin
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Writing animation properties and having them work everywhere
