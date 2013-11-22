@@ -403,13 +403,15 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 
 // Psuedo
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Quickly pasting three essential and commonly used properties that make psuedo classes work 
+// FOR: Quickly pasting essential and commonly used properties that make psuedo classes work 
 // WHY: Easier than remembering and writing each time. Should cut down on mistakes/debugging.
 // USE: @include pseudo;
-@mixin psuedo($coordinates: n n n n) {
-	@include content;
-	display: block;
-	@include absolute($coordinates); 
+@mixin psuedo($coordinates: none) {
+  @include content;
+  display: block;
+  @if $coordinates != "none" {
+    @include absolute($coordinates); 
+  }
 }
 
 // Ellipsis
