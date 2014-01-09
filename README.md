@@ -1,18 +1,26 @@
 upbase 0.1.0
 ======
 
-This is a CSS helper library for the stuff we do pretty often. There are a number of helpers in here, all of which should conform to the following:
+This is a CSS helper library to assist in all kinds of common front-end tasks. It's not a "framework" like Boilerplate, but is meant to support a designer coding their own front end and make common tasks easier and more robust. 
 
-- Can be called from a separate stylesheet and not modified in place (ie, themed)
-- Should be tested and compatible with all browsers OR have known and documented compatibility
-- Will think of more guidelines. 
 
-### Usage
+### Installation (assuming you have Bower and Compass installed):
+1. From the root of your project, install the Upbase repo using `bower install git@github.com:Upstatement/upbase.git`
+2. Copy the `config.rb` file to your root from the `config` folder inside the `upbase` folder
+3. Verify that the paths in `config.rb` match the paths you'd like to watch for your project
+4. Run `compass watch` on the root of your directory
+5. Verify that the `css` and `sass` directories have been created
+6. Navigate to your `sass` folder and create a file like `style.scss`. 
+7. Add the line `@import "base";` to the top of the `style.scss` file. This connects the files in `sass` to the components in upbase. 
+8. You're good! Sass away and make sure the output is showing up in `css` or wherever you told it to put the compiled output. 
+
+### Dependencies
+This library requires Compass or a compiler like LiveReload to watch and compile the scss. Optimal installation requires Bower. 
+
+### Yeoman usage
 The primary usage for this right now is to deploy it with Yeoman using the Upbase generator found here: https://github.com/Upstatement/generator-upbase/
 
-### If you're not using Yeoman, but still want to install with Bower:
-Add this line to your `config.rb`:   
-`add_import_path "./components/upbase/components"`
-
+### Guide to Upbase
+(need to write this)
 
 
