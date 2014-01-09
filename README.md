@@ -20,7 +20,26 @@ This library requires Compass or a compiler like LiveReload to watch and compile
 ### Yeoman usage
 The primary usage for this right now is to deploy it with Yeoman using the Upbase generator found here: https://github.com/Upstatement/generator-upbase/
 
-### Guide to Upbase
-(need to write this)
+## Directory Structure
+Here's a guide to what lives where, and how to use it:
 
-
++--`README.MD` // you're reading it!    
+|   
++--`bower.json` // tells bower to grab it   
+|   
++--`/config/`   
+| |   
+| +--`config.rb` // this is the config file for compass. Move this to the root of your project.   
+|   
++--`/components` // Where all the Upbase scss files live   
+| |   
+| +--`_base.scss`        //    Imports all the junk
+| +--`_layout.scss`      //    Helpers for layout including Media-grid and cols()
+| +--`_mixins.scss`      //    Mixins for various things like SVG
+| +--`_normalize.scss`   //    Not sure
+| +--`_reset.scss`       //    Resets CSS 
+| +--`_variables.scss`   //    Variables for things
+|
++--`/js` // Where all the Upbase scss files live   
+  |    
+  +--`upbase.js` // JS helpers for compatibility in older browsers and stuff like `.even` `.odd` counting.    
