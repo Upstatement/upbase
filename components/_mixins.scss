@@ -644,7 +644,7 @@ $placeholders: '-webkit-input-placeholder',
 // FOR: Centering (both horizontally & vertically) 
 // absolutely positioned items
 // WHY: This does the math for you
-// USE: @include resp-img;
+// USE: @include absolute-center(n 22px);
 @mixin absolute-center($dimensions) {
   // If only one value is supplied, 
   // default to center the width
