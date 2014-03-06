@@ -254,11 +254,24 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 }
 
 
+// Circle 
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Making circles
+// WHY: It's an obvious shorthand and 
+//      hey! it does the math for you
+// HOW: Sets the size and cuts it in half
+// USE: @include circle(10px);
+@mixin circle($size: 10px) {
+  @include size($size);
+  @include border-radius($size/2);
+}
+
+
 // Tint & Shade 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: More reliable color manipulation
 // WHY: Built-in SASS color functions can be limited and unpredictable
-// This functions more like swatch tints in Adobe programs
+//      This functions more like swatch tints in Adobe programs
 // HOW: Adds a percentage of black or white to the base color
 // REF: http://bourbon.io/docs/#tint-shade
 // USE: @include tint(red, 40%);
