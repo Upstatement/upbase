@@ -86,16 +86,6 @@ $base-line-height: 1.231em !default;
 //
 // Paths
 
-$rgba-bg-path: "rgba-bg/";
-$svg-path: "icons/";
+$rgba-bg-path: "rgba-bg/" !default;
+$svg-path: "icons/" !default;
 
-
-
-
-// --------------------------------------------
-// --------------------------------------------
-//
-// Universal variables
-//
-// --------------------------------------------
-// --------------------------------------------
