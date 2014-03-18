@@ -1,44 +1,95 @@
 // =============================================
 
-// Variables						  			  
+// Upbase Defaults					  			  
 
 // =============================================
 
-// -- Universal ------------------------------------
-
-$black-5: #f5f5f5;
-$black-10: #ededed;
-$black-15: #ccc;
-$black-50: #999;
-$black-75: #666; 
-$black-90: #222; 
-$black-95: #111; 
-
-$light-gray: $black-10;
-$med-gray: $black-50;
-$dark-gray: $black-75;
-$tease-txt: $black-75;
-$txt-black: $black-90;
-$text-black: $txt-black;
 
 
-// !-- Project ------------------------------------
+// $black-5: #f5f5f5;
+// $black-10: #ededed;
+// $black-15: #ccc;
+// $black-50: #999;
+// $black-75: #666; 
+// $black-90: #222; 
+// $black-95: #111; 
 
-$blue: #1d78af;
-
-$selection-color: $blue;
-$selection-color-type: #FFF;
-
-$link: $blue;
-$link-hover: darken($link, 8%);
-$highlight: #ea4c88;  //Pink
-
-$sans:Arial,Helvetica,Verdana,sans-serif;
-$serif:Georgia,Times,Times New Roman,serif;
-$mono:"Courier New",Courier,mono;
+// $light-gray: $black-10;
+// $med-gray: $black-50;
+// $dark-gray: $black-75;
+// $tease-txt: $black-75;
+// $txt-black: $black-90;
+// $text-black: $txt-black;
 
 
-// !-- Paths ------------------------------------
+
+// Override all Setting in your project. Not here. 
+// If you need to overwrite something within Upbase, either you're doing it wrong, 
+// Or someone else did something wrong
+
+// --------------------------------------------
+//
+// Color
+
+
+// Default for body color
+// #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 
+$body-color: #444444 !default;
+
+// Some weird default blue color that existed in Upbase
+$blue: #1d78af !default;
+
+// Default for when you highlight a portion of your web page.
+$selection-color: $blue !default;
+$selection-color-type: #ffffff !default;
+
+// Default for links
+$link: $blue !default;
+$link-hover: darken($link, 8%) !default;
+$highlight: #ea4c88 !default;  //Pink
+
+// Sets the webkit highlight color
+$tap-highlight-color: $highlight !default;
+
+
+// --------------------------------------------
+//
+// Typography
+
+// You can overwrite these in your project, or use them like this, letting them serve as the fallback stack.
+// $my-project-sans: "My awesome font", $sans;
+
+$sans: Arial,Helvetica,Verdana,sans-serif !default;
+$serif: Georgia,Times,Times New Roman,serif !default;
+$mono: "Courier New",Courier,mono !default;
+
+// Sets the font specified on the body element
+$body-face: $sans !default;
+
+
+// This sets the base font size.
+// If you're using em-based breakpoints, this means your context is 16px, by default.
+// 62.5% would be the natural value to change this to, if you wanted breakpoints, based on 10px;
+$base-size: 100% !default;
+
+// These set the font size on the body element
+$base-font-size: 13px !default;
+$base-line-height: 1.231 !default;
+
+// --------------------------------------------
+//
+// Paths
 
 $rgba-bg-path: "rgba-bg/";
 $svg-path: "icons/";
+
+
+
+
+// --------------------------------------------
+// --------------------------------------------
+//
+// Universal variables
+//
+// --------------------------------------------
+// --------------------------------------------

@@ -34,7 +34,7 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   outline: 0;
-  font-size: 100%;
+  font-size: $base-size;
   vertical-align: baseline;
   background: transparent;
 }                  
@@ -83,15 +83,25 @@ input, select { vertical-align: middle; }
 //  * we normalize monospace styles ourselves
 //  * table font-size is reset in the HTML5 reset above so there is no need to repeat
 
-body { font: 13px/1.231 sans-serif; *font-size: small; /*text-rendering: optimizeLegibility;*/
-  /* this causes problems in Chrome for Windows and on iOS */ -webkit-overflow-scrolling : touch;} // hack retained to preserve specificity
+body { 
+  font-size: $base-font-size;
+  line-height: $base-line-height; 
+  font-family: $body-face; 
+  *font-size: small; /*text-rendering: optimizeLegibility;*/
+  /* this causes problems in Chrome for Windows and on iOS */ 
+  -webkit-overflow-scrolling: touch; // hack retained to preserve specificity
+}
 
-select, input, textarea, button { font: 99% sans-serif; }
+select, input, textarea, button { 
+  font-size: 99%;
+  font-family: $body-face;
+}
 
 // normalize monospace sizing 
 // en.wikipedia.org/wiki/MediaWiki_talk: Common.css/Archive_11#Teletype_style_fix_for_Chrome
 
-pre, code, kbd, samp { font-family: monospace, sans-serif; }
+pre, code, kbd, samp { 
+  font-family: $mono, sans-serif; }
  
 
 // /* 
@@ -101,7 +111,7 @@ pre, code, kbd, samp { font-family: monospace, sans-serif; }
 
 body, select, input, textarea { 
   // #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 
-  color: #444; 
+  color: $body-color; 
   // set your base font here, to apply evenly */
   // font-family: Georgia, serif;  */   
 }
@@ -180,7 +190,7 @@ input:invalid, textarea:invalid {
 ::selection { background: $selection-color; color: $selection-color-type; text-shadow: none; } 
 
 //  j.mp/webkit-tap-highlight-color
-a:link { -webkit-tap-highlight-color: $selection-color; } 
+a:link { -webkit-tap-highlight-color: $tap-highlight-color; } 
 
 // make buttons play nice in IE:    
 // www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
