@@ -17,6 +17,33 @@ This is a CSS helper library to assist in all kinds of common front-end tasks. I
 ### Dependencies
 This library requires Compass or a compiler like LiveReload to watch and compile the scss. Optimal installation requires Bower. 
 
+### Standalone usage
+Make a file in your root (or wherever you plan on pointing livereload or compass watch at) called `config.rb` that has the following:
+
+```
+# This is the config.rb file to support Upbase. Move this to your root folder after you bower install.
+
+# Set this to the root of your project when deployed:
+http_path = "/"
+
+# And this is where compass will watch and compile stuff when it runs:
+css_dir = "css"
+sass_dir = "sass"
+images_dir = "img"
+javascripts_dir = "js"
+fonts_dir = "fonts"
+relative_assets = true
+
+# This line tells compass to look at the Upbase styles in your bower_components dir
+add_import_path "bower_components/Upbase/components"
+
+line_comments = false
+# output_style = :compact :compressed :nested :expanded
+# To enable relative paths to assets via compass helper functions. Uncomment:
+# relative_assets = true
+```
+
+
 ### Yeoman usage
 The primary usage for this right now is to deploy it with Yeoman using the Upbase generator found here: https://github.com/Upstatement/generator-upbase/
 
@@ -25,11 +52,7 @@ Here's a guide to what lives where, and how to use it:
 
 +--`README.MD` // you're reading it!    
 |   
-+--`bower.json` // tells bower to grab it   
-|   
-+--`/config/`   
-| |   
-| +--`config.rb` // this is the config file for compass. Move this to the root of your project.   
++--`bower.json` // tells bower to grab it     
 |   
 +--`/components` // Where all the Upbase scss files live   
 | |   
