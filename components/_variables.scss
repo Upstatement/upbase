@@ -28,7 +28,6 @@
 // Or someone else did something wrong
 
 // --------------------------------------------
-//
 // Color
 
 
@@ -53,7 +52,6 @@ $tap-highlight-color: $highlight !default;
 
 
 // --------------------------------------------
-//
 // Typography
 
 // You can overwrite these in your project, or use them like this, letting them serve as the fallback stack.
@@ -82,10 +80,24 @@ $base-font-size: 0.8125em !default;
 $base-line-height: 1.231em !default;
 
 
+
+
 // --------------------------------------------
-//
+// Breakpoints
+
+$small: 			12.5em !default; 			// 200px
+$medium: 			37.5em !default;			// 600px
+$large: 			56.25em !default;			// 900px
+$desktop: 			64em !default;				// 1024px
+$x-large: 			68.75em !default; 			// 1100px
+
+
+
+
+// --------------------------------------------
 // Paths
 
 $rgba-bg-path: "rgba-bg/" !default;
 $svg-path: "icons/" !default;
+
 
