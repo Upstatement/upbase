@@ -67,14 +67,20 @@ $mono: "Courier New",Courier,mono !default;
 $body-face: $sans !default;
 
 
-// This sets the base font size.
-// If you're using em-based breakpoints, this means your context is 16px, by default.
-// 62.5% would be the natural value to change this to, if you wanted breakpoints, based on 10px;
+// This sets the base font size. Most likely, you want to leave this alone.
+// If you tweak this to, say 62.5%, you would want to tweak the $base-font-size below
 $base-size: 100% !default;
 
-// These set the font size on the body element
-$base-font-size: 13px !default;
-$base-line-height: 1.231 !default;
+
+// This sets the font size on the body element.
+// 0.8125em is 13px, which is the current Upstatment default
+// Other options might be (based on $base-size set to 100%)
+// 1em == 16px
+// 0.8125em == 13px
+// 0.625em == 10px
+$base-font-size: 0.8125em !default;
+$base-line-height: 1.231em !default;
+
 
 // --------------------------------------------
 //
