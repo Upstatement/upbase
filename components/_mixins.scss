@@ -111,6 +111,7 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 // media query variables on the fly.
 // USE: @include mq(320px, 798px);
 // USE: @include mq($tablet, $desktop);
+// USE: @include mq(max, $desktop);
 
 @mixin mq($breakpoint-1, $breakpoint-2: 0) {
   @if $breakpoint-1 == "max" {
@@ -425,6 +426,10 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
   @if $coordinates != "none" {
     @include absolute($coordinates); 
   }
+}
+
+@mixin psuedo($coordinates: none) {
+  @include pseudo($coordinates);
 }
 
 // Ellipsis
