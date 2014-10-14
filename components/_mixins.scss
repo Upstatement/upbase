@@ -1,6 +1,6 @@
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-//	Functions							 			   
+//	Functions
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
@@ -13,7 +13,7 @@
 // REF: http://www.lukew.com/ff/entry.asp?1167
 // USE: width: resp(300px);
 @function resp($target, $context: 960){
-	@return percentage($target / $context); 
+	@return percentage($target / $context);
 }
 
 // Em Calculator
@@ -46,7 +46,7 @@
  // Prefixer
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Easily applying range of vendor prefixes when rolling
-// your own mixins. This comes straight from Bourbon.io 
+// your own mixins. This comes straight from Bourbon.io
 // USE: @include prefixer(border-radius, $radii, webkit ms spec);
 
 $prefix-for-webkit:    true !default;
@@ -99,15 +99,15 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
-//	Helpers							 			   
+//	Helpers
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 // The Media Query Mixin
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Write less verbose Media Queries with variables 
+// FOR: Write less verbose Media Queries with variables
 // or using straight figures (eg 320px)
-// WHY: Faster to write. More flexible. Lets you write 
+// WHY: Faster to write. More flexible. Lets you write
 // media query variables on the fly.
 // USE: @include mq(320px, 798px);
 // USE: @include mq($tablet, $desktop);
@@ -134,26 +134,26 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 // USE: @include resp-img;
 @mixin resp-img {
 	width: 100%;
-	max-width: 100%; 
+	max-width: 100%;
 }
 
 // Content
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Filling psuedo-clases :before, :after with blank content
 // WHY: Psuedo classes won't appear unless you fill them with content.
-// This mixin includes the difficult-to-recall cross-browser character code for "blank". 
+// This mixin includes the difficult-to-recall cross-browser character code for "blank".
 // USE: @include content;
-@mixin content($content: \0020) {
-	content: "#{$content}";
+@mixin content($content: "\0020") {
+  content: "#{$content}";
 }
 
 // Hide Text
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Visually Hiding Text  
-// WHY: Says exactly what it does. Easier than remembering and writing each time. 
+// FOR: Visually Hiding Text
+// WHY: Says exactly what it does. Easier than remembering and writing each time.
 // The newest proper way to hide text (not the text-indent method anymore)
 // USE: @include hide-text;
- 
+
 @mixin hide-text {
   color:            transparent;
   font:             0/0 a;
@@ -174,7 +174,7 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Making text unselectable by the user
 // WHY: Sometimes the cursor highlights text on clickable elements (in particular buttons),
-// which can confuse the user intent. This is especially true on touch interfaces. 
+// which can confuse the user intent. This is especially true on touch interfaces.
 // This mixin is an easy cross-browser way to repress text selection.
 // USE: @include user-select;
 @mixin user-select($value: none) {
@@ -205,33 +205,33 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Applying width & height in a single declaration
 // WHY: Faster. Less typing. Easier to deal with squares.
-// NOTE: If you supply a single value, the result is a square  
+// NOTE: If you supply a single value, the result is a square
 // REF: http://bourbon.io/docs/#size
 // USE: @include size(50px 100px);
- 
+
 @mixin size($size) {
   @if length($size) == 1 {
     @if $size == auto {
       width:  $size;
       height: $size;
     }
- 
+
     @else if unitless($size) {
       width:  $size + px;
       height: $size + px;
     }
- 
+
     @else if not(unitless($size)) {
       width:  $size;
       height: $size;
     }
   }
- 
+
   // Width x Height
   @if length($size) == 2 {
     $width:  nth($size, 1);
     $height: nth($size, 2);
- 
+
     @if $width == auto {
       width: $width;
     }
@@ -241,7 +241,7 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
     @else if unitless($width) {
       width: $width + px;
     }
- 
+
     @if $height == auto {
       height: $height;
     }
@@ -255,10 +255,10 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 }
 
 
-// Circle 
+// Circle
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Making circles
-// WHY: It's an obvious shorthand and 
+// WHY: It's an obvious shorthand and
 //      hey! it does the math for you
 // HOW: Sets the size and cuts it in half
 // USE: @include circle(10px);
@@ -268,7 +268,7 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 }
 
 
-// Tint & Shade 
+// Tint & Shade
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: More reliable color manipulation
 // WHY: Built-in SASS color functions can be limited and unpredictable
@@ -299,7 +299,7 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 }
 
 
-// Input Defaults 
+// Input Defaults
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Zero'ing out the style on an input field (text input, radio button, etc)
 // WHY: It's a lot to write and remember all these characteristics
@@ -319,12 +319,12 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 // Triangles
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Quickly making CSS triangles
-// WHY: It's annoying to remember how these attribute work. 
+// WHY: It's annoying to remember how these attribute work.
 // Plus CSS triangles are really flexible and awesome.
 // USE: @include triangle(right, 6px, #000, .68);
 @mixin triangle($tri-orientation: down, $tri-width: 3px, $tri-color: #666, $mult:1) {
 	@include rotate(.1deg);
-	
+
 	@if $tri-orientation == "up" or $tri-orientation == "top" {
 		border-left: $tri-width*$mult solid transparent;
 		border-right: $tri-width*$mult solid transparent;
@@ -417,14 +417,14 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 
 // Psuedo
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Quickly pasting essential and commonly used properties that make psuedo classes work 
+// FOR: Quickly pasting essential and commonly used properties that make psuedo classes work
 // WHY: Easier than remembering and writing each time. Should cut down on mistakes/debugging.
 // USE: @include pseudo;
 @mixin psuedo($coordinates: none) {
   @include content;
   display: block;
   @if $coordinates != "none" {
-    @include absolute($coordinates); 
+    @include absolute($coordinates);
   }
 }
 
@@ -446,7 +446,7 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 // Placeholder
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Applying placeholder and making it cross-browser
-// compatible. This comes straight from Bourbon.io 
+// compatible. This comes straight from Bourbon.io
 // USE: Nested inside of another selector
 // USE: @include pholder { color: red };
 
@@ -482,7 +482,7 @@ $placeholders: '-webkit-input-placeholder',
 
 // Placeholder Text
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Styling placeholder text color states (default, hover, focus) 
+// FOR: Styling placeholder text color states (default, hover, focus)
 // WHY: Provides a shortcut for writing the code, which is necessarily long
 // because selectors cannot be combined. Also a cross-browser solution.
 // USE: @include placholder(#999, #999, #222);
@@ -507,18 +507,18 @@ $placeholders: '-webkit-input-placeholder',
 	    color: $focus;
 	}
 }
-	
+
 
 // SVG Fallback Pattern
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Setting PNG fallbacks for SVG background images
-// WHY: Saves time and typing and is guaranteed to work across devices 
+// WHY: Saves time and typing and is guaranteed to work across devices
 // NOTE 1: This uses multiple background images as a proxy for SVG support
-// NOTE 2: You still need to set the display (inline-block or block) 
+// NOTE 2: You still need to set the display (inline-block or block)
 // and a height/width for the container
 // NOTE 3: "image-url" is a helper that automatically creates a relative link to the _img folder
 // from wherever it's called. This function is built-in to Compass. It's rare that you'll need
-// change the base folder (_img) but it can be done in the config.rb file in the root 
+// change the base folder (_img) but it can be done in the config.rb file in the root
 // REF: http://css-tricks.com/svg-fallbacks/
 // REF: http://compass-style.org/reference/compass/helpers/urls
 // USE: @include svg(imageName);
@@ -550,7 +550,7 @@ $placeholders: '-webkit-input-placeholder',
 // RGBA Background Fallback Pattern
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 // FOR: Setting safe fallbacks for RGBA background colors (black & white only)
-// WHY: Saves time and typing; guaranteed to work across devices 
+// WHY: Saves time and typing; guaranteed to work across devices
 // USE: @include rgba-bg(black, .5);
 
 @mixin rgba-bg($color: white, $alpha: .1) {
@@ -563,7 +563,7 @@ $placeholders: '-webkit-input-placeholder',
 	// Turn decimal into whole number for use with fallback
 	$a-integer: $alpha * 100;
 
-	// Set fallback background image, including path 
+	// Set fallback background image, including path
 	$fallback-bg: '#{$rgba-bg-path}#{$color}-#{$a-integer}' + '.png';
 
 	@if $color == transparent {
@@ -602,12 +602,12 @@ $placeholders: '-webkit-input-placeholder',
 	.wf-active &,
 	.wf-inactive & {
 		visibility: visible;
-	}	
+	}
 }
 
 // Retina Background Images
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Serving larger background images when the user agent has a retina display 
+// FOR: Serving larger background images when the user agent has a retina display
 // WHY: Because it's a long list of hard-to-remember proprietary code
 // REF: Idea originates here: http://37signals.com/svn/posts/3271-easy-retina-ready-images-using-scss
 // USE: @include retina(image.png, 8px, 10px);
@@ -627,7 +627,7 @@ $placeholders: '-webkit-input-placeholder',
 
 // Responsive Video
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Giving yourself a responsive video that maintains its aspect ratio 
+// FOR: Giving yourself a responsive video that maintains its aspect ratio
 // WHY: Annoying to remember/lookup
 // REF: http://webdesignerwall.com/tutorials/css-elastic-videos
 // USE: @include video;
@@ -645,8 +645,8 @@ $placeholders: '-webkit-input-placeholder',
     padding-bottom: $aspect;
     padding-top: 30px;
     height: 0;
-    iframe,  
-    object,  
+    iframe,
+    object,
     embed {
       position: absolute;
       top: 0;
@@ -659,12 +659,12 @@ $placeholders: '-webkit-input-placeholder',
 
 // Absolute Centering
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Centering (both horizontally & vertically) 
+// FOR: Centering (both horizontally & vertically)
 // absolutely positioned items
 // WHY: This does the math for you
 // USE: @include absolute-center(n 22px);
 @mixin absolute-center($dimensions) {
-  // If only one value is supplied, 
+  // If only one value is supplied,
   // default to center the width
   @if length($dimensions) == 1 {
     $dimensions: $dimensions n;
@@ -709,9 +709,9 @@ $placeholders: '-webkit-input-placeholder',
 // USE: @include animation(fadedown 4s ease);
 // REF: http://www.w3.org/TR/css3-animations/#the-animation-name-property-
 
-// NOTE: Each of these mixins support comma separated lists of values, 
-// which allows different transitions for individual properties 
-// to be described in a single style rule. Each value in the list 
+// NOTE: Each of these mixins support comma separated lists of values,
+// which allows different transitions for individual properties
+// to be described in a single style rule. Each value in the list
 // corresponds to the value at that same position in the other properties.
 
 // Official animation shorthand property.
@@ -778,7 +778,7 @@ $placeholders: '-webkit-input-placeholder',
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 //
-// Sprites	
+// Sprites
 //
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
@@ -794,7 +794,7 @@ $placeholders: '-webkit-input-placeholder',
 //@include all-sprite-sprites;
 
 //
-// Retina Sprites 
+// Retina Sprites
 //
 
 // UNCOMMENT TO ENABLE RETINA SPRITES
@@ -803,43 +803,43 @@ $placeholders: '-webkit-input-placeholder',
 // Make a sprite from all the images in the "_img > retina" folder
 // $retina-layout:horizontal;
 // @import "retina/*.png";
-// @include all-retina-sprites; 
+// @include all-retina-sprites;
 
 // .sprite-sprite {
-// 	@include retina($retina-sprites, 8px, 10px);		
+// 	@include retina($retina-sprites, 8px, 10px);
 // }
 
 
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 //
-// Paul Irish HTML5 Helpers	
+// Paul Irish HTML5 Helpers
 //
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 
 // Image replacement
-@mixin ir { 
-	display: block; 
-	text-indent: -999em; 
-	overflow: hidden; 
-	background-repeat: no-repeat; 
-	text-align: left; 
-	direction: ltr; 
+@mixin ir {
+	display: block;
+	text-indent: -999em;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	text-align: left;
+	direction: ltr;
 }
 
 // Hide for both screenreaders and browsers
 //   css-discuss.incutio.com/wiki/Screenreader_Visibility
-@mixin hidden { 
-	display: none; 
-	visibility: hidden; 
-} 
+@mixin hidden {
+	display: none;
+	visibility: hidden;
+}
 
-// Hide only visually, but have it available for screenreaders 
+// Hide only visually, but have it available for screenreaders
 //   www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden
-@mixin visuallyhidden { 
+@mixin visuallyhidden {
 	position: absolute !important;
 	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-	clip: rect(1px, 1px, 1px, 1px); 
+	clip: rect(1px, 1px, 1px, 1px);
 }
 
 // Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: drupal.org/node/897638
@@ -847,6 +847,6 @@ $placeholders: '-webkit-input-placeholder',
 .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
 
 // Hide visually and from screenreaders, but maintain layout
-@mixin invisible { 
-	visibility: hidden; 
+@mixin invisible {
+	visibility: hidden;
 }
