@@ -428,7 +428,7 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
   }
 }
 
-@mixin psuedo($coordinates: none) {
+@mixin pseudo($coordinates: none) {
   @include pseudo($coordinates);
 }
 
