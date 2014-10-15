@@ -429,7 +429,11 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 }
 
 @mixin pseudo($coordinates: none) {
-  @include pseudo($coordinates);
+  @include content;
+  display: block;
+  @if $coordinates != "none" {
+    @include absolute($coordinates);
+  }
 }
 
 // Ellipsis

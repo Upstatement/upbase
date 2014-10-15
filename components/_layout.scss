@@ -1,5 +1,5 @@
 //
-// Universal 
+// Universal
 //
 
 // Kill the margin on the last column
@@ -11,7 +11,7 @@
 
 // ============================================= //
 
-// Media Grid							   		 // 
+// Media Grid							   		 //
 
 // ============================================= //
 
@@ -79,7 +79,7 @@
 
 // ============================================= //
 
-// UI Grids							   		     // 
+// UI Grids							   		     //
 
 // ============================================= //
 
@@ -104,7 +104,7 @@
 //			<!-- Block 2 Content Goes Here -->
 //
 //		</div> <!-- /ui-block-inner -->
-//	</section> <!-- /ui-block-2 --> 
+//	</section> <!-- /ui-block-2 -->
 // </article> <!-- /l-static -->
 
 // USE: @include grid-static(300px, 40px);
@@ -135,7 +135,7 @@
 		> .ui-block-1 {
 			width: $width;
 			float: left;
-		}		
+		}
 		> .ui-block-2 {
 			width: 100%;
 			float: right;
@@ -152,9 +152,9 @@
 
 // Grid-2 vars
 
-$width-1: 50%; 
-$width-2: 50%; 
-$margin-r: 5%; 
+$width-1: 50%;
+$width-2: 50%;
+$margin-r: 5%;
 
 @mixin ui-grid-2($width-1: 50%, $width-2: 50%, $margin-r:5%) {
 	@include pie-clearfix;
@@ -166,7 +166,7 @@ $margin-r: 5%;
 		margin-right: $margin-r;
 	}
 
-	> .ui-block-2,	
+	> .ui-block-2,
 	> .ui-block.second {
 		width: $width-2 - ($margin-r/2);
 		@include float-left;
@@ -177,12 +177,12 @@ $margin-r: 5%;
 @mixin ui-grid-rl($width-1: 50%, $width-2:50%, $margin-r:5%) {
 	@include pie-clearfix;
 
-	> .ui-block-1,	
+	> .ui-block-1,
 	> .ui-block.first {
 		width: $width-1 - ($margin-r/2);
 		@include float-right;
 	}
-	
+
 	> .ui-block-2,
 	> .ui-block.second {
 		width: $width-2 - ($margin-r/2);
@@ -194,13 +194,13 @@ $margin-r: 5%;
 @mixin ui-grid-lr($width-1:50%, $width-2:50%, $margin-r:5%) {
 	@include pie-clearfix;
 
-	> .ui-block-1,	
+	> .ui-block-1,
 	> .ui-block.first {
 		width: $width-1 - ($margin-r/2);
 		@include float-left;
 	}
 
-	> .ui-block-2,	
+	> .ui-block-2,
 	> .ui-block.second {
 		width: $width-2 - ($margin-r/2);
 		@include float-right;
@@ -208,7 +208,7 @@ $margin-r: 5%;
 	}
 }
 
-// Grid-3 vars 
+// Grid-3 vars
 
 @mixin ui-grid-3($width3-1: 33.333%, $width3-2: 33.333%, $width3-3: 33.333%, $margin3-r: 3.5%)  {
 	@include pie-clearfix;
@@ -220,7 +220,7 @@ $margin-r: 5%;
 		margin-right: $margin3-r/2;
 	}
 
-	> .ui-block-2,	
+	> .ui-block-2,
 	> .ui-block.second {
 		width: $width3-2 - ($margin3-r/3);
 		@include float-left;
@@ -231,12 +231,12 @@ $margin-r: 5%;
 	> .ui-block.last {
 		width: $width3-3 - ($margin3-r/3);
 		@include float-left;
-		margin-right: 0;		
+		margin-right: 0;
 	}
 }
 
 // Grid-3-rrl vars
-	
+
 @mixin ui-grid-rrl($width3-1: 33.333%, $width3-2: 33.333%, $width3-3: 33.333%, $margin3-r: 3.5%)  {
 	@include pie-clearfix;
 
@@ -258,12 +258,12 @@ $margin-r: 5%;
 	> .ui-block.last {
 		width: $width3-3 - ($margin3-r/3);
 		@include float-left;
-		margin-right: $margin3-r/2;		
+		margin-right: $margin3-r/2;
 	}
 }
 
 
-// Grid-4 vars 
+// Grid-4 vars
 
 @mixin ui-grid-4($width4-1: 25%, $width4-2: 25%, $width4-3: 25%, $width4-4: 25%, $margin5-r: 8%) {
 
@@ -276,7 +276,7 @@ $margin-r: 5%;
 		margin-right: $margin4-r/3;
 	}
 
-	> .ui-block-2,	
+	> .ui-block-2,
 	> .ui-block.second {
 		width: $width4-2 - ($margin4-r/4);
 		@include float-left;
@@ -294,7 +294,7 @@ $margin-r: 5%;
 	> .ui-block.last {
 		width: $width4-4 - ($margin4-r/4);
 		@include float-left;
-		margin-right: 0;	
+		margin-right: 0;
 	}
 }
 
@@ -312,7 +312,7 @@ $margin-r: 5%;
 		margin-right: $margin5-r/4;
 	}
 
-	> .ui-block-2,	
+	> .ui-block-2,
 	> .ui-block.second {
 		width: $width5-2 - ($margin5-r/5);
 		@include float-left;
@@ -337,17 +337,17 @@ $margin-r: 5%;
 	> .ui-block.last {
 		width: $width5-5 - ($margin5-r/5);
 		@include float-left;
-		margin-right: 0;	
+		margin-right: 0;
 	}
 }
 
 //Jeff's universal ui-grid layout mixin
 
 @mixin cols($col-num: 2, $width-1: 0, $width-2: 0, $width-3: 0, $width-4: 0, $width-5: 0, $width-last: 0, $margin-r:5% ) {
-  
+
 	@include pie-clearfix;
 	$var-list: $col-num, $width-1, $width-2, $width-3, $width-4, $width-5, $width-last, $margin-r;
- 
+
 	//Discovers margin option
 	@for $num from 1 through length($var-list) {
 		$value: nth($var-list, $num);
@@ -361,7 +361,7 @@ $margin-r: 5%;
 			}
 		}
 	}
- 
+
 	//Flip functionality
 	$flip: false;
 	@each $var in $var-list {
@@ -377,7 +377,7 @@ $margin-r: 5%;
 	@if $width-4 == flip { $width-4: 0; }
 	@if $width-5 == flip { $width-5: 0; }
 	//eo flip functionality
- 
+
 	//Default values given no supplied values
 	@if $width-1 == 0 { $width-1: 100% / $col-num; }
 	@if $width-2 == 0 { $width-2: 100% / $col-num; }
@@ -385,18 +385,18 @@ $margin-r: 5%;
 	@if $width-4 == 0 { $width-4: 100% / $col-num; }
 	@if $width-5 == 0 { $width-5: 100% / $col-num; }
 	@if $width-last == 0 { $width-last: 100% / $col-num; }
- 
+
 	//width-last needs to be determined no matter what, in case it's not supplied
 	@if $col-num == 6 { $width-last: 100% - $width-5 - $width-4 - $width-3 - $width-2 - $width-1; }
 	@if $col-num == 5 { $width-last: 100% - $width-4 - $width-3 - $width-2 - $width-1; }
 	@if $col-num == 4 { $width-last: 100% - $width-3 - $width-2 - $width-1; }
 	@if $col-num == 3 { $width-last: 100% - $width-2 - $width-1; }
 	@if $col-num == 2 { $width-last: 100% - $width-1; }
- 
+
 	//Needed to reset var-list for some reason
 	$var-list: $col-num, $width-1, $width-2, $width-3, $width-4, $width-5, $width-last, $margin-r;
 	$name-list: first, second, third, fourth, fifth, sixth;
- 
+
 	//First col - second-to-last col
 	@for $num from 2 through $col-num {
 		$width: nth($var-list, $num);
@@ -411,15 +411,15 @@ $margin-r: 5%;
 				@include float-right;
 			}
 		}
-	}	
- 
+	}
+
 	//Last col
 	> .col-#{$col-num},
 	> .col.#{nth($name-list, $col-num)},
 	> .col.last {
 		width: $width-last - ($margin-r/$col-num);
 		@include float-left;
-		margin-right: 0;		
+		margin-right: 0;
 	}
 }
 
@@ -427,7 +427,7 @@ $margin-r: 5%;
 
 // ============================================= //
 
-// Micro Layouts						   		 // 
+// Micro Layouts						   		 //
 
 // ============================================= //
 
@@ -517,12 +517,12 @@ $margin-r: 5%;
 		}
 	}
 
-} //pair	
+} //pair
 
-	
+
 // ============================================= //
 
-// Spacers						   			     // 
+// Spacers						   			     //
 
 // ============================================= //
 
