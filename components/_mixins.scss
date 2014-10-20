@@ -167,7 +167,7 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 // USE: @include trans;
 // USE: @include trans(.1s, opacity, linear);
 @mixin trans($time: .2s, $property: all, $timing-function: ease-in) {
-	@include single-transition(#{$property}, #{$time}, #{$timing-function}, false);
+	@include single-transition($property, $time, $timing-function, false);
 }
 
 // User Select
