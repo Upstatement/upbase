@@ -541,6 +541,12 @@ $placeholders: '-webkit-input-placeholder',
   background-image: image-url($png);
   background-image: image-url($svg), none;
 
+  // Necessary override for some versions of
+  // Android, which choke on the double bg image
+  .no-svg & {
+    background-image: image-url($png);
+  }
+
   @if $cover == true {
     // Makes sure that image scales if necessary, works for IE9
     @include background-size(cover);
