@@ -113,17 +113,21 @@ $prefix-for-spec:      true !default; // required for keyframe mixin
 // USE: @include mq($tablet, $desktop);
 // USE: @include mq(max, $desktop);
 
-@mixin mq($breakpoint-1, $breakpoint-2: 0) {
-  @if $breakpoint-1 == "max" {
-    @media (max-width:$breakpoint-2 - 1) { @content; }
+@mixin mq($bp-1, $bp-2: null) {
+  @if $bp-1 == "max" {
+    @media (max-width:$bp-2 - 1) { @content; }
   }
 
-  @elseif unitless($breakpoint-2) {
-    @media (min-width: $breakpoint-1) { @content; }
-  } //single breakpoint
+  @elseif $bp-2 == "max" {
+    @media (max-width:$bp-1 - 1) { @content; }
+  }
+
+  @elseif $bp-2 == null {
+    @media (min-width: $bp-1) { @content; }
+  } //single bp
 
   @else {
-    @media (min-width: $breakpoint-1) and (max-width:$breakpoint-2 - 1) { @content; }
+    @media (min-width: $bp-1) and (max-width:$bp-2 - 1) { @content; }
   } //bracketed breakpoint
 }
 
