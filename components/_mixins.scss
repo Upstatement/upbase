@@ -813,40 +813,6 @@ $placeholders: '-webkit-input-placeholder',
   }
 }
 
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-//
-// Sprites
-//
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-
-
-// Let Compass make Sprites for us
-// http://compass-style.org/help/tutorials/spriting/
-//@import "compass/utilities/sprites/base";
-
-// Make a sprite from all the images in the "_img > sprite" folder
-//$sprite-layout:horizontal;
-//$sprite-sprite-dimensions:true;
-//@import "sprite/*.png";
-//@include all-sprite-sprites;
-
-//
-// Retina Sprites
-//
-
-// UNCOMMENT TO ENABLE RETINA SPRITES
-// Place all your retina images in retina folder
-
-// Make a sprite from all the images in the "_img > retina" folder
-// $retina-layout:horizontal;
-// @import "retina/*.png";
-// @include all-retina-sprites;
-
-// .sprite-sprite {
-// 	@include retina($retina-sprites, 8px, 10px);
-// }
-
-
 
 // ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 //
