@@ -1,0 +1,86 @@
+// Art & Text Pairs
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Harmoniously placing art and text next to each other.
+// Good for thumbnails/text and many other art/text situations
+// WHY: It's a common pattern. It's easier to write this way.
+
+// HTML:
+// <article class="l-pair">
+//	<div class="art-bd">
+//		<img class="art" src="#" />
+//	</div> <!-- /art-bd -->
+//	<div class="txt-bd">
+//		<h1>Headline</h1>
+//		<p>Paragraph paragraph paragraph paragraph</p>
+//	</div> <!-- /txt-bd -->
+// </article> <!-- /l-pair -->
+
+// USE: @include pair(100px, 30px);
+
+@mixin pair($art-width: 50px, $art-margin: 20px, $v-align: middle, $direction: left) {
+	$gutter: $art-width + $art-margin;
+	@include pie-clearfix;
+
+	@if $v-align == middle {
+		display: table;
+
+		> .art-bd {
+			display: table-cell;
+			width: $art-width;
+			margin: 0;
+			> img,
+			> .art {
+				@include resp-img;
+			}
+		}
+		> .txt-bd {
+			display: table-cell;
+			vertical-align: middle;
+			padding-left: $art-margin;
+		}
+
+		// If lower than IE8, which has no
+		// support for tables
+		.lt-ie8 & {
+			> .art-bd,
+			> .txt-bd {
+				display: block;
+			}
+			> .art-bd {
+				width: $art-width;
+				float: left;
+			}
+			> .txt-bd {
+				margin-left: $gutter;
+			}
+		} // .lt-ie8
+	} //middle
+
+	@else {
+		> .art-bd,
+		> .txt-bd {
+			display: block;
+		}
+		> .art-bd {
+			width: $art-width;
+			@if $direction == right {
+				float: right;
+			} @else {
+				float: left;
+			}
+			margin: 0;
+			> img,
+			> .art {
+				@include resp-img;
+			}
+		}
+		> .txt-bd {
+			@if $direction == right {
+				margin-right: $gutter;
+			} @else {
+				margin-left: $gutter;
+			}
+		}
+	}
+
+} //pair

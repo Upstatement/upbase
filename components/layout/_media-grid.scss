@@ -1,0 +1,66 @@
+// ============================================= //
+
+// Media Grid							   		 //
+
+// ============================================= //
+
+@mixin media-grid($num: 2, $pad: em(20), $target:'.media-block') {
+	margin-left: -#{$pad};
+	@include pie-clearfix;
+
+	> #{$target} {
+		float: left;
+		padding-left: #{$pad};
+		@if $num == 2 or $num == "two" {
+			width: 50%;
+			&:nth-of-type(2n+3) {
+				clear: left;
+			}
+			&.n3 {
+				clear:left;
+			}
+		}
+		@if $num == 3 or $num == "three" {
+			width: 33.3333%;
+			&:nth-of-type(3n+4) {
+				clear: left;
+			}
+			.ie7 & {
+				width: 33%;
+			}
+			&.n4 {
+				clear: left;
+			}
+		}
+		@if $num == 4 or $num == "four" {
+			width: 25%;
+			&:nth-of-type(4n+5) {
+				clear: left;
+			}
+			&.n5 {
+				clear: left;
+			}
+		}
+		@if $num == 5 or $num == "five" {
+			&:nth-of-type(5n+6) {
+				clear: left;
+			}
+			width: 20%;
+			&.n6 {
+				clear: left;
+			}
+		}
+		@if $num == 6 or $num == "six" {
+			&:nth-of-type(6n+7) {
+				clear: left;
+			}
+			width: 16.666%;
+			.ie7 & {
+				width: 16%;
+			}
+			&.n7 {
+				clear: left;
+			}
+		}
+	}
+} //media-grid

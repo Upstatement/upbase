@@ -1,0 +1,20 @@
+// Psuedo
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Quickly pasting essential and commonly used properties that make psuedo classes work
+// WHY: Easier than remembering and writing each time. Should cut down on mistakes/debugging.
+// USE: @include pseudo;
+@mixin psuedo($coordinates: none) {
+  @include content;
+  display: block;
+  @if $coordinates != "none" {
+    @include absolute($coordinates);
+  }
+}
+
+@mixin pseudo($coordinates: none) {
+  @include content;
+  display: block;
+  @if $coordinates != "none" {
+    @include absolute($coordinates);
+  }
+}

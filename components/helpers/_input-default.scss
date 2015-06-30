@@ -1,0 +1,15 @@
+// Input Defaults
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Zero'ing out the style on an input field (text input, radio button, etc)
+// WHY: It's a lot to write and remember all these characteristics
+// USE: @include input-default;
+@mixin input-default {
+	border: 0;
+	background-color: transparent;
+	@include box-shadow(none);
+	@include border-radius(0);
+	-webkit-appearance: none;
+	&:focus {
+		outline: 0;
+	}
+}

@@ -1,0 +1,10 @@
+// Ellipsis
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Truncating text with an ellipsis the CSS way
+// WHY: It's hard to recall using this combination of attributes
+// USE: @include ellipsis;
+@mixin ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

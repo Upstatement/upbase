@@ -1,0 +1,27 @@
+// The Media Query Mixin
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Write less verbose Media Queries with variables
+// or using straight figures (eg 320px)
+// WHY: Faster to write. More flexible. Lets you write
+// media query variables on the fly.
+// USE: @include mq(320px, 798px);
+// USE: @include mq($tablet, $desktop);
+// USE: @include mq(max, $desktop);
+
+@mixin mq($bp-1, $bp-2: null) {
+  @if $bp-1 == "max" {
+    @media (max-width:$bp-2 - 1) { @content; }
+  }
+
+  @elseif $bp-2 == "max" {
+    @media (max-width:$bp-1 - 1) { @content; }
+  }
+
+  @elseif $bp-2 == null {
+    @media (min-width: $bp-1) { @content; }
+  } //single bp
+
+  @else {
+    @media (min-width: $bp-1) and (max-width:$bp-2 - 1) { @content; }
+  } //bracketed breakpoint
+}

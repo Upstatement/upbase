@@ -1,0 +1,27 @@
+// Placeholder Text
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Styling placeholder text color states (default, hover, focus)
+// WHY: Provides a shortcut for writing the code, which is necessarily long
+// because selectors cannot be combined. Also a cross-browser solution.
+// USE: @include placholder(#999, #999, #222);
+@mixin placeholder-state($default: inherit, $hover: $default, $focus: $default){
+  // You have to declare these separately in order to work
+  &::-webkit-input-placeholder {
+      color: $default;
+  }
+  &:-moz-placeholder {
+      color: $default;
+  }
+  &:hover::-webkit-input-placeholder {
+      color: $hover;
+  }
+  &:hover:-moz-placeholder {
+      color: $hover;
+  }
+  &:focus::-webkit-input-placeholder {
+      color: $focus;
+  }
+  &:focus:-moz-placeholder {
+      color: $focus;
+  }
+}

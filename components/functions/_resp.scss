@@ -1,0 +1,11 @@
+// Flexible Grid Proportion Calculator
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Figuring out the ideal percentage of a responsive container.
+// Based on the equation target / context = result.
+// Math usually based on values takne from a static design.
+// WHY: Math is easier this way.
+// REF: http://www.lukew.com/ff/entry.asp?1167
+// USE: width: resp(300px);
+@function resp($target, $context: 960){
+	@return percentage($target / $context);
+}

@@ -1,0 +1,35 @@
+// Triangles
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Quickly making CSS triangles
+// WHY: It's annoying to remember how these attribute work.
+// Plus CSS triangles are really flexible and awesome.
+// USE: @include triangle(right, 6px, #000, .68);
+@mixin triangle($tri-orientation: down, $tri-width: 3px, $tri-color: #666, $mult:1) {
+	@include rotate(.1deg);
+
+	@if $tri-orientation == "up" or $tri-orientation == "top" {
+		border-left: $tri-width*$mult solid transparent;
+		border-right: $tri-width*$mult solid transparent;
+		border-bottom: $tri-width solid $tri-color;
+	}
+
+	@if $tri-orientation == "down" or $tri-orientation == "bottom" {
+		border-left: $tri-width*$mult solid transparent;
+		border-right: $tri-width*$mult solid transparent;
+		border-top: $tri-width solid $tri-color;
+	}
+
+	@if $tri-orientation == "left" {
+		border-top: $tri-width*$mult solid transparent;
+		border-bottom: $tri-width*$mult solid transparent;
+		border-right: $tri-width solid $tri-color;
+		border-left:0px solid transparent;
+	}
+
+	@if $tri-orientation == "right" {
+		border-top: $tri-width*$mult solid transparent;
+		border-bottom: $tri-width*$mult solid transparent;
+		border-left: $tri-width solid $tri-color;
+		border-right:0px solid transparent;
+	}
+}

@@ -1,0 +1,81 @@
+//Jeff's universal ui-grid layout mixin
+
+@mixin cols($col-num: 2, $width-1: 0, $width-2: 0, $width-3: 0, $width-4: 0, $width-5: 0, $width-last: 0, $margin-r:5% ) {
+
+	@include pie-clearfix;
+	$var-list: $col-num, $width-1, $width-2, $width-3, $width-4, $width-5, $width-last, $margin-r;
+
+	//Discovers margin option
+	@for $num from 1 through length($var-list) {
+		$value: nth($var-list, $num);
+		@if $num == ($col-num + 2){
+			@if $num < length($var-list) {
+				@if type_of($value) == number {
+					@if unit($value) == "%" {
+						$margin-r: $value;
+					}
+				}
+			}
+		}
+	}
+
+	//Flip functionality
+	$flip: false;
+	@each $var in $var-list {
+		@if $var == flip {
+			$flip: true;
+		}
+	}
+	@if $col-num == flip { $col-num: 2; }
+	@if $margin-r == flip { $margin-r: 5%; }
+	@if $width-1 == flip { $width-1: 0; }
+	@if $width-2 == flip { $width-2: 0; }
+	@if $width-3 == flip { $width-3: 0; }
+	@if $width-4 == flip { $width-4: 0; }
+	@if $width-5 == flip { $width-5: 0; }
+	//eo flip functionality
+
+	//Default values given no supplied values
+	@if $width-1 == 0 { $width-1: 100% / $col-num; }
+	@if $width-2 == 0 { $width-2: 100% / $col-num; }
+	@if $width-3 == 0 { $width-3: 100% / $col-num; }
+	@if $width-4 == 0 { $width-4: 100% / $col-num; }
+	@if $width-5 == 0 { $width-5: 100% / $col-num; }
+	@if $width-last == 0 { $width-last: 100% / $col-num; }
+
+	//width-last needs to be determined no matter what, in case it's not supplied
+	@if $col-num == 6 { $width-last: 100% - $width-5 - $width-4 - $width-3 - $width-2 - $width-1; }
+	@if $col-num == 5 { $width-last: 100% - $width-4 - $width-3 - $width-2 - $width-1; }
+	@if $col-num == 4 { $width-last: 100% - $width-3 - $width-2 - $width-1; }
+	@if $col-num == 3 { $width-last: 100% - $width-2 - $width-1; }
+	@if $col-num == 2 { $width-last: 100% - $width-1; }
+
+	//Needed to reset var-list for some reason
+	$var-list: $col-num, $width-1, $width-2, $width-3, $width-4, $width-5, $width-last, $margin-r;
+	$name-list: first, second, third, fourth, fifth, sixth;
+
+	//First col - second-to-last col
+	@for $num from 2 through $col-num {
+		$width: nth($var-list, $num);
+		$name: nth($name-list, ($num - 1));
+		$col: $num - 1;
+		> .col-#{$col},
+		> .col.#{$name} {
+			margin-right: $margin-r/($col-num - 1);
+			width: $width - ($margin-r/$col-num);
+			@include float-left;
+			@if $flip == true {
+				@include float-right;
+			}
+		}
+	}
+
+	//Last col
+	> .col-#{$col-num},
+	> .col.#{nth($name-list, $col-num)},
+	> .col.last {
+		width: $width-last - ($margin-r/$col-num);
+		@include float-left;
+		margin-right: 0;
+	}
+}

@@ -1,0 +1,10 @@
+// User Select
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Making text unselectable by the user
+// WHY: Sometimes the cursor highlights text on clickable elements (in particular buttons),
+// which can confuse the user intent. This is especially true on touch interfaces.
+// This mixin is an easy cross-browser way to repress text selection.
+// USE: @include user-select;
+@mixin user-select($value: none) {
+  @include prefixer(user-select, $value, webkit moz ms o spec);
+}

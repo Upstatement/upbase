@@ -1,0 +1,17 @@
+// Em Calculator
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Simply writing ems while allowing you to think in more straightforward px values
+// WHY: I don't think in ems. Do you?
+// NOTE: Ems calculated using the document base; override by providing optional second value
+// REF: http://bourbon.io/docs/#px-to-em
+// USE: em(12);
+
+@function em($pxval, $base: 13) {
+  @if not unitless($pxval) {
+      $pxval: strip-units($pxval);
+  }
+  @if not unitless($base) {
+      $base: strip-units($base);
+  }
+  @return #{($pxval/$base)}em;
+}

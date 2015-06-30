@@ -1,0 +1,67 @@
+// ============================================= //
+
+// Static Column Grid Variation
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Setting one explicit column width while keeping the other liquid
+// WHY: It's annoying to remember this pattern and several numbers depend on one another
+// REF: http://alistapart.com/article/negativemargins
+
+// HTML:
+// <div class="l-static">
+//	<section class="ui-block-1">
+//		<div class="ui-block-inner">
+//
+//			<!-- Block 1 Content Goes Here -->
+//
+//		</div> <!-- /ui-block-inner -->
+//	</section> <!-- /ui-block-1 -->
+//	<section class="ui-block-2">
+//		<div class="ui-block-inner">
+//
+//			<!-- Block 2 Content Goes Here -->
+//
+//		</div> <!-- /ui-block-inner -->
+//	</section> <!-- /ui-block-2 -->
+// </article> <!-- /l-static -->
+
+// USE: @include grid-static(300px, 40px);
+
+@mixin grid-static($width: 300px, $margin: 40px, $static-col: right) {
+	// Variables
+	$total: $width + $margin;
+
+	// If the right column has a static width
+	@if $static-col == right {
+		> .ui-block-1 {
+			width: 100%;
+			float: left;
+			margin-right: -$total;
+			> .ui-block-inner {
+				margin-right: $total;
+			}
+		}
+
+		> .ui-block-2 {
+			width: $width;
+			float: right;
+		}
+	} // right
+
+	// If the left column has a static width
+	@else {
+		> .ui-block-1 {
+			width: $width;
+			float: left;
+		}
+		> .ui-block-2 {
+			width: 100%;
+			float: right;
+			margin-left: -$total;
+			> .ui-block-inner {
+				margin-left: $total;
+			}
+		}
+	} //else
+
+	@include pie-clearfix;
+}

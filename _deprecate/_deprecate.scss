@@ -1,0 +1,363 @@
+ // Prefixer
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Easily applying range of vendor prefixes when rolling
+// your own mixins. This comes straight from Bourbon.io
+// USE: @include prefixer(border-radius, $radii, webkit ms spec);
+
+$prefix-for-webkit:    true !default;
+$prefix-for-mozilla:   true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera:     true !default;
+$prefix-for-spec:      true !default; // required for keyframe mixin
+
+@mixin prefixer ($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit {
+      @if $prefix-for-webkit {
+        -webkit-#{$property}: $value;
+      }
+    }
+    @else if $prefix == moz {
+      @if $prefix-for-mozilla {
+        -moz-#{$property}: $value;
+      }
+    }
+    @else if $prefix == ms {
+      @if $prefix-for-microsoft {
+        -ms-#{$property}: $value;
+      }
+    }
+    @else if $prefix == o {
+      @if $prefix-for-opera {
+        -o-#{$property}: $value;
+      }
+    }
+    @else if $prefix == spec {
+      @if $prefix-for-spec {
+        #{$property}: $value;
+      }
+    }
+    @else  {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}
+
+@mixin disable-prefix-for-all() {
+  $prefix-for-webkit:    false;
+  $prefix-for-mozilla:   false;
+  $prefix-for-microsoft: false;
+  $prefix-for-opera:     false;
+  $prefix-for-spec:      false;
+}
+
+
+// Responsive Images
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Setting the default properties of a responsive image
+// WHY: It's repetitive. Saves re-writing of multiple rules.
+// USE: @include resp-img;
+@mixin resp-img {
+  width: 100%;
+  max-width: 100%;
+}
+
+
+// Transitions
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Quick application of transition properties
+// WHY: This are our most common defaults
+// USE: @include trans;
+// USE: @include trans(.1s, opacity, linear);
+@mixin trans($time: .2s, $property: all, $timing-function: ease-in) {
+  @include single-transition($property, $time, $timing-function, false);
+}
+
+
+// Appearance
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+@mixin appearance ($value) {
+  @include prefixer(appearance, $value, webkit moz ms o spec);
+}
+
+
+// Placeholder
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Applying placeholder and making it cross-browser
+// compatible. This comes straight from Bourbon.io
+// USE: Nested inside of another selector
+// USE: @include pholder { color: red };
+
+$placeholders: '-webkit-input-placeholder',
+               '-moz-placeholder',
+               '-ms-input-placeholder';
+
+@mixin placeholder {
+  @each $placeholder in $placeholders {
+    @if $placeholder == "-webkit-input-placeholder" {
+      &::#{$placeholder} {
+        @content;
+      }
+    }
+    @else if $placeholder == "-moz-placeholder" {
+      // FF 18-
+      &:#{$placeholder} {
+        @content;
+      }
+
+      // FF 19+
+      &::#{$placeholder} {
+        @content;
+      }
+    }
+    @else {
+      &:#{$placeholder} {
+        @content;
+      }
+    }
+  }
+}
+
+
+// RGBA Background Fallback Pattern
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Setting safe fallbacks for RGBA background colors (black & white only)
+// WHY: Saves time and typing; guaranteed to work across devices
+// USE: @include rgba-bg(black, .5);
+
+@mixin rgba-bg($color: white, $alpha: .1) {
+  // Strip units from alpha in case user tries to pass a percentage ...
+  $alpha: strip-units($alpha);
+  @if $alpha > 1 {
+    $alpha: $alpha * .01;
+  }
+
+  // Turn decimal into whole number for use with fallback
+  $a-integer: $alpha * 100;
+
+  // Set fallback background image, including path
+  $fallback-bg: '#{$rgba-bg-path}#{$color}-#{$a-integer}' + '.png';
+
+  @if $color == transparent {
+    background-color: transparent;
+    .no-rgba & {
+      background-color: transparent;
+    }
+  }
+  @else {
+    background-color: $color;
+
+    @if $color == white or $color == #fff or $color == #ffffff  {
+      background-color: rgba(255,255,255,$alpha);
+    }
+    @else {
+      background-color: rgba(0,0,0,$alpha);
+    }
+
+    .no-rgba & {
+      background: transparent image-url(#{$fallback-bg}) 50% 50% repeat;
+    }
+  }
+}
+
+
+// FOUT: Flash of Unstyled Type
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Making text appear on the page only after webfonts have loaded.
+// Doesn't work without the hooks provided by using Google Webfont Loader (see: snips.html).
+// WHY: Who wants to write this same six lines of code over and over?
+// USE: @include fout;
+@mixin fout {
+  .wf-loading & {
+    visibility: hidden;
+  }
+  .wf-active &,
+  .wf-inactive & {
+    visibility: visible;
+  }
+}
+
+
+
+
+
+// Animation Mixin
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+// FOR: Writing animation properties and having them work everywhere
+// WHY: Ensure compability. It's time-consuming to write cross-browser.
+// USE: @include animation(fadedown 4s ease);
+// REF: http://www.w3.org/TR/css3-animations/#the-animation-name-property-
+
+// NOTE: Each of these mixins support comma separated lists of values,
+// which allows different transitions for individual properties
+// to be described in a single style rule. Each value in the list
+// corresponds to the value at that same position in the other properties.
+
+// Official animation shorthand property.
+@mixin animation ($animations...) {
+  @include prefixer(animation, $animations, webkit moz spec);
+}
+
+// Individual Animation Properties
+@mixin animation-name ($names...) {
+  @include prefixer(animation-name, $names, webkit moz spec);
+}
+
+
+@mixin animation-duration ($times...) {
+  @include prefixer(animation-duration, $times, webkit moz spec);
+}
+
+
+@mixin animation-timing-function ($motions...) {
+// ease | linear | ease-in | ease-out | ease-in-out
+  @include prefixer(animation-timing-function, $motions, webkit moz spec);
+}
+
+
+@mixin animation-iteration-count ($values...) {
+// infinite | <number>
+  @include prefixer(animation-iteration-count, $values, webkit moz spec);
+}
+
+
+@mixin animation-direction ($directions...) {
+// normal | alternate
+  @include prefixer(animation-direction, $directions, webkit moz spec);
+}
+
+
+@mixin animation-play-state ($states...) {
+// running | paused
+  @include prefixer(animation-play-state, $states, webkit moz spec);
+}
+
+
+@mixin animation-delay ($times...) {
+  @include prefixer(animation-delay, $times, webkit moz spec);
+}
+
+
+@mixin animation-fill-mode ($modes...) {
+// none | forwards | backwards | both
+  @include prefixer(animation-fill-mode, $modes, webkit moz spec);
+}
+
+@mixin keyframes($name) {
+  $original-prefix-for-webkit:    $prefix-for-webkit;
+  $original-prefix-for-mozilla:   $prefix-for-mozilla;
+  $original-prefix-for-microsoft: $prefix-for-microsoft;
+  $original-prefix-for-opera:     $prefix-for-opera;
+  $original-prefix-for-spec:      $prefix-for-spec;
+
+  @if $original-prefix-for-webkit {
+    @include disable-prefix-for-all();
+    $prefix-for-webkit: true !global;
+    @-webkit-keyframes #{$name} {
+      @content;
+    }
+  }
+  @if $original-prefix-for-mozilla {
+    @include disable-prefix-for-all();
+    $prefix-for-mozilla: true !global;
+    @-moz-keyframes #{$name} {
+      @content;
+    }
+  }
+
+  $prefix-for-webkit:    $original-prefix-for-webkit    !global;
+  $prefix-for-mozilla:   $original-prefix-for-mozilla   !global;
+  $prefix-for-microsoft: $original-prefix-for-microsoft !global;
+  $prefix-for-opera:     $original-prefix-for-opera     !global;
+  $prefix-for-spec:      $original-prefix-for-spec      !global;
+
+  @if $original-prefix-for-spec {
+    @keyframes #{$name} {
+      @content;
+    }
+  }
+}
+
+
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+//
+// Paul Irish HTML5 Helpers
+//
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
+// Image replacement
+@mixin ir {
+  display: block;
+  text-indent: -999em;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr;
+}
+
+// Hide for both screenreaders and browsers
+//   css-discuss.incutio.com/wiki/Screenreader_Visibility
+@mixin hidden {
+  display: none;
+  visibility: hidden;
+}
+
+// Hide only visually, but have it available for screenreaders
+//   www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden
+@mixin visuallyhidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: drupal.org/node/897638
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+// Hide visually and from screenreaders, but maintain layout
+@mixin invisible {
+  visibility: hidden;
+}
+
+
+
+// ============================================= //
+
+// Spacers                         //
+
+// ============================================= //
+
+// Variables
+
+$spacer: 50px;
+$spacer-small: round($spacer/5);
+$spacer-med: round($spacer/2);
+$spacer-large: round($spacer*1.5);
+
+
+$spacer-top: inherit !default;
+$spacer-bottom: inherit !default;
+
+@mixin spacer($spacer-top, $spacer-bottom) {
+  margin-top: $spacer-top;
+  margin-bottom: $spacer-bottom;
+}
+
+
+// Selectors
+
+%spacer {
+  margin-bottom: $spacer;
+}
+
+%spacer-small {
+  margin-bottom: $spacer-small;
+}
+
+%spacer-med {
+  margin-bottom: $spacer-med;
+}
+
+%spacer-large {
+  margin-bottom: $spacer-large;
+}
