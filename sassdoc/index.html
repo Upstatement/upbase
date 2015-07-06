@@ -1,0 +1,233 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>SassDoc</title><link rel="stylesheet" href="assets/css/main.css"><link href="http://fonts.googleapis.com/css?family=Open+Sans:400,500,700" rel="stylesheet" type="text/css"><meta name="viewport" content="width=device-width"><meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"><!-- Open Graph tags --><meta property="og:title" content="SassDoc - SassDoc"><meta property="og:type" content="website"><meta property="og:description" content="Release the docs!"><!-- Thanks to Sass-lang.com for the icons --><link href="assets/images/favicon.png" rel="shortcut icon"></head><body><aside class="sidebar" role="nav"><div class="sidebar__header"><h1 class="sidebar__title">SassDoc</h1></div><div class="sidebar__body"><button type="button" class="btn-toggle js-btn-toggle" data-alt="Open all">Close all</button><p class="sidebar__item sidebar__item--heading" data-slug="helpers"><a href="#helpers">helpers</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="helpers-mixin"><a href="#helpers-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-name="clearfix" data-type="mixin"><a href="#mixin-clearfix">clearfix</a></li><li class="sidebar__item sassdoc__item" data-name="svg" data-type="mixin"><a href="#mixin-svg">svg</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="layout"><a href="#layout">layout</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="layout-mixin"><a href="#layout-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-name="vertical-center" data-type="mixin"><a href="#mixin-vertical-center">vertical-center</a></li><li class="sidebar__item sassdoc__item" data-name="grid-static" data-type="mixin"><a href="#mixin-grid-static">grid-static</a></li><li class="sidebar__item sassdoc__item" data-name="media-grid" data-type="mixin"><a href="#mixin-media-grid">media-grid</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="undefined"><a href="#undefined">General</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-variable"><a href="#undefined-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-name="support-ie9" data-type="variable"><a href="#variable-support-ie9">support-ie9</a></li><li class="sidebar__item sassdoc__item" data-name="support-ie8" data-type="variable"><a href="#variable-support-ie8">support-ie8</a></li><li class="sidebar__item sassdoc__item" data-name="support-ie7" data-type="variable"><a href="#variable-support-ie7">support-ie7</a></li><li class="sidebar__item sassdoc__item" data-name="using-modernizr" data-type="variable"><a href="#variable-using-modernizr">using-modernizr</a></li><li class="sidebar__item sassdoc__item" data-name="default-img-path" data-type="variable"><a href="#variable-default-img-path">default-img-path</a></li></ul></div></div></aside><article class="main" role="main"><header class="header" role="banner"><div class="container"><div class="sassdoc__searchbar searchbar"><label for="js-search-input" class="visually-hidden">Search</label><div class="searchbar__form" id="js-search"><input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search"><ul class="searchbar__suggestions" id="js-search-suggestions"></ul></div></div></div></header><section class="main__section"><h1 class="main__heading" id="helpers"><div class="container">helpers</div></h1><section class="main__sub-section" id="helpers-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="mixin-clearfix"><h3 class="item__heading"><a class="item__name" href="#mixin-clearfix">clearfix</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin clearfix() { 
+  &amp;:after {
+    content: &quot;&quot;;
+    display: table;
+    clear: both;
+  }
+ }" data-collapsed="@mixin clearfix() { ... }"><code>@mixin clearfix() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Force an element to self-clear its children.</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><div class="example__description"><p>HTML</p></div><pre class="example__code language-markup"><code>&lt;section class=&quot;container&quot;&gt;
+    &lt;div class=&quot;col-1 col&quot;&gt;
+        &lt;!-- Content Goes Here --&gt;
+    &lt;/div&gt; &lt;!-- /col-1 --&gt;
+    &lt;div class=&quot;col-2 col&quot;&gt;
+        &lt;!-- Content Goes Here --&gt;
+    &lt;/div&gt; &lt;!-- /col-2 --&gt;
+&lt;/section&gt; &lt;!-- /container --&gt;</code></pre></div><div class="item__example example"><div class="example__description"><p>SCSS</p></div><pre class="example__code language-scss"><code>.container {
+  @include clearfix();
+  .col-1,
+  .col-2 {
+    float: left;
+    width: 50%;
+  }
+}</code></pre></div><div class="item__example example"><div class="example__description"><p>CSS Output</p></div><pre class="example__code language-css"><code>.container:after {
+  content: &quot;&quot;;
+  display: table;
+  clear: both;
+}</code></pre></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixin-media-grid"><code>media-grid</code></a></li></ul></section><section class="main__item container item" id="mixin-svg"><h3 class="item__heading"><a class="item__name" href="#mixin-svg">svg</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin svg($bg-name, $bg-position: 0 0, $bg-color: transparent, $bg-size: auto) { 
+
+  // Variables
+  $svg: $default-img-path + $bg-name + &quot;.svg&quot;;
+  $png: $default-img-path + $bg-name + &quot;.png&quot;;
+  $png-ie: $default-img-path + $bg-name + &quot;-ie.png&quot;;
+
+  background-image: url(&quot;#{$png}&quot;);
+  background-image: url(&quot;#{$svg}&quot;), none;
+  // ^ This uses multiple background images as a proxy for SVG support
+
+  // Other background properties
+  background-color: $bg-color;
+  background-repeat: no-repeat;
+  background-position: $bg-position;
+  background-size: $bg-size;
+
+  @if ($using-modernizr == true) {
+    .no-svg &amp; {
+      background-image: url(&quot;#{$png}&quot;);
+      // ^ Necessary override for some versions of Android, which choke on the double background image
+    }
+  }
+
+  @if ($support-ie8 == true) {
+    .ie8 &amp; {
+      background-image: url(&quot;#{$png-ie}&quot;);
+      // ^ Background images need to be pre-sized for IE 8
+    }
+  }
+
+ }" data-collapsed="@mixin svg($bg-name, $bg-position: 0 0, $bg-color: transparent, $bg-size: auto) { ... }"><code>@mixin svg($bg-name, $bg-position: 0 0, $bg-color: transparent, $bg-size: auto) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Use SVGs as background images with the proper PNG fallbacks. You&#39;ll need to set the display (inline-block or block) and a height/width for the container. Also, before using, set a default image path if you wish by overriding the empty <code>$default-img-path</code> variable in your project&#39;s settings or variables file.</p><p>For full support, produce your graphic with highest resolution in mind, and export:</p><ul><li>A responsive-ready SVG named {file-name}.svg</li><li>A highest-resolution PNG named {file-name}.png</li><li>A 1x-resolution PNG named {file-name}-ie.png</li></ul></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter</span>Name</th><th scope="col"><span class="visually-hidden">parameter</span>Description</th><th scope="col"><span class="visually-hidden">parameter</span>Type</th><th scope="col"><span class="visually-hidden">parameter</span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$bg-name</code></th><td data-label="desc"><p>Name of the image file without extension. Include a path if you have not set a default <code>$img-path</code> variable or if you want to use a unique path.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$bg-position</code></th><td data-label="desc"><p>background-position</p></td><td data-label="type"><code>Number[unit]</code></td><td data-label="default"><code>0 0</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$bg-color</code></th><td data-label="desc"><p>background-color</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>transparent</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$bg-size</code></th><td data-label="desc"><p>background size</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>auto</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><div class="example__description"><p>SCSS</p></div><pre class="example__code language-scss"><code>//In your project&#39;s settings or variables file
+$default-img-path: &quot;http://www.thetrace.org/wp-content/themes/thetrace/static/img/icons/&quot;;
+
+.basic {
+  @include svg(envelope);
+}
+
+.awesome {
+  @include svg(envelope, 50% 50%, #bada55, 36px auto);
+}
+
+.moreawesome {
+  @include svg(envelope, 50% 50%, #bada55, cover);
+}</code></pre></div><div class="item__example example"><div class="example__description"><p>CSS Output</p></div><pre class="example__code language-css"><code>.moreawesome {
+  background-image: url(&quot;http://www.thetrace.org/wp-content/themes/thetrace/static/img/icons/envelope.png&quot;);
+  background-image: url(&quot;http://www.thetrace.org/wp-content/themes/thetrace/static/img/icons/envelope.svg&quot;), none;
+  background-color: #bada55;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.no-svg .moreawesome {
+  background-image: url(&quot;http://www.thetrace.org/wp-content/themes/thetrace/static/img/icons/envelope.png&quot;);
+}
+.ie8 .moreawesome {
+  background-image: url(&quot;http://www.thetrace.org/wp-content/themes/thetrace/static/img/icons/envelope-ie.png&quot;);
+}</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variable-default-img-path"><code>default-img-path</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variable-support-ie8"><code>support-ie8</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variable-using-modernizr"><code>using-modernizr</code></a></li></ul><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="http://codepen.io/upstatement/pen/qdpOdw">http://codepen.io/upstatement/pen/qdpOdw</a></li><li><a href="http://css-tricks.com/svg-fallbacks/">http://css-tricks.com/svg-fallbacks/</a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="layout"><div class="container">layout</div></h1><section class="main__sub-section" id="layout-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="mixin-vertical-center"><h3 class="item__heading"><a class="item__name" href="#mixin-vertical-center">vertical-center</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin vertical-center() { 
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @if ($support-ie7 == true or $support-ie8 == true and $) {
+    .lt-ie9 &amp; {
+      top: auto;
+    }
+  }
+ }" data-collapsed="@mixin vertical-center() { ... }"><code>@mixin vertical-center() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Vertically center the content of a container, regardless of the content height.</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><div class="example__description"><p>HTML</p></div><pre class="example__code language-markup"><code>&lt;div class=&quot;ui-block&quot;&gt;
+  &lt;div class=&quot;ui-block-inner&quot;&gt;
+    &lt;!-- Content Goes Here --&gt;
+  &lt;/div&gt;&lt;!-- /ui-block-inner --&gt;
+&lt;/div&gt;&lt;!-- /ui-block --&gt;
+
+&lt;div class=&quot;ui-block&quot;&gt;
+  &lt;div class=&quot;ui-block-inner&quot;&gt;
+    &lt;!-- Content Goes Here --&gt;
+  &lt;/div&gt;&lt;!-- /ui-block-inner --&gt;
+&lt;/div&gt;&lt;!-- /ui-block --&gt;
+
+&lt;div class=&quot;ui-block&quot;&gt;
+  &lt;div class=&quot;ui-block-inner&quot;&gt;
+    &lt;!-- Content Goes Here --&gt;
+  &lt;/div&gt;&lt;!-- /ui-block-inner --&gt;
+&lt;/div&gt;&lt;!-- /ui-block --&gt;
+</code></pre></div><div class="item__example example"><div class="example__description"><p>SCSS</p></div><pre class="example__code language-scss"><code>.ui-block-inner {
+  @include vertical-center;
+}</code></pre></div><div class="item__example example"><div class="example__description"><p>CSS Output</p></div><pre class="example__code language-css"><code>.ui-block-inner {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.lt-ie9 .ui-block-inner {
+  top: auto;
+}</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variable-support-ie8"><code>support-ie8</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variable-support-ie7"><code>support-ie7</code></a></li></ul><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="http://codepen.io/upstatement/pen/NqXGdv">http://codepen.io/upstatement/pen/NqXGdv</a></li></ul></section><section class="main__item container item" id="mixin-grid-static"><h3 class="item__heading"><a class="item__name" href="#mixin-grid-static">grid-static</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin grid-static($width, $margin, $static-col: left) { 
+  // Variables
+  $total: $width + $margin;
+
+  // If the right column has a static width
+  @if $static-col == right {
+    &gt; .ui-block-1 {
+      float: left;
+      margin-right: -$total;
+      width: 100%;
+
+      &gt; .ui-block-inner {
+        margin-right: $total;
+      }
+    }
+
+    &gt; .ui-block-2 {
+      float: right;
+      width: $width;
+    }
+  } @else {
+    &gt; .ui-block-1 {
+      float: left;
+      width: $width;
+    }
+
+    &gt; .ui-block-2 {
+      float: right;
+      margin-left: -$total;
+      width: 100%;
+
+      &gt; .ui-block-inner {
+        margin-left: $total;
+      }
+    }
+  } // eo else
+
+  @include pie-clearfix;
+ }" data-collapsed="@mixin grid-static($width, $margin, $static-col: left) { ... }"><code>@mixin grid-static($width, $margin, $static-col: left) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>A two-column layout with one fixed-width column and one liquid-width column.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter</span>Name</th><th scope="col"><span class="visually-hidden">parameter</span>Description</th><th scope="col"><span class="visually-hidden">parameter</span>Type</th><th scope="col"><span class="visually-hidden">parameter</span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$width</code></th><td data-label="desc"><p>Width of the static column</p></td><td data-label="type"><code>Number [unit]</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$margin</code></th><td data-label="desc"><p>Margin between the two columns</p></td><td data-label="type"><code>Number [unit]</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$static-col</code></th><td data-label="desc"><p>Choose the left or right column as the static column</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>left</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><div class="example__description"><p>HTML</p></div><pre class="example__code language-markup"><code>&lt;div class=&quot;l-static&quot;&gt;
+  &lt;section class=&quot;ui-block-1&quot;&gt;
+    &lt;div class=&quot;ui-block-inner&quot;&gt;
+      &lt;!-- Block 1 Content Goes Here --&gt;
+    &lt;/div&gt; &lt;!-- /ui-block-inner --&gt;
+  &lt;/section&gt; &lt;!-- /ui-block-1 --&gt;
+  &lt;section class=&quot;ui-block-2&quot;&gt;
+    &lt;div class=&quot;ui-block-inner&quot;&gt;
+      &lt;!-- Block 2 Content Goes Here --&gt;
+    &lt;/div&gt; &lt;!-- /ui-block-inner --&gt;
+  &lt;/section&gt; &lt;!-- /ui-block-2 --&gt;
+&lt;/div&gt; &lt;!-- /l-static --&gt;</code></pre></div><div class="item__example example"><div class="example__description"><p>SCSS</p></div><pre class="example__code language-scss"><code>.l-static {
+  @include grid-static(300px, 40px);
+}</code></pre></div><div class="item__example example"><div class="example__description"><p>CSS Output</p></div><pre class="example__code language-css"><code>.element {
+  padding: 30px -20px 10px 2.35765%;
+}</code></pre></div></section><section class="main__item container item" id="mixin-media-grid"><h3 class="item__heading"><a class="item__name" href="#mixin-media-grid">media-grid</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin media-grid($num: 2, $pad: 20px, $target: &quot;.media-block&quot;) { 
+
+  // Variables
+  $n-width: 100%/$num;
+  $n: $num + &#39;n&#39;;
+  $n-plus-one: $num + 1;
+
+  // Styles
+  margin-left: -#{$pad};
+  @include clearfix;
+
+  &gt; #{$target} {
+    float: left;
+    padding-left: #{$pad};
+    width: $n-width;
+
+    .ie7 &amp; {
+      width: floor($n-width); // [1]
+    }
+
+    &amp;:nth-of-type(#{$n}+#{$n-plus-one}) {
+      clear: left; // [2]
+    }
+  } // target
+ }" data-collapsed="@mixin media-grid($num: 2, $pad: 20px, $target: &quot;.media-block&quot;) { ... }"><code>@mixin media-grid($num: 2, $pad: 20px, $target: &quot;.media-block&quot;) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Used to create a grid of items with equal widths. Great for simple 50/50, 33/33/33, etc. grids. Particularly useful when designing for an unknown or varying number of items.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter</span>Name</th><th scope="col"><span class="visually-hidden">parameter</span>Description</th><th scope="col"><span class="visually-hidden">parameter</span>Type</th><th scope="col"><span class="visually-hidden">parameter</span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$num</code></th><td data-label="desc"><p>Number of items per row</p></td><td data-label="type"><code>Number</code></td><td data-label="default"><code>2</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$pad</code></th><td data-label="desc"><p>Padding between items</p></td><td data-label="type"><code>Number[unit]</code></td><td data-label="default"><code>20px</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$target</code></th><td data-label="desc"><p>Class name of target items</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>&quot;.media-block&quot;</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><div class="example__description"><p>HTML</p></div><pre class="example__code language-markup"><code>&lt;section class=&quot;grid-3&quot;&gt;
+    &lt;div class=&quot;grid-item&quot;&gt;
+        &lt;!-- Content Goes Here --&gt;
+    &lt;/div&gt; &lt;!-- /media-block --&gt;
+    &lt;div class=&quot;grid-item&quot;&gt;
+        &lt;!-- Content Goes Here --&gt;
+    &lt;/div&gt; &lt;!-- /grid-item --&gt;
+    &lt;div class=&quot;grid-item&quot;&gt;
+        &lt;!-- Content Goes Here --&gt;
+    &lt;/div&gt; &lt;!-- /grid-item --&gt;
+&lt;/section&gt; &lt;!-- /three-up --&gt;</code></pre></div><div class="item__example example"><div class="example__description"><p>SCSS</p></div><pre class="example__code language-scss"><code>.grid-3 {
+  @include media-grid(3, 10px);
+}
+
+.grid-4 {
+  @include media-grid(4, 10px);
+}
+
+.grid-5 {
+  @include media-grid(5, 10px, &quot;.grid-item&quot;);
+}</code></pre></div><div class="item__example example"><div class="example__description"><p>CSS Output</p></div><pre class="example__code language-css"><code>.grid-3 {
+  margin-left: -10px;
+}
+.grid-3:after {
+  content: &quot;&quot;;
+  display: table;
+  clear: both;
+}
+.grid-3 &gt; .media-block {
+  float: left;
+  padding-left: 10px;
+  width: 33.33333%;
+}
+.ie7 .grid-3 &gt; .media-block {
+  width: 33%;
+}
+.grid-3 &gt; .media-block:nth-of-type(3n+4) {
+  clear: left;
+}</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#mixin-clearfix"><code>clearfix</code></a></li></ul><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="http://codepen.io/upstatement/pen/NqXxeZ">http://codepen.io/upstatement/pen/NqXxeZ</a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="undefined"><div class="container">General</div></h1><section class="main__sub-section" id="undefined-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="variable-support-ie9"><h3 class="item__heading"><a class="item__name" href="#variable-support-ie9">support-ie9</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$support-ie9: true;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Support IE9</p></div><h3 class="item__sub-heading">Type</h3><p><code>Bool</code></p></section><section class="main__item container item" id="variable-support-ie8"><h3 class="item__heading"><a class="item__name" href="#variable-support-ie8">support-ie8</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$support-ie8: true;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Support IE8</p></div><h3 class="item__sub-heading">Type</h3><p><code>Bool</code></p><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixin-svg"><code>svg</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#mixin-vertical-center"><code>vertical-center</code></a></li></ul></section><section class="main__item container item" id="variable-support-ie7"><h3 class="item__heading"><a class="item__name" href="#variable-support-ie7">support-ie7</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$support-ie7: false;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Support IE7</p></div><h3 class="item__sub-heading">Type</h3><p><code>Bool</code></p><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixin-vertical-center"><code>vertical-center</code></a></li></ul></section><section class="main__item container item" id="variable-using-modernizr"><h3 class="item__heading"><a class="item__name" href="#variable-using-modernizr">using-modernizr</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$using-modernizr: true;</code></pre></div><h3 class="item__sub-heading">Type</h3><p><code>Bool</code></p><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixin-svg"><code>svg</code></a></li></ul></section><section class="main__item container item" id="variable-default-img-path"><h3 class="item__heading"><a class="item__name" href="#variable-default-img-path">default-img-path</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$default-img-path: &quot;&quot;;</code></pre></div><h3 class="item__sub-heading">Type</h3><p><code>String</code></p><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixin-svg"><code>svg</code></a></li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --><span class="project-info__name">SassDoc</span><!-- Version --><!-- License --></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>
