@@ -10,10 +10,14 @@ $support-ie8: true;
 /// @type Bool
 $support-ie7: false;
 
-// Use Modernizr Helpers
+/// Use Modernizr Helpers
 /// @type Bool
 $using-modernizr: true;
 
-// Image Folder
+/// Image Folder
 /// @type String
 $default-img-path: "";
+
+/// Base value of em in pixels
+/// @type Number
+$em-base: 16;

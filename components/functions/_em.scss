@@ -1,12 +1,20 @@
-// Em Calculator
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Simply writing ems while allowing you to think in more straightforward px values
-// WHY: I don't think in ems. Do you?
-// NOTE: Ems calculated using the document base; override by providing optional second value
-// REF: http://bourbon.io/docs/#px-to-em
-// USE: em(12);
+/// Convert pixels to ems. `$em-base` is set globally to `16px` in Upbase's settings file. You can override it in your project's settings or variables file.
+/// @group Functions
+/// @param {Number} $px-val - Desired pixel equivalent
+/// @param {Number} $em-base [16px] - Parent em-to-pixel value
+/// @require {variable} em-base
+///
+/// @example scss - SCSS
+/// font-size: em(12);
+/// font-size: em(12, 24);
+///
+/// @example css - CSS Output
+/// font-size: 0.75em;
+/// font-size: 0.5em;
+///
 
-@function em($pxval, $base: 13) {
+@function em($pxval, $em-base) {
+  $base: $em-base;
   @if not unitless($pxval) {
       $pxval: strip-units($pxval);
   }
