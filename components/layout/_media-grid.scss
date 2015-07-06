@@ -1,66 +1,90 @@
-// ============================================= //
+/// Used to create a grid of items with equal widths. Great for simple 50/50, 33/33/33, etc. grids. Particularly useful when designing for an unknown or varying number of items.
+/// @group Layout
+/// @param {Number} $num [2] - Number of items per row
+/// @param {Number[unit]} $pad [20px] - Padding between items
+/// @param {String} $target [".media-block"] - Class name of target items
+/// @require {mixin} clearfix
+/// @link http://codepen.io/upstatement/pen/NqXxeZ
+/// @example markup - HTML
+/// <section class="grid-3">
+///     <div class="grid-item">
+///         <!-- Content Goes Here -->
+///     </div> <!-- /media-block -->
+///     <div class="grid-item">
+///         <!-- Content Goes Here -->
+///     </div> <!-- /grid-item -->
+///     <div class="grid-item">
+///         <!-- Content Goes Here -->
+///     </div> <!-- /grid-item -->
+/// </section> <!-- /three-up -->
+/// @example scss - SCSS
+/// .grid-3 {
+///   @include media-grid(3, 10px);
+/// }
+///
+/// .grid-4 {
+///   @include media-grid(4, 10px);
+/// }
+///
+/// .grid-5 {
+///   @include media-grid(5, 10px, ".grid-item");
+/// }
+/// @example css - CSS Output
+/// .grid-3 {
+///   margin-left: -10px;
+/// }
+/// .grid-3:after {
+///   content: "";
+///   display: table;
+///   clear: both;
+/// }
+/// .grid-3 > .media-block {
+///   float: left;
+///   padding-left: 10px;
+///   width: 33.33333%;
+/// }
+/// .ie7 .grid-3 > .media-block {
+///   width: 33%;
+/// }
+/// .grid-3 > .media-block:nth-of-type(3n+4) {
+///   clear: left;
+/// }
+///
+/// @ignore
+/// 1. Fixes IE7 rounding error that would otherwise
+/// break the layout. For more, please see:
+/// http://johnalbin.github.io/fluid-grid-rounding-errors/
+/// 2. Enforces proper grid spacing by placing a break on
+/// the first item in each row. Count begins on first item
+/// in second row ($num plus one) and increments by the
+/// original number ($num) thereafter.
 
-// Media Grid							   		 //
 
-// ============================================= //
+@mixin media-grid(
+  $num: 2,
+  $pad: 20px,
+  $target:'.media-block') {
 
-@mixin media-grid($num: 2, $pad: em(20), $target:'.media-block') {
-	margin-left: -#{$pad};
-	@include pie-clearfix;
+  // Variables
+  $n-width: 100%/$num;
+  $n: $num + 'n';
+  $n-plus-one: $num + 1;
 
-	> #{$target} {
-		float: left;
-		padding-left: #{$pad};
-		@if $num == 2 or $num == "two" {
-			width: 50%;
-			&:nth-of-type(2n+3) {
-				clear: left;
-			}
-			&.n3 {
-				clear:left;
-			}
-		}
-		@if $num == 3 or $num == "three" {
-			width: 33.3333%;
-			&:nth-of-type(3n+4) {
-				clear: left;
-			}
-			.ie7 & {
-				width: 33%;
-			}
-			&.n4 {
-				clear: left;
-			}
-		}
-		@if $num == 4 or $num == "four" {
-			width: 25%;
-			&:nth-of-type(4n+5) {
-				clear: left;
-			}
-			&.n5 {
-				clear: left;
-			}
-		}
-		@if $num == 5 or $num == "five" {
-			&:nth-of-type(5n+6) {
-				clear: left;
-			}
-			width: 20%;
-			&.n6 {
-				clear: left;
-			}
-		}
-		@if $num == 6 or $num == "six" {
-			&:nth-of-type(6n+7) {
-				clear: left;
-			}
-			width: 16.666%;
-			.ie7 & {
-				width: 16%;
-			}
-			&.n7 {
-				clear: left;
-			}
-		}
-	}
-} //media-grid
+  // Styles
+  margin-left: -#{$pad};
+  @include clearfix;
+
+  > #{$target} {
+    float: left;
+    padding-left: #{$pad};
+    width: $n-width;
+
+    .ie7 & {
+      width: floor($n-width); // [1]
+    }
+
+    &:nth-of-type(#{$n}+#{$n-plus-one}) {
+      clear: left; // [2]
+    }
+  } // target
+} // media-grid

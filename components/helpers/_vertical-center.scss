@@ -1,0 +1,53 @@
+/// Vertically center the content of a container, regardless of the content height.
+/// @group Layout
+/// @link http://codepen.io/upstatement/pen/NqXGdv
+/// @require {variable} $support-ie8
+/// @require {variable} $support-ie7
+///
+/// @example markup - HTML
+/// <div class="ui-block">
+///   <div class="ui-block-inner">
+///     <!-- Content Goes Here -->
+///   </div><!-- /ui-block-inner -->
+/// </div><!-- /ui-block -->
+///
+/// <div class="ui-block">
+///   <div class="ui-block-inner">
+///     <!-- Content Goes Here -->
+///   </div><!-- /ui-block-inner -->
+/// </div><!-- /ui-block -->
+///
+/// <div class="ui-block">
+///   <div class="ui-block-inner">
+///     <!-- Content Goes Here -->
+///   </div><!-- /ui-block-inner -->
+/// </div><!-- /ui-block -->
+///
+///
+/// @example scss - SCSS
+/// .ui-block-inner {
+///   @include vertical-center;
+/// }
+///
+/// @example css - CSS Output
+/// .ui-block-inner {
+///   position: relative;
+///   top: 50%;
+///   transform: translateY(-50%);
+/// }
+/// .lt-ie9 .ui-block-inner {
+///   top: auto;
+/// }
+///
+
+@mixin vertical-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @if ($support-ie7 == true or $support-ie8 == true and $) {
+    .lt-ie9 & {
+      top: auto;
+    }
+  }
+}

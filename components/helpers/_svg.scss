@@ -1,42 +1,85 @@
-// SVG Fallback Pattern
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Setting PNG fallbacks for SVG background images
-// WHY: Saves time and typing and is guaranteed to work across devices
-// NOTE 1: This uses multiple background images as a proxy for SVG support
-// NOTE 2: You still need to set the display (inline-block or block)
-// and a height/width for the container
-// NOTE 3: "image-url" is a helper that automatically creates a relative link to the _img folder
-// from wherever it's called. This function is built-in to Compass. It's rare that you'll need
-// change the base folder (_img) but it can be done in the config.rb file in the root
-// REF: http://css-tricks.com/svg-fallbacks/
-// REF: http://compass-style.org/reference/compass/helpers/urls
-// USE: @include svg(imageName);
+/// Use SVGs as background images with the proper PNG fallbacks. You'll need to set the display (inline-block or block) and a height/width for the container. Also, before using, set a default image path if you wish by overriding the empty `$default-img-path` variable in your project's settings or variables file.
+///
+/// For full support, produce your graphic with highest resolution in mind, and export:
+/// - A responsive-ready SVG named {file-name}.svg
+/// - A highest-resolution PNG named {file-name}.png
+/// - A 1x-resolution PNG named {file-name}-ie.png
+/// @group Helpers
+/// @param {String} $bg-name - Name of the image file without extension. Include a path if you have not set a default `$img-path` variable or if you want to use a unique path.
+/// @param {Number[unit]} $bg-position [0 0] - background-position
+/// @param {String} $bg-color [transparent] - background-color
+/// @param {String} $bg-size [auto] - background size
+/// @require {variable} default-img-path
+/// @require {variable} support-ie8
+/// @require {variable} using-modernizr
+/// @link http://codepen.io/upstatement/pen/qdpOdw
+/// @link http://css-tricks.com/svg-fallbacks/
+/// @example scss - SCSS
+/// //In your project's settings or variables file
+/// $default-img-path: "http://www.thetrace.org/wp-content/themes/thetrace/static/img/icons/";
+///
+/// .basic {
+///   @include svg(envelope);
+/// }
+///
+/// .awesome {
+///   @include svg(envelope, 50% 50%, #bada55, 36px auto);
+/// }
+///
+/// .moreawesome {
+///   @include svg(envelope, 50% 50%, #bada55, cover);
+/// }
+/// @example css - CSS Output
+/// .moreawesome {
+///   background-image: url("http://www.thetrace.org/wp-content/themes/thetrace/static/img/icons/envelope.png");
+///   background-image: url("http://www.thetrace.org/wp-content/themes/thetrace/static/img/icons/envelope.svg"), none;
+///   background-color: #bada55;
+///   background-repeat: no-repeat;
+///   background-position: 50% 50%;
+///   background-size: cover;
+/// }
+/// .no-svg .moreawesome {
+///   background-image: url("http://www.thetrace.org/wp-content/themes/thetrace/static/img/icons/envelope.png");
+/// }
+/// .ie8 .moreawesome {
+///   background-image: url("http://www.thetrace.org/wp-content/themes/thetrace/static/img/icons/envelope-ie.png");
+/// }
+///
 
-@mixin svg($image, $cover: true) {
+@mixin svg(
+    $bg-name: false,
+    $bg-position: 0 0,
+    $bg-color: transparent,
+    $bg-size: auto
+  ) {
+
   // Variables
-  $svg: $svg-path + $image + ".svg";
-  $png: $svg-path + $image + ".png";
-  $ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+ image-url($png) +"', sizingMethod='scale')";
+  $svg: $default-img-path + $bg-name + ".svg";
+  $png: $default-img-path + $bg-name + ".png";
+  $png-ie: $default-img-path + $bg-name + "-ie.png";
 
-  // Universal properties
-  background-position: 50% 50%;
+  background-image: url("#{$png}");
+  background-image: url("#{$svg}"), none;
+  // ^ This uses multiple background images as a proxy for SVG support
+
+  // Other background properties
+  background-color: $bg-color;
   background-repeat: no-repeat;
+  background-position: $bg-position;
+  background-size: $bg-size;
 
-  // Fallback pattern
-  background-image: image-url($png);
-  background-image: image-url($svg), none;
-
-  // Necessary override for some versions of
-  // Android, which choke on the double bg image
-  .no-svg & {
-    background-image: image-url($png);
+  @if ($using-modernizr == true) {
+    .no-svg & {
+      background-image: url("#{$png}");
+      // ^ Necessary override for some versions of Android, which choke on the double background image
+    }
   }
 
-  @if $cover == true {
-    // Makes sure that image scales if necessary, works for IE9
-    @include background-size(cover);
-    filter: $ms-filter;
-    -ms-filter: $ms-filter;
+  @if ($support-ie8 == true) {
+    .ie8 & {
+      background-image: url("#{$png-ie}");
+      // ^ Background images need to be pre-sized for IE 8
+    }
   }
 
-} // svg
+}

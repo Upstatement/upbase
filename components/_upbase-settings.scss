@@ -1,0 +1,19 @@
+/// Support IE9
+/// @type Bool
+$support-ie9: true;
+
+/// Support IE8
+/// @type Bool
+$support-ie8: true;
+
+/// Support IE7
+/// @type Bool
+$support-ie7: false;
+
+// Use Modernizr Helpers
+/// @type Bool
+$using-modernizr: true;
+
+// Image Folder
+/// @type String
+$default-img-path: "";
