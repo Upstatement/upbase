@@ -1,5 +1,6 @@
 /// Force an element to self-clear its children.
 /// @group Helpers
+/// @see {mixin} unclearfix
 ///
 /// @example markup - HTML
 /// <section class="container">
@@ -33,5 +34,31 @@
     content: "";
     display: table;
     clear: both;
+  }
+}
+
+/// Remove clearfix from an element after it's been applied.
+/// @group Helpers
+/// @see {mixin} clearfix
+///
+/// @example scss - SCSS
+/// .container {
+///   @include clearfix();
+///   @include mq(320px, 768px) {
+///     @include unclearfix();
+///   }
+/// }
+///
+/// @example css - CSS Output
+/// .container:after {
+///   content: "";
+///   display: table;
+///   clear: both;
+/// }
+///
+@mixin unclearfix {
+  &:after {
+    display: initial;
+    clear: none;
   }
 }

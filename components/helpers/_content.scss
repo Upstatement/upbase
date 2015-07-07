@@ -1,9 +1,0 @@
-// Content
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Filling psuedo-clases :before, :after with blank content
-// WHY: Psuedo classes won't appear unless you fill them with content.
-// This mixin includes the difficult-to-recall cross-browser character code for "blank".
-// USE: @include content;
-@mixin content($content: "\0020") {
-  content: "#{$content}";
-}

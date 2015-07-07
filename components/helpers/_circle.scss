@@ -1,11 +1,25 @@
-// Circle
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Making circles
-// WHY: It's an obvious shorthand and
-//      hey! it does the math for you
-// HOW: Sets the size and cuts it in half
-// USE: @include circle(10px);
+/// Make a circle
+/// @group Helpers
+/// @param {Number} $size [10px] - size
+/// @link http://codepen.io/upstatement/pen/MwVoRV
+/// @requires {mixin} size
+///
+/// @example markup - HTML
+/// <div class="circle"></div>
+///
+/// @example scss - SCSS
+/// .circle {
+///   @include circle(100px);
+/// }
+///
+/// @example css - CSS Output
+/// .circle {
+///   width: 100px;
+///   height: 100px;
+///   border-radius: 50px;
+/// }
+///
 @mixin circle($size: 10px) {
   @include size($size);
-  @include border-radius($size/2);
+  border-radius: ($size/2);
 }

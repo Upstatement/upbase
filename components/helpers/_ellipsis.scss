@@ -1,10 +1,28 @@
-// Ellipsis
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Truncating text with an ellipsis the CSS way
-// WHY: It's hard to recall using this combination of attributes
-// USE: @include ellipsis;
-@mixin ellipsis {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+/// Truncating text with an ellipsis the CSS way. It's hard to recall using this combination of attributes.
+/// @group Helpers
+/// @link http://codepen.io/upstatement/pen/mJxMEr See it on Codepen >
+///
+/// @example markup - HTML
+/// <div class="txt-box">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
+///
+/// @example scss - SCSS
+/// .txt-box {
+///   @include ellipsis;
+///   width: 100%;
+/// }
+///
+/// @example css - CSS Output
+/// .txt-box {
+///   overflow: hidden;
+///   text-overflow: ellipsis;
+///   white-space: nowrap;
+///   display: inline-block;
+///   width: 100%;
+/// }
+///
+@mixin ellipsis(){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
 }

@@ -1,15 +1,43 @@
-// Input Defaults
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Zero'ing out the style on an input field (text input, radio button, etc)
-// WHY: It's a lot to write and remember all these characteristics
-// USE: @include input-default;
+/// Zero'ing out the style on an input field (text input, radio button, etc)
+/// @group Helpers
+/// @link http://codepen.io/upstatement/pen/YXZRRg See it on Codepen >
+///
+/// @example markup - HTML
+/// <form class="upbase-neue">
+///   <input class="search-input" type="text" name="s" id="s" size="15" placeholder="Search">
+///   <button class="search-button" type="submit" value="Button">Submit</button>
+/// </form>
+///
+/// @example scss - SCSS
+/// .upbase-neue .search-input,
+/// .upbase-neue .search-button {
+///   @include input-default;
+/// }
+///
+/// @example css - CSS Output
+/// .upbase-neue .search-input,
+/// .upbase-neue .search-button {
+///   border: 0;
+///   background-color: transparent;
+///   box-shadow: none;
+///   border-radius: 0;
+///   -webkit-appearance: none;
+///   font-size: 18px;
+/// }
+/// .upbase-neue .search-input:focus,
+/// .upbase-neue .search-button:focus {
+///   outline: 0;
+/// }
+///
+
 @mixin input-default {
-	border: 0;
-	background-color: transparent;
-	@include box-shadow(none);
-	@include border-radius(0);
-	-webkit-appearance: none;
-	&:focus {
-		outline: 0;
-	}
+  border: 0;
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+
+  &:focus {
+    outline: 0;
+  }
 }

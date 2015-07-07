@@ -2,6 +2,8 @@
 /// @group Functions
 /// @param {Number} $px-val - Desired pixel equivalent
 /// @require {variable} em-base
+/// @require {function} strip-units
+/// @link https://css-tricks.com/rems-ems/ CSS Tricks: rems / ems
 ///
 /// @example scss - SCSS
 /// font-size: rem(12);

@@ -1,23 +1,29 @@
 /// Support IE9
+/// @group Settings
 /// @type Bool
-$support-ie9: true;
+$support-ie9: true !default;
 
 /// Support IE8
+/// @group Settings
 /// @type Bool
-$support-ie8: true;
+$support-ie8: true !default;
 
 /// Support IE7
+/// @group Settings
 /// @type Bool
-$support-ie7: false;
+$support-ie7: false !default;
 
 /// Use Modernizr Helpers
+/// @group Settings
 /// @type Bool
-$using-modernizr: true;
+$using-modernizr: true !default;
 
 /// Image Folder
+/// @group Settings
 /// @type String
-$default-img-path: "";
+$default-img-path: "" !default;
 
 /// Base value of em in pixels
+/// @group Settings
 /// @type Number
-$em-base: 16;
+$em-base: 16 !default;

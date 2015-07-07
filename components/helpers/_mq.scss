@@ -1,27 +1,62 @@
-// The Media Query Mixin
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Write less verbose Media Queries with variables
-// or using straight figures (eg 320px)
-// WHY: Faster to write. More flexible. Lets you write
-// media query variables on the fly.
-// USE: @include mq(320px, 798px);
-// USE: @include mq($tablet, $desktop);
-// USE: @include mq(max, $desktop);
+/// Write less verbose Media Queries with variables or using straight figures (eg 320px). Faster to write. More flexible.
+/// @group Helpers
+/// @param {Number [unit]} $bp-1 - breakpoint value, min-width if declaring range
+/// @param {Number [unit]} $bp-2 [null] - breakpoint value, max-width if declaring range
+/// @link http://codepen.io/upstatement/pen/vORJPZ See it on Codepen >
+/// @example scss - SCSS
+/// .item-1 {
+///    @include mq(600px, 768px) {
+///     display: block;
+///   }
+/// }
+///
+/// .item-2 {
+///   @include mq(768px) {
+///     display: block;
+///   }
+/// }
+///
+/// .item-3 {
+///   @include mq("max", 600px) {
+///     display: block;
+///   }
+/// }
+///
+/// @example css - CSS Output (Ignore "/")
+/// /@media (min-width: 600px) and (max-width: 767px) {
+///   .item-1 {
+///     display: block;
+///   }
+/// }
+///
+/// /@media (min-width: 768px) {
+///   .item-2 {
+///     display: block;
+///   }
+/// }
+///
+/// /@media (max-width: 599px) {
+///   .item-3 {
+///     display: block;
+///   }
+/// }
 
 @mixin mq($bp-1, $bp-2: null) {
   @if $bp-1 == "max" {
-    @media (max-width:$bp-2 - 1) { @content; }
+    @media (max-width: $bp-2 - 1) {
+      @content;
+    }
+  } @elseif $bp-2 == "max" {
+    @media (max-width: $bp-1 - 1) {
+      @content;
+    }
+  } @elseif $bp-2 == null {
+    @media (min-width: $bp-1) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $bp-1) and (max-width:$bp-2 - 1) {
+      @content;
+    }
   }
-
-  @elseif $bp-2 == "max" {
-    @media (max-width:$bp-1 - 1) { @content; }
-  }
-
-  @elseif $bp-2 == null {
-    @media (min-width: $bp-1) { @content; }
-  } //single bp
-
-  @else {
-    @media (min-width: $bp-1) and (max-width:$bp-2 - 1) { @content; }
-  } //bracketed breakpoint
 }

@@ -1,19 +1,25 @@
-// Psuedo
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Quickly pasting essential and commonly used properties that make psuedo classes work
-// WHY: Easier than remembering and writing each time. Should cut down on mistakes/debugging.
-// USE: @include pseudo;
-@mixin psuedo($coordinates: none) {
-  @include content;
-  display: block;
-  @if $coordinates != "none" {
-    @include absolute($coordinates);
-  }
-}
-
+/// Make a useable object out of a pseudo element like :before or :after.
+/// @group Helpers
+/// @param {Number} $coordinates [none] - top right bottom left
+/// @link http://codepen.io/upstatement/pen/jPzLPZ See it on Codepen >
+///
+/// @example markup - HTML
+/// <div class="item">Text</div>
+///
+/// @example scss - SCSS
+/// .item:after {
+///   @include pseudo;
+///   display: inline-block; //or block
+/// }
+///
+/// @example css - CSS Output
+/// .item:after {
+///   content: "\0020";
+///   display: inline-block;
+/// }
+///
 @mixin pseudo($coordinates: none) {
-  @include content;
-  display: block;
+  content: "\0020";
   @if $coordinates != "none" {
     @include absolute($coordinates);
   }

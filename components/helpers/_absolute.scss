@@ -1,8 +1,53 @@
-// Absolute Positioning
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Quickly setting the top, right, left, and bottom positions of an absolutely positioned element
-// WHY: It's verbose to write everytime in CSS
-// USE: @include absolute(0 0 10px 0);
+/// Quickly set the top, right, left, and bottom positions of an absolutely positioned element.
+/// @group Helpers
+/// @param {Number} $coordinates - top right bottom left
+/// @see {mixin} unabsolute
+/// @link http://codepen.io/upstatement/pen/WvzOLj
+///
+/// @example markup - HTML
+/// <div class="container">
+///   <div class="item--absolute">Absolute</div>
+/// </div>
+///
+/// <div class="container unabsolute">
+///   <div class="item--absolute">Absolute</div>
+/// </div>
+///
+/// @example scss - SCSS
+/// .container {
+///   position: relative;
+/// }
+///
+/// .item--absolute {
+///   @include absolute(100px 0 0 500px);
+/// }
+///
+/// .unabsolute .item--absolute {
+///   @include unabsolute;
+/// }
+///
+/// @example css - CSS Output
+/// .container {
+///   position: relative;
+/// }
+///
+/// .item--absolute {
+///   position: absolute;
+///   top: 100px;
+///   right: 0;
+///   bottom: 0;
+///   left: 500px;
+/// }
+///
+/// .unabsolute .item--absolute {
+///   position: static;
+///   top: auto;
+///   right: auto;
+///   bottom: auto;
+///   left: auto;
+/// }
+///
+
 @mixin absolute($coordinates: n n n n) {
 
   $top: nth($coordinates, 1);
@@ -53,6 +98,29 @@
   }
 }
 
+/// Undo absolute positioning on an element.
+/// @group Helpers
+/// @see {mixin} absolute
+/// @link http://codepen.io/upstatement/pen/WvzOLj
+/// @example markup - HTML
+/// <div class="container unabsolute">
+///   <div class="item--absolute">Absolute</div>
+/// </div>
+///
+/// @example scss - SCSS
+/// .unabsolute .item--absolute {
+///   @include unabsolute;
+/// }
+///
+/// @example css - CSS Output
+/// .unabsolute .item--absolute {
+///   position: static;
+///   top: auto;
+///   right: auto;
+///   bottom: auto;
+///   left: auto;
+/// }
+///
 @mixin unabsolute {
 	position: static;
 	top: auto;

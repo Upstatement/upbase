@@ -14,8 +14,10 @@
 @import "helpers/content";
 @import "helpers/clearfix";
 @import "helpers/ellipsis";
+@import "helpers/hidden";
 @import "helpers/hide-text";
 @import "helpers/input-default";
+@import "helpers/invisible";
 @import "helpers/mq";
 @import "helpers/placeholder-state";
 @import "helpers/pseudo";
@@ -27,6 +29,7 @@
 @import "helpers/triangle";
 @import "helpers/user-select";
 @import "helpers/video";
+@import "helpers/visually-hidden";
 
 @import "layout/prereqs";
 @import "layout/cols"; //possibly to deprecate

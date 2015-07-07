@@ -1,0 +1,20 @@
+/// Filling psuedo-clases :before, :after with blank content because psuedo classes won't appear unless you fill them with content.
+/// @group Helpers
+/// @param {String} $content ["/0020"] - content
+/// @link http://codepen.io/upstatement/pen/MwVoRV
+///
+/// @example scss - SCSS
+/// .item:after {
+///   @include content;
+/// }
+///
+/// @example css - CSS Output
+/// .container:after {
+///   content: "";
+///   display: table;
+///   clear: both;
+/// }
+///
+@mixin content($content: "\0020") {
+  content: "#{$content}";
+}
