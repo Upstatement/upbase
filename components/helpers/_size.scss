@@ -1,52 +1,37 @@
-// Size
-// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-// FOR: Applying width & height in a single declaration
-// WHY: Faster. Less typing. Easier to deal with squares.
-// NOTE: If you supply a single value, the result is a square
-// REF: http://bourbon.io/docs/#size
-// USE: @include size(50px 100px);
+/// Sets the `width` and `height` of the element.
+///
+/// @param {Number [unit]} $width - Width (or height and width if $height is not declared)
+/// @param {Number [unit]} $height - Height
+/// @group Helpers
+/// @link http://codepen.io/upstatement/pen/KpoOpZ See it on Codepen >
+///
+/// @example scss - Usage
+/// .box-1 {
+///   @include size(100px, 150px);
+/// }
+///
+/// .box-2 {
+///   @include size(200px);
+/// }
+///
+/// @example css - CSS Output
+/// .box-1 {
+///   width: 100px;
+///   height: 150px;
+/// }
+///
+/// .box-2 {
+///   width: 200px;
+///   height: 200px;
+/// }
+///
 
-@mixin size($size) {
-  @if length($size) == 1 {
-    @if $size == auto {
-      width:  $size;
-      height: $size;
-    }
-
-    @else if unitless($size) {
-      width:  $size + px;
-      height: $size + px;
-    }
-
-    @else if not(unitless($size)) {
-      width:  $size;
-      height: $size;
-    }
-  }
-
-  // Width x Height
-  @if length($size) == 2 {
-    $width:  nth($size, 1);
-    $height: nth($size, 2);
-
-    @if $width == auto {
-      width: $width;
-    }
-    @else if not(unitless($width)) {
-      width: $width;
-    }
-    @else if unitless($width) {
-      width: $width + px;
-    }
-
-    @if $height == auto {
-      height: $height;
-    }
-    @else if not(unitless($height)) {
-      height: $height;
-    }
-    @else if unitless($height) {
-      height: $height + px;
-    }
+@mixin size($width, $height: none) {
+  @if $height == none {
+    width: $width;
+    height: $width;
+  } @else {
+    width: $width;
+    height: $height;
   }
 }

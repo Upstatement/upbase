@@ -19,18 +19,18 @@
 @import "helpers/input-default";
 @import "helpers/invisible";
 @import "helpers/mq";
-@import "helpers/placeholder-state";
+@import "helpers/placeholder-state"; //todo
 @import "helpers/pseudo";
-@import "helpers/reset-clearfix";
-@import "helpers/retina";
+@import "helpers/retina"; //todo
 @import "helpers/size";
 @import "helpers/svg";
 @import "helpers/tint-shade";
 @import "helpers/triangle";
-@import "helpers/user-select";
-@import "helpers/video";
+@import "helpers/user-select"; //todo
+@import "helpers/video"; //todo
 @import "helpers/visually-hidden";
 
+//Consider role of layout and grid within Upbase
 @import "layout/prereqs";
 @import "layout/cols"; //possibly to deprecate
 @import "layout/grid-static";
