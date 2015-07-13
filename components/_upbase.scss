@@ -5,8 +5,10 @@
 @import "upbase-default-settings";
 
 @import "functions/em";
+@import "functions/rem";
 @import "functions/resp";
 @import "functions/strip-units";
+@import "functions/tint-shade";
 
 @import "helpers/absolute-center";
 @import "helpers/absolute";
@@ -21,7 +23,6 @@
 @import "helpers/retina"; //todo
 @import "helpers/size";
 @import "helpers/svg";
-@import "helpers/tint-shade";
 @import "helpers/triangle";
 @import "helpers/user-select"; //todo
 @import "helpers/vertical-center";
