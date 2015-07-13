@@ -76,10 +76,10 @@
   }
 
   @if ($support-ie8 == true) {
-    .ie8 & {
-      background-image: url("#{$png-ie}");
-      // ^ Background images need to be pre-sized for IE 8
+    @if ($ie-conditional-classes == true) {
+      .ie8 & {
+        background-image: url("#{$png-ie}");
+        // ^ Background images need to be pre-sized for IE 8
+      }
     }
   }
-
-}

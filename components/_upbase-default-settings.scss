@@ -13,6 +13,11 @@ $support-ie8: true !default;
 /// @type Bool
 $support-ie7: false !default;
 
+/// IE Conditional Classes
+/// @group Settings
+/// @type Bool
+$ie-conditional-classes: true !default;
+
 /// Use Modernizr Helpers
 /// @group Settings
 /// @type Bool

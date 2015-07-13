@@ -2,7 +2,7 @@
 // http://upbase.upstatement.com
 // Copyright 2011-2015 Upstatement, LLC.
 // MIT License
-@import "upbase-settings";
+@import "upbase-default-settings";
 
 @import "functions/em";
 @import "functions/resp";
@@ -11,13 +11,10 @@
 @import "helpers/absolute-center";
 @import "helpers/absolute";
 @import "helpers/circle";
-@import "helpers/content";
 @import "helpers/clearfix";
 @import "helpers/ellipsis";
-@import "helpers/hidden";
 @import "helpers/hide-text";
 @import "helpers/input-default";
-@import "helpers/invisible";
 @import "helpers/mq";
 @import "helpers/placeholder-state"; //todo
 @import "helpers/pseudo";
@@ -27,14 +24,14 @@
 @import "helpers/tint-shade";
 @import "helpers/triangle";
 @import "helpers/user-select"; //todo
+@import "helpers/vertical-center";
 @import "helpers/video"; //todo
 @import "helpers/visually-hidden";
 
 //Consider role of layout and grid within Upbase
-@import "layout/prereqs";
-@import "layout/cols"; //possibly to deprecate
-@import "layout/grid-static";
-@import "layout/media-grid";
-@import "layout/pair";
-@import "layout/ui-grid"; //possibly to deprecate
-
+// @import "layout/prereqs";
+// @import "layout/cols"; //possibly to deprecate
+// @import "layout/grid-static";
+// @import "layout/media-grid";
+// @import "layout/pair";
+// @import "layout/ui-grid"; //possibly to deprecate
