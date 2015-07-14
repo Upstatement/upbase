@@ -26,12 +26,7 @@
 /// }
 ///
 
-@mixin size($width, $height: none) {
-  @if $height == none {
-    width: $width;
-    height: $width;
-  } @else {
+@mixin size($width, $height: $width) {
     width: $width;
     height: $height;
-  }
 }
