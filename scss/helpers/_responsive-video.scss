@@ -1,0 +1,45 @@
+/// A responsive video (iframe, embed, object) that maintains its aspect ratio
+/// @group Helpers
+/// @param {String} $bg-name - Name of the image file without extension. Include a path if you have not set a default `$img-path` variable or if you want to use a unique path.
+/// @param {String or Ratio} $aspect [16/9] - Aspect ratio
+/// @link http://codepen.io/upstatement/pen/YXBxrV See it on Codepen >
+/// @example scss - SCSS
+/// .video-wrapper {
+///   @include responsive-video(16/9);
+///   //@include responsive-video(4/3);
+///   //@include responsive-video(2.35/1);
+/// }
+///
+/// @example css - CSS Output
+/// .responsive-video {
+///   position: relative;
+///   padding-bottom: 56.25%;
+///   height: 0;
+///   margin-bottom: 50px;
+/// }
+/// .responsive-video iframe,
+/// .responsive-video object,
+/// .responsive-video embed {
+///   position: absolute;
+///   top: 0;
+///   left: 0;
+///   width: 100%;
+///   height: 100%;
+/// }
+///
+
+@mixin responsive-video($aspect: 16/9) {
+    $aspect-percentage: percentage(1 / ($aspect));
+    height: 0;
+    position: relative;
+    padding-bottom: $aspect-percentage;
+    iframe,
+    object,
+    embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }
+}

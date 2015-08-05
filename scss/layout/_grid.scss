@@ -58,9 +58,9 @@
 /// the first item in each row. Count begins on first item
 /// in second row ($num plus one) and increments by the
 /// original number ($num) thereafter.
+///
 
-
-@mixin media-grid(
+@mixin grid(
   $num: 2,
   $pad: 20px,
   $target:'.media-block') {
@@ -88,3 +88,6 @@
     }
   } // target
 } // media-grid
+
+
+// In progress: http://codepen.io/upstatement/pen/ZGwKMK?editors=110
