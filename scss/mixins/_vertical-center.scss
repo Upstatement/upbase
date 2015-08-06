@@ -44,7 +44,7 @@
   top: 50%;
   transform: translateY(-50%);
 
-  @if ($support-ie7 == true or $support-ie8 == true and $) {
+  @if ($support-ie7 == true or $support-ie8 == true and $ie-conditional-classes == true) {
     .lt-ie9 & {
       top: auto;
     }
