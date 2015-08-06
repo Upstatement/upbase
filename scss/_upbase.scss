@@ -9,23 +9,20 @@
 @import "functions/strip-units";
 @import "functions/tint-shade";
 
-@import "helpers/absolute-center";
-@import "helpers/absolute";
-@import "helpers/circle";
-@import "helpers/clearfix";
-@import "helpers/ellipsis";
-@import "helpers/hide-text";
-@import "helpers/input-default";
-@import "helpers/mq";
-@import "helpers/placeholder-color"; //todo
-@import "helpers/pseudo";
-@import "helpers/responsive-video";
-@import "helpers/retina"; //todo
-@import "helpers/size";
-@import "helpers/svg";
-@import "helpers/triangle";
-@import "helpers/vertical-center";
-@import "helpers/visually-hidden";
-
-//Consider role of layout and grid within Upbase
-@import "layout/grid";
+@import "mixins/absolute-center";
+@import "mixins/absolute";
+@import "mixins/circle";
+@import "mixins/clearfix";
+@import "mixins/ellipsis";
+@import "mixins/grid";
+@import "mixins/hide-text";
+@import "mixins/mq";
+@import "mixins/pseudo";
+@import "mixins/reset-input";
+@import "mixins/responsive-video";
+@import "mixins/retina"; //todo
+@import "mixins/size";
+@import "mixins/svg";
+@import "mixins/triangle";
+@import "mixins/vertical-center";
+@import "mixins/visually-hidden";

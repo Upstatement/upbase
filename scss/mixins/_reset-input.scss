@@ -1,5 +1,4 @@
 /// Zero'ing out the style on an input field (text input, radio button, etc)
-/// @group Helpers
 /// @link http://codepen.io/upstatement/pen/YXZRRg See it on Codepen >
 ///
 /// @example markup - HTML
@@ -11,7 +10,7 @@
 /// @example scss - SCSS
 /// .upbase-neue .search-input,
 /// .upbase-neue .search-button {
-///   @include input-default;
+///   @include reset-input;
 /// }
 ///
 /// @example css - CSS Output
@@ -30,7 +29,7 @@
 /// }
 ///
 
-@mixin input-default {
+@mixin reset-input {
   border: 0;
   background-color: transparent;
   box-shadow: none;

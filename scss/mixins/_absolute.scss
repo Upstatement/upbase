@@ -1,5 +1,4 @@
 /// Quickly set the top, right, left, and bottom positions of an absolutely positioned element.
-/// @group Helpers
 /// @param {Number} $coordinates - top right bottom left
 /// @see {mixin} unabsolute
 /// @link http://codepen.io/upstatement/pen/WvzOLj
@@ -99,7 +98,6 @@
 }
 
 /// Undo absolute positioning on an element.
-/// @group Helpers
 /// @see {mixin} absolute
 /// @link http://codepen.io/upstatement/pen/WvzOLj
 /// @example markup - HTML

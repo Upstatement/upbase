@@ -1,5 +1,4 @@
 /// Force an element to self-clear its children.
-/// @group Helpers
 /// @see {mixin} unclearfix
 ///
 /// @example markup - HTML
@@ -38,7 +37,6 @@
 }
 
 /// Remove clearfix from an element after it's been applied.
-/// @group Helpers
 /// @see {mixin} clearfix
 ///
 /// @example scss - SCSS

@@ -1,5 +1,4 @@
 /// Center something (both horizontally & vertically)
-/// @group Helpers
 /// @param {Number} $dimensions - Width followed by height
 /// @link http://codepen.io/upstatement/pen/LVdLOM
 /// @link https://css-tricks.com/snippets/sass/centering-mixin/
@@ -60,7 +59,6 @@
 }
 
 /// Center something (both horizontally & vertically), supporting IE8 and Opera Mini
-/// @group Legacy
 /// @param {Number} $dimensions - Width followed by height
 /// @example scss - SCSS
 /// .container {

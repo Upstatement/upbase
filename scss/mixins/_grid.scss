@@ -1,5 +1,4 @@
 /// Used to create a grid of items with equal widths. Great for simple 50/50, 33/33/33, etc. grids. Particularly useful when designing for an unknown or varying number of items.
-/// @group Layout
 /// @param {Number} $num [2] - Number of items per row
 /// @param {Number[unit]} $pad [20px] - Padding between items
 /// @param {String} $target [".media-block"] - Class name of target items

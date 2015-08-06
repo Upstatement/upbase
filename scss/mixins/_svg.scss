@@ -4,7 +4,6 @@
 /// - A responsive-ready SVG named {file-name}.svg
 /// - A highest-resolution PNG named {file-name}.png
 /// - A 1x-resolution PNG named {file-name}-ie.png
-/// @group Helpers
 /// @param {String} $bg-name - Name of the image file without extension. Include a path if you have not set a default `$img-path` variable or if you want to use a unique path.
 /// @param {Number[unit]} $bg-position [0 0] - background-position
 /// @param {String} $bg-color [transparent] - background-color
