@@ -1,6 +1,6 @@
-/// Write less verbose Media Queries with variables or using straight figures (eg 320px). Faster to write. More flexible.
-/// @param {Number [unit]} $bp-1 - breakpoint value, min-width if declaring range
-/// @param {Number [unit]} $bp-2 [null] - breakpoint value, max-width if declaring range
+/// Write less verbose media queries.
+/// @param {Number(px)} $bp-1 - breakpoint value, min-width if declaring range
+/// @param {Number(px)} $bp-2 [null] - [Optional] breakpoint value, max-width if declaring range
 /// @link http://codepen.io/upstatement/pen/vORJPZ See it on Codepen >
 /// @example scss - SCSS
 /// .item-1 {
@@ -21,7 +21,7 @@
 ///   }
 /// }
 ///
-/// @example css - CSS Output (Ignore "/")
+/// @example css - CSS Output (Ignore the "/")
 /// /@media (min-width: 600px) and (max-width: 767px) {
 ///   .item-1 {
 ///     display: block;

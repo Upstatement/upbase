@@ -6,8 +6,9 @@
 
 @import "functions/em";
 @import "functions/rem";
+@import "functions/shade";
 @import "functions/strip-units";
-@import "functions/tint-shade";
+@import "functions/tint";
 
 @import "mixins/absolute-center";
 @import "mixins/absolute";

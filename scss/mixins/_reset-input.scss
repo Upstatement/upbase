@@ -1,4 +1,4 @@
-/// Zero'ing out the style on an input field (text input, radio button, etc)
+/// Zero'ing out the style on an input field (text input, radio button, etc), which usually isn't reset using standard reset or base styles.
 /// @link http://codepen.io/upstatement/pen/YXZRRg See it on Codepen >
 ///
 /// @example markup - HTML
@@ -34,9 +34,10 @@
   background-color: transparent;
   box-shadow: none;
   border-radius: 0;
-  -webkit-appearance: none;
+  appearance: none;
 
   &:focus {
     outline: 0;
   }
 }
+

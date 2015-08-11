@@ -1,11 +1,12 @@
-/// Convert pixels to rems. `$em-base` is set globally to `16px` in Upbase's settings file. You can override it in your project's settings or variables file.
+/// Convert pixels to rems. `$em-base` is set by default to `16px` in Upbase's settings file. Override it in a project-specific settings or variables file.
 /// @param {Number} $px-val - Desired pixel equivalent
 /// @require {variable} em-base
 /// @require {function} strip-units
+/// @link http://codepen.io/upstatement/pen/QbormB See it on Codepen >
 /// @link https://css-tricks.com/rems-ems/ CSS Tricks: rems / ems
 ///
 /// @example scss - SCSS
-/// font-size: rem(12);
+/// font-size: rem(12px);
 ///
 /// @example css - CSS Output
 /// font-size: 0.75em;

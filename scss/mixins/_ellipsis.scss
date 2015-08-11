@@ -1,8 +1,5 @@
-/// Truncating text with an ellipsis the CSS way. It's hard to recall using this combination of attributes.
+/// Truncate text with an ellipsis using CSS.
 /// @link http://codepen.io/upstatement/pen/mJxMEr See it on Codepen >
-///
-/// @example markup - HTML
-/// <div class="txt-box">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
 ///
 /// @example scss - SCSS
 /// .txt-box {
@@ -19,7 +16,7 @@
 ///   width: 100%;
 /// }
 ///
-@mixin ellipsis(){
+@mixin ellipsis() {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

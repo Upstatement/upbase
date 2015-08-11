@@ -1,6 +1,6 @@
-/// Make a circle
-/// @param {Number} $size [10px] - size
-/// @link http://codepen.io/upstatement/pen/MwVoRV
+/// Make a circle. Pass its size, and this'll take care of the rest.
+/// @param {Number} $size - size
+/// @link http://codepen.io/upstatement/pen/MwVoRV See in on Codepen >
 /// @requires {mixin} size
 ///
 /// @example markup - HTML
@@ -18,7 +18,7 @@
 ///   border-radius: 50px;
 /// }
 ///
-@mixin circle($size: 10px) {
+@mixin circle($size) {
   @include size($size);
   border-radius: ($size/2);
 }

@@ -1,9 +1,6 @@
-/// Make a useable object out of a pseudo element like :before or :after.
-/// @param {Number} $coordinates [none] - top right bottom left
+/// Make a useable object out of a pseudo element like :before or :after. You must set pseudo element to `inline-block` or `block` depending on your need.
 /// @link http://codepen.io/upstatement/pen/jPzLPZ See it on Codepen >
 ///
-/// @example markup - HTML
-/// <div class="item">Text</div>
 ///
 /// @example scss - SCSS
 /// .item:after {
@@ -17,9 +14,6 @@
 ///   display: inline-block;
 /// }
 ///
-@mixin pseudo($coordinates: none) {
+@mixin pseudo() {
   content: "\0020";
-  @if $coordinates != "none" {
-    @include absolute($coordinates);
-  }
 }
