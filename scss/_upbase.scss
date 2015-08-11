@@ -18,10 +18,11 @@
 @import "mixins/grid";
 @import "mixins/hide-text";
 @import "mixins/mq";
+@import "mixins/mq-dpi";
 @import "mixins/pseudo";
 @import "mixins/reset-input";
 @import "mixins/responsive-video";
-@import "mixins/retina"; //todo
+@import "mixins/retina-bg";
 @import "mixins/size";
 @import "mixins/svg";
 @import "mixins/triangle";

@@ -26,3 +26,7 @@ $default-img-path: "" !default;
 /// Base value of em in pixels
 /// @type Number[px]
 $em-base: 16px !default;
+
+/// CSS Target for grid() mixin
+/// @type String
+$grid-target: "*" !default;
