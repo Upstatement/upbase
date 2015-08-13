@@ -10,8 +10,9 @@
 @import "functions/strip-units";
 @import "functions/tint";
 
-@import "mixins/absolute-center";
-@import "mixins/absolute";
+// @import "mixins/absolute-center";
+// @import "mixins/absolute";
+@import "mixins/center";
 @import "mixins/circle";
 @import "mixins/clearfix";
 @import "mixins/ellipsis";
@@ -23,6 +24,7 @@
 @import "mixins/reset-input";
 @import "mixins/responsive-video";
 @import "mixins/retina-bg";
+@import "mixins/shorthander";
 @import "mixins/size";
 @import "mixins/svg";
 @import "mixins/triangle";

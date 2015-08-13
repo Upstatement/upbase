@@ -1,0 +1,81 @@
+@mixin center($axis: both, $dimensions: null) {
+  display: flex;
+  @if $axis == horizontal {
+    justify-content: center;
+    .no-flexbox & {
+      > * {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  } @elseif $axis == vertical {
+    align-items: center;
+    .no-flexbox & {
+      display: table;
+      > * {
+        display: table-cell;
+        top: auto;
+        vertical-align: middle;
+      }
+    }
+  } @elseif $axis == both {
+    justify-content: center;
+    align-items: center;
+    .no-flexbox & {
+      position: relative;
+      > * {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    @if $dimensions != null {
+      .no-flexbox.no-csstransforms & {
+        position: relative;
+        > * {
+          @include absolute-center-legacy($dimensions);
+        }
+      }
+    }
+  }
+}
+
+
+@mixin absolute-center-legacy($dimensions) {
+  // If only one value is supplied,
+  // default to center the width
+  @if length($dimensions) == 1 {
+    $dimensions: $dimensions n;
+  }
+
+  $width: nth($dimensions, 1);
+  $height: nth($dimensions, 2);
+
+  position: absolute;
+
+  @if $width != n {
+    @if not(unitless($width)) {
+      width: $width;
+      margin-left: (-$width / 2);
+    }
+    @if unitless($width) {
+      width: $width + px;
+      margin-left: (-$width / 2) + px;
+    }
+    left: 50%;
+  }
+
+  @if $height != n {
+    @if not(unitless($height)) {
+      height: $height;
+      margin-top: (-$height / 2);
+    }
+    @if unitless($height) {
+      height: $height + px;
+      margin-top: (-$height / 2) + px;
+    }
+    top: 50%;
+  }
+} // absolute-center-legacy
