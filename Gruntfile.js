@@ -2,16 +2,17 @@
 
 module.exports = function(grunt) {
 
-  var version = grunt.file.readJSON('bower.json').version;
+  require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
     sassdoc: {
       src: 'scss'
     },
     copy: {
       docs: {
         src: 'docs/latest',
-        dest: 'docs/' + version
+        dest: 'docs/<%= pkg.version %>'
       }
     },
     'gh-pages': {
@@ -43,14 +44,9 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-gh-pages');
-  grunt.loadNpmTasks('grunt-sassdoc');
-
   grunt.registerTask('update-docs', ['sassdoc']);
   grunt.registerTask('release-docs', ['sassdoc', 'copy:docs']);
   grunt.registerTask('deploy-docs', ['gh-pages']);
   grunt.registerTask('serve-docs', ['browserSync', 'watch']);
+
 };
