@@ -1,5 +1,5 @@
 {
   "dest": "docs/latest",
-  "theme": "default",
+  "theme": "./sassdoc-theme",
   "package": "./package.json"
 }
