@@ -1,1 +1,4 @@
 *.sublime*
+/node_modules
+.grunt
+

@@ -7,7 +7,7 @@
   "ignore": [
     "**/*.",
     "README.md",
-    "sassdoc"
+    "docs"
   ],
   "keywords": [
     "css",
