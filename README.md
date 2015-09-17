@@ -51,6 +51,9 @@ grunt release-docs
 
 # Deploy documentation to the `gh-pages` branch
 grunt deploy-docs
+
+# Serve docs locally during development
+grunt serve-docs
 ```
 
 Documentation should be updated whenever a new release of Upbase is created.
