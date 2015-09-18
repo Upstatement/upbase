@@ -12,21 +12,22 @@
 
 // @import "mixins/absolute-center";
 // @import "mixins/absolute";
+@import "mixins/aspect-ratio";
 @import "mixins/center";
 @import "mixins/circle";
 @import "mixins/clearfix";
 @import "mixins/ellipsis";
 @import "mixins/grid";
-@import "mixins/hide-text";
+@import "mixins/hide";
+//@import "mixins/hide-text";
 @import "mixins/mq";
 @import "mixins/mq-dpi";
 @import "mixins/pseudo";
 @import "mixins/reset-input";
-@import "mixins/responsive-video";
 @import "mixins/retina-bg";
 @import "mixins/shorthander";
 @import "mixins/size";
 @import "mixins/svg";
 @import "mixins/triangle";
 @import "mixins/vertical-center";
-@import "mixins/visually-hidden";
+//@import "mixins/visually-hidden";
