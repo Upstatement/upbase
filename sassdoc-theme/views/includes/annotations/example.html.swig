@@ -10,3 +10,6 @@
   </div>
   {% endfor %}
 {% endif %}
+{% if (item.return) or (item.throw.length or item.require.length or item.usedby.length or item.since.length or item.see.length or item.todo.length or item.link.length > 0) %}
+<div class="columns">
+{% endif %}

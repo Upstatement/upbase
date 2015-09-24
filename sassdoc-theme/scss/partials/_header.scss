@@ -3,17 +3,17 @@
  */
 .header {
   @include clearfix;
-  @include fixed($left: $sidebar-width, $top: 0, $right: 0);
-  box-shadow: 0 2px 5px rgba(0,0,0,.26);
+  @include absolute($left: $sidebar-width, $top: 0, $right: 0);
+  //box-shadow: 0 2px 5px rgba(0,0,0,.26);
   padding: 1em 0;
-  background: $primary-color;
-  color: $light-grey;
+  //background: $primary-color;
+  color: $color-grey-0;
   z-index: z('dropdown');
-  
+
   @include respond-to('small') {
 	left: 0;
   }
-  
+
   @include respond-to('medium') {
 	transition: .2s cubic-bezier(0.215, 0.61, 0.355, 1);
   }

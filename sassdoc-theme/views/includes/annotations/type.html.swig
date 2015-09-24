@@ -1,4 +1,5 @@
 {% if item.type %}
+  <div class="column">
   <h3 class="item__sub-heading">Type</h3>
 
   <p>
@@ -8,4 +9,5 @@
     <code>{{ item.type | display_as_type }}</code>
   {% endif %}
   </p>
+</div>
 {% endif %}

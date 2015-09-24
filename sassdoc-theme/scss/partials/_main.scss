@@ -2,13 +2,13 @@
  * Main wrapper
  */
 .main {
-  background: #f9f9f9;
+  background: $color-grey-f;
   position: relative;
 
   @include respond-to('medium') {
     transition: .2s cubic-bezier(0.215, 0.61, 0.355, 1);
     padding-left: $sidebar-width;
-	padding-top: 4em;
+	  padding-top: 4em;
     min-height: 45em;
   }
 }
@@ -43,42 +43,72 @@
  * Primary headings
  */
 .main__heading {
-  color: $tertiary-color;
+  color: $color-grey-0;
   font-size: 3.5em;
-  text-align: center;
+  //text-align: center;
 
-  border-bottom: 5px solid rgba($tertiary-color, .2);
+  //border-bottom: 5px solid rgba($tertiary-color, .2);
   padding-bottom: .5em;
   margin-bottom: 1em;
 
-  background: rgba($tertiary-color, .1);
+  //background: rgba($tertiary-color, .1);
 }
 
 /**
  * Secondary headings
  */
 .main__heading--secondary {
-  font-size: 3em;
-  color: $primary-color;
+  font-size: 1em;
+  color: $color-grey-f;
   text-transform: uppercase;
   font-weight: bold;
-  padding-top: 0;
-  margin-bottom: $vertical-rhythm * -2;
+  background-color: $color-grey-3;
+  margin-bottom: 0;
+  padding-top: $vertical-rhythm;
+  padding-bottom: $vertical-rhythm;
   position: relative;
 
   .container {
+    position: relative;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    width: 100%;
+    padding-left: 5.5rem;
   }
 
   &::before {
     content: '';
     position: absolute;
     left: 0;
-    right: 0;
-    bottom: 0.15em;
-    height: 0.2em;
-    background-color: $primary-color;
+    //background-color: $primary-color;
   }
+}
+
+.arrow {
+  @include absolute(15px, a, a, 32px);
+  width: 40px;
+  height: 40px;
+  border: 1px solid $color-grey-f;
+}
+
+.arrow-line {
+  @include absolute(18px, a, a, 8px);
+  display: block;
+  width: 20px;
+  height: 2px;
+  position: relative;
+  background-color: $color-grey-f;
+}
+.arrow-point {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 6px 7px 6px 7px;
+  border-color: transparent transparent transparent $color-grey-f;
+  display: block;
+  position: absolute;
+  z-index: 4;
+  top: 13px;
+  left: 22px;
 }

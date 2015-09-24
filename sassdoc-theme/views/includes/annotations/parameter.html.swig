@@ -2,30 +2,22 @@
 
 {% if item.parameter.length > 0 %}
 
-  <table class="item__parameters">
-    <thead>
-      <tr>
-        <th scope="col"><span class="visually-hidden">{{ item.type }} parameter </span>Name</th>
-        <th scope="col"><span class="visually-hidden">{{ item.type }} parameter </span>Description</th>
-        <th scope="col"><span class="visually-hidden">{{ item.type }} parameter </span>Type</th>
-        <th scope="col"><span class="visually-hidden">{{ item.type }} parameter </span>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for parameter in item.parameter %}
-        <tr class="item__parameter">
-          <th scope="row" data-label="name"><code>${{ parameter.name }}</code></th>
-          <td data-label="desc">{{ parameter.description|default('&mdash;<span class="visually-hidden"> none</span>')|safe }}</td>
-          <td data-label="type">
-            <code>
-              {% if parameter.type == '*' %}
-                Any
-              {% else %}
-                {{ parameter.type | display_as_type }}
-              {% endif %}
-            </code>
-          </td>
-          <td data-label="default">
+  <dl class="item__parameters">
+  {% for parameter in item.parameter %}
+    <dt class="item__parameter-item">
+      <code class="item__parameter-name">${{ parameter.name }}</code>
+      <ul class="item__parameter-meta">
+        <li class="item__parameter-type">
+          <code>
+            {% if parameter.type == '*' %}
+              Any
+            {% else %}
+              {{ parameter.type | display_as_type }}
+            {% endif %}
+          </code>
+        </li>
+        <li class="item__parameter-default">
+          <span>Default:</span>
           {% if not parameter.default %}
             &mdash;<span class="visually-hidden"> none</span>
           {% else %}
@@ -35,11 +27,14 @@
               <code>{{ parameter.default }}</code>
             {% endif %}
           {% endif %}
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+        </li>
+      </ul>
+    </dt>
+    <dd class="item__parameter-definition">
+      <p class="item__parameter-description">{{ parameter.description|default('&mdash;<span class="visually-hidden"> none</span>')|safe }}</p>
+    </dd>
+    {% endfor %}
+  </dl>
 
 {% else %}
 

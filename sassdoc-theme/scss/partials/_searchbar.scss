@@ -37,7 +37,8 @@
   font-size: 1em;
   margin: 0;
   width: 100%;
-  @include card(1);
+  border: 1px solid $color-grey-c;
+  //@include card(1);
 }
 
 /**

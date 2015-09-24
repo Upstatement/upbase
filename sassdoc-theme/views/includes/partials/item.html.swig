@@ -1,4 +1,6 @@
-<section class="main__item  container  item{% if item.alias %}  item--alias{% endif %}{% if 'deprecated'|in(item) %}  item--deprecated{% endif %}" id="{{ item.context.type }}-{{ item.context.name }}">
+<section class="main__item item{% if item.alias %}  item--alias{% endif %}{% if 'deprecated'|in(item) %}  item--deprecated{% endif %}" id="{{ item.context.type }}-{{ item.context.name }}">
+
+  <div class="container">
 
 {% include '../annotations/name.html.swig' %}
 
@@ -18,5 +20,7 @@
   <p>Refer to <a href="#{{ item.context.type }}-{{ item.alias }}">{{ item.alias }}</a>.</p>
 
 {% endif %}
+
+  </div>
 
 </section>

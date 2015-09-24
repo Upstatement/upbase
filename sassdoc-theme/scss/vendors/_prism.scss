@@ -69,10 +69,12 @@ pre[class*='language-'] {
 .token.doctype,
 .token.cdata {
   color: slategray;
+  color: $color-grey-6;
 }
 
 .token.punctuation {
   color: #999;
+  color: $color-grey-6;
 }
 
 .namespace {
@@ -86,6 +88,7 @@ pre[class*='language-'] {
 .token.constant,
 .token.symbol {
   color: #905;
+  color: $color-grey-6;
 }
 
 .token.selector,
@@ -93,6 +96,7 @@ pre[class*='language-'] {
 .token.string,
 .token.builtin {
   color: #690;
+  color: $color-grey-6;
 }
 
 .token.operator,
@@ -101,20 +105,23 @@ pre[class*='language-'] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-  color: #a67f59;
+  color: #efc852;
   background: hsla(0,0%,100%,.5);
+  color: $color-grey-6;
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
   color: #07a;
+  color: $color-grey-6;
 }
 
 
 .token.regex,
 .token.important {
   color: #e90;
+  color: $color-grey-6;
 }
 
 .token.important {

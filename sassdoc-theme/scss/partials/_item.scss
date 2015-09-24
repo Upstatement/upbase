@@ -2,16 +2,21 @@
 	margin-bottom: $vertical-rhythm * 3;
 }
 
+.main__item {
+  border-top: 1px solid $color-grey-9;
+  margin-bottom: $vertical-rhythm;
+}
+
 /**
  * Function name
  */
 .item__heading {
   color: $black;
-  margin: $vertical-rhythm * 3 0 $vertical-rhythm 0;
+  margin: $vertical-rhythm * 2 0 $vertical-rhythm * 2 0;
   position: relative;
-  font-size: 2em;
-  font-weight: 300;
-  float: left;
+  font-size: 36px;
+  font-weight: 200;
+  text-align: center;
 }
 
 /**
@@ -30,9 +35,16 @@
 
 .item__example,
 .item__code {
-  @include card(1);
+  //@include card(1);
+  border: 1px solid $color-grey-c;
+  //border-left: 3px solid $color-grey-0;
   word-wrap: break-word;
   line-height: 1.42;
+  box-shadow: 0px 2px 0px -1px $color-grey-c,
+              0px 4px 0px -2px $color-grey-c,
+              0px 6px 0px -3px $color-grey-c,
+              0px 8px 0px -4px $color-grey-c;
+  //box-shadow: 10px 10px 0 $color-blue;
 }
 
 /**
@@ -75,11 +87,13 @@
  * Example description
  */
 .example__description {
-  padding: 1em;
-  background: #EFEFEF;
+  padding: .5em 1em;
 
   p {
     margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    color: $color-grey-9;
   }
 }
 
@@ -104,6 +118,29 @@
     .item:hover & {
       @include opacity(1);
     }
+  }
+}
+
+.columns {
+  @include clearfix;
+  padding-top: 1em;
+  margin-top: 2em;
+  border-top: 1px solid $color-grey-e;
+}
+
+.column {
+  width: 33.33333333333%;
+  float: left;
+  padding: 1em;
+}
+
+.item__link {
+  position: relative;
+  transition: all 0.3s $timing;
+
+  &:after {
+    content: " →";
+    display: inline;
   }
 }
 
@@ -149,10 +186,11 @@
 
 
 .item__sub-heading {
-  color: $black;
+  color: $color-grey-0;
   margin-top: 0;
   margin-bottom: $vertical-rhythm;
-  font-size: 1.2em;
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
 /**
@@ -160,25 +198,53 @@
  */
 .item__parameters {
   width: 100%;
-  margin-bottom: 1em;
+  margin-bottom: 0;
   border-collapse: collapse;
 
-  thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid $medium-grey;
-    border-top: none;
-    text-align: left;
-    color: mix($black, white, 70%);
+  code {
+    font-size: 16px;
   }
+}
 
-  tbody th {
-    text-align: left;
-  }
+.item__parameter-name {
+  display: inline;
+  color: $color-blue;
+  font-weight: 700;
+}
 
-  td, th {
-    padding: 0.5em 0.5em 0.5em 0;
-    vertical-align: top;
+.item__parameter-meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+.item__parameter-type,
+.item__parameter-default {
+  display: inline;
+  margin-left: 10px;
+  padding: 6px 10px;
+  border: 1px solid $color-grey-3;
+  //background-color: $color-grey-3;
+  color: $color-grey-3;
+  font-size: 13px;
+
+  code {
+    font-size: 13px;
+    color: $color-grey-3;
   }
+}
+
+.item__parameter-default {
+
+  code {
+    font-weight: 700;
+  }
+}
+
+.item__parameter-definition {
+  margin-left: 1.5em;
+  margin-bottom: 2em;
 }
 
 @include respond-to('medium') {

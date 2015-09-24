@@ -4,6 +4,7 @@
   {% if (display.access.indexOf(see.access) != -1) and not (not display.alias and see.alias) %}
     {% if not title_displayed %}
       {% set title_displayed = true %}
+      <div class="column">
       <h3 class="item__sub-heading">See</h3>
       <ul class="list-unstyled">
     {% endif %}
@@ -15,4 +16,5 @@
 
 {% if title_displayed %}
 </ul>
+</div>
 {% endif %}

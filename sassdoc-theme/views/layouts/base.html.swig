@@ -1,14 +1,6 @@
 <!doctype html>
 
-{% set project_title = "SassDoc" %}
-
-{% if package.name %}
-  {% set project_title = (package.name|capitalize) %}
-{% endif %}
-
-{% if package.title %}
-  {% set project_title = package.title %}
-{% endif %}
+{% set project_title = "Upbase" %}
 
 <html lang="en">
 <head>

@@ -8,7 +8,7 @@
     @include absolute($top: 8px, $left: 20px);
     font-size: 2em;
     cursor: pointer;
-    color: white;
+    color: $color-grey-0;
     display: block;
   }
 }
@@ -22,7 +22,7 @@
     .main {
       padding-left: 0;
     }
-	
+
 	.header {
 	  left: 0;
 	}

@@ -6,6 +6,7 @@
 
     {% if not title_displayed %}
       {% set title_displayed = true %}
+      <div class="column">
       <h3 class="item__sub-heading">Used by</h3>
       <ul class="list-unstyled">
     {% endif %}
@@ -17,4 +18,5 @@
 
 {% if title_displayed %}
 </ul>
+</div>
 {% endif %}

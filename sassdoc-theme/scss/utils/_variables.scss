@@ -1,6 +1,21 @@
+/// Greys
+$color-grey-f:      #FFFFFF;
+$color-grey-e:      #EEEEEE;
+$color-grey-c:      #CCCCCC;
+$color-grey-a:      #AAAAAA;
+$color-grey-9:      #999999;
+$color-grey-6:      #666666;
+$color-grey-5:      #555555;
+$color-grey-3:      #333333;
+$color-grey-2:      #222222;
+$color-grey-0:      #000000;
+
+/// So Blue
+$color-blue: #0000FF;
+
 /// Pink
 /// @type Color
-$pink: #dd5a6f;
+$pink: $color-blue;
 
 
 /// Purple
@@ -15,7 +30,7 @@ $yellow: #ffc93c;
 
 /// Black
 /// @type Color
-$black: #333;
+$black: $color-grey-0;
 
 
 /// Primary color
@@ -80,9 +95,11 @@ $vertical-rhythm: 1.5rem;
 
 /// Text font stack
 /// @type List
-$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+$text-font-stack: 'Work Sans', sans-serif;
 
 
 /// Code font stack
 /// @type List
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace;
+$code-font-stack: 'Courier New', 'Monaco', monospace;
+
+$timing:     cubic-bezier(0.645, 0.045, 0.355, 1);

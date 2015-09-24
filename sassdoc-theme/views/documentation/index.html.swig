@@ -14,11 +14,11 @@
     {# Loop over the groups #}
     {% for group_name, group in data.byGroupAndType %}
       <section class="main__section">
-        <h1 class="main__heading" id="{{ group_name }}">
+<!--         <h1 class="main__heading" id="{{ group_name }}">
           <div class="container">
             {{ groups[group_name] }}
           </div>
-        </h1>
+        </h1> -->
 
         {# Loop over the types #}
         {% for type, items in group %}
@@ -29,6 +29,10 @@
               <h2 class="main__heading--secondary">
                 <div class="container">
                   {{ (type + 's') }}
+                </div>
+                <div class="arrow">
+                  <span class="arrow-line"></span>
+                  <span class="arrow-point"></span>
                 </div>
               </h2>
 
