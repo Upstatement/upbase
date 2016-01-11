@@ -13,7 +13,7 @@
     transition: .2s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   @include respond-to('small') {
-	margin-top: 4em;
+	//margin-top: 4em;
   }
 }
 
@@ -24,20 +24,82 @@
 .sidebar__connect {
   @extend .list-unstyled;
   color: $color-grey-f;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  text-align: center;
+}
 
-  li {
-    display: inline;
-    color: $color-grey-9;
-    font-size: 12px;
-    margin-left: 1em;
+.sidebar__connect-item {
+  display: inline;
+  color: $color-grey-9;
+  font-size: 12px;
+  margin-left: 12px;
+  margin-right: 12px;
+  position: relative;
+}
+
+.sidebar__connect--link {
+  color: $color-grey-9;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: $color-grey-f;
+  }
+
+  &:before {
+    content: "↑";
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: -11px;
+    opacity: 0;
+    transition: all 0.3s $timing;
+  }
+
+  &:hover:before,
+  &:focus:before {
+    opacity: 1;
+    top: 0;
   }
 }
 
 .sidebar__logo {
   color: $color-grey-f;
   margin: 0;
-  padding: 1em;
+  padding: 12px 24px;
 }
+
+.sidebar__branding--svg {
+  width: 230px;
+  height: 230px;
+  fill: $color-grey-f;
+  margin: 0 auto;
+  display: block;
+}
+
+.sidebar__branding--text {
+  text-align: center;
+  margin: 0;
+  font-weight: 100;
+
+  span {
+    font-size: 11px;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+    top: -0.5em;
+  }
+}
+
+.sidebar__branding--subtext {
+  text-align: center;
+  margin: 0 0 9px;
+  text-transform: uppercase;
+  color: $color-grey-9;
+  font-size: 11px;
+}
+
 
 /**
  * Private and alias annotations

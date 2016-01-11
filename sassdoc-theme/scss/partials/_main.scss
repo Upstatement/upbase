@@ -8,7 +8,7 @@
   @include respond-to('medium') {
     transition: .2s cubic-bezier(0.215, 0.61, 0.355, 1);
     padding-left: $sidebar-width;
-	  padding-top: 4em;
+	  //padding-top: 4em;
     min-height: 45em;
   }
 }
@@ -17,13 +17,13 @@
  * Main sections
  */
 .main__section {
-  margin-top: 5em;
-  border-top: 5px solid rgba($tertiary-color, .2);
+  // margin-top: 5em;
+  // border-top: 5px solid rgba($tertiary-color, .2);
 
-  .header + & {
-    margin-top: 0;
-    border-top: none;
-  }
+  // .header + & {
+  //   margin-top: 0;
+  //   border-top: none;
+  // }
 }
 
 /**
@@ -74,41 +74,13 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     width: 100%;
-    padding-left: 5.5rem;
+    padding-left: 3.5rem;
   }
 
   &::before {
-    content: '';
+    content: '→';
     position: absolute;
-    left: 0;
+    left: 2rem;
     //background-color: $primary-color;
   }
-}
-
-.arrow {
-  @include absolute(15px, a, a, 32px);
-  width: 40px;
-  height: 40px;
-  border: 1px solid $color-grey-f;
-}
-
-.arrow-line {
-  @include absolute(18px, a, a, 8px);
-  display: block;
-  width: 20px;
-  height: 2px;
-  position: relative;
-  background-color: $color-grey-f;
-}
-.arrow-point {
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 6px 7px 6px 7px;
-  border-color: transparent transparent transparent $color-grey-f;
-  display: block;
-  position: absolute;
-  z-index: 4;
-  top: 13px;
-  left: 22px;
 }

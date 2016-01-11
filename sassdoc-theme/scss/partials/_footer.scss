@@ -14,7 +14,7 @@
  * Project info
  */
 .footer__project-info {
-  float: left;
+  text-align: center;
 }
 
 /**
@@ -24,9 +24,11 @@
   position: absolute;
   right: 0;
   top: -0.7em;
+  display: none;
 
   img {
     display: block;
+    display: none;
     max-width: 7em;
   }
 }

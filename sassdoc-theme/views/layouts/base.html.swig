@@ -18,7 +18,7 @@
   <article class="main" role="main">
 
     {# Include top navbar #}
-    {% include "../includes/partials/header.html.swig" with project_title %}
+    {#  {% include "../includes/partials/header.html.swig" with project_title %} #}
 
     {# Include description #}
     {% include "../includes/partials/description.html.swig" %}

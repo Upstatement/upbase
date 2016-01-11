@@ -1,9 +1,21 @@
 <div class="sidebar__header">
   <ul class="sidebar__connect">
-    <li>Upstatement</li>
-    <li>Github</li>
+    <li class="sidebar__connect-item"><a class="sidebar__connect--link" href="http://upstatement.com">Upstatement</a></li>
+    <li class="sidebar__connect-item"><a class="sidebar__connect--link" href="https://github.com/Upstatement/upbase">Github</a></li>
   </ul>
-  <h1 class="sidebar__logo">Logo goes here</h1>
+  <div class="sidebar__logo">
+  <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+  <svg class="sidebar__branding--svg" viewBox="0 0 230 230" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g>
+      <g transform="translate(36.000000, 15.000000)">
+        <rect x="0" y="0" width="158" height="126.315789"></rect>
+        <ellipse cx="79" cy="121.052632" rx="79" ry="78.9473684"></ellipse>
+      </g>
+    </g>
+  </svg>
+  <h1 class="sidebar__branding--text">Upbase <span>V 1.0</span></h1>
+  <p class="sidebar__branding--subtext">An Upstatement Jam</p>
+  </div>
 </div>
 
 <div class="sidebar__body">

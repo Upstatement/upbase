@@ -30,10 +30,6 @@
                 <div class="container">
                   {{ (type + 's') }}
                 </div>
-                <div class="arrow">
-                  <span class="arrow-line"></span>
-                  <span class="arrow-point"></span>
-                </div>
               </h2>
 
               {# Loop over the items #}
