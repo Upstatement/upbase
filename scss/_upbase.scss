@@ -4,14 +4,14 @@
 // MIT License
 @import "upbase-default-settings";
 
+// FUNCTIONS
 @import "functions/em";
 @import "functions/rem";
 @import "functions/shade";
 @import "functions/strip-units";
 @import "functions/tint";
 
-// @import "mixins/absolute-center";
-// @import "mixins/absolute";
+// MIXINS
 @import "mixins/center";
 @import "mixins/circle";
 @import "mixins/clearfix";

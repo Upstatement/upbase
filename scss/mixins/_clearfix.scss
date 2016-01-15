@@ -49,9 +49,8 @@
 ///
 /// @example css - CSS Output
 /// .container:after {
-///   content: "";
-///   display: table;
-///   clear: both;
+///   display: initial;
+///   clear: none;
 /// }
 ///
 @mixin unclearfix {
