@@ -1,7 +1,7 @@
 /// Write less verbose media queries.
 /// @param {Number(px)} $bp-1 - breakpoint value, min-width if declaring range
 /// @param {Number(px)} $bp-2 [null] - [Optional] breakpoint value, max-width if declaring range
-/// @link http://codepen.io/upstatement/pen/vORJPZ See it on Codepen >
+/// @link http://codepen.io/upstatement/pen/vORJPZ See it on Codepen
 /// @example scss - SCSS
 /// .item-1 {
 ///    @include mq(600px, 768px) {

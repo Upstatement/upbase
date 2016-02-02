@@ -1,10 +1,10 @@
 /// Hides text, but is accessible to screen readers. Best used on single element next to an element that will display. IE: title next to an icon.
 ///
 /// **Warning:** Fallback has been known to mistakenly fail as invalid CSS, and might fail completely in Opera Mini with the text fallback completely obscured. General best practice in many cases, for icon/text pairs for example, is to use two elements and use appropriate hidden or invisible styles for the text.
-/// @param {String} $accessible [false] - Triggers accessible clip method. Use "true" for accessible method.
-/// @link http://codepen.io/upstatement/pen/medrLQ See it on Codepen >
-/// @link https://css-tricks.com/examples/ImageReplacement/ CSS Tricks: Image Replacement >
-/// @link https://github.com/h5bp/html5-boilerplate/blob/5.2.0/dist/doc/css.md Notes in HTML5BP about hidden/invisible accessibility >
+/// @param {String} $accessible [true] - Triggers accessible clip method. Use "false" for font: 0 method.
+/// @link http://codepen.io/upstatement/pen/medrLQ See it on Codepen
+/// @link https://css-tricks.com/examples/ImageReplacement/ CSS Tricks: Image Replacement
+/// @link https://github.com/h5bp/html5-boilerplate/blob/5.2.0/dist/doc/css.md Notes in HTML5BP about hidden/invisible accessibility
 ///
 /// @example markup - HTML
 /// <div class="item focusable">Lorem ipsum dolor sit amet.</div>
@@ -41,7 +41,7 @@
 /// }
 ///
 
-@mixin hide($accessible: false) {
+@mixin hide($accessible: true) {
 
   @if $accessible != true {
     color: transparent;

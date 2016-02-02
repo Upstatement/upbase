@@ -2,8 +2,8 @@
 /// @param {Direction} $axis [both] - vertical, horizontal, or both
 /// @param {Method} $method [flex] - flex, absolute
 /// @param {Number} $dimensions [null] - width and height of outer container to be centered within to trigger legacy fallback
-/// @link http://codepen.io/upstatement/pen/WQbNbE See it on Codepen >
-/// @link https://css-tricks.com/snippets/sass/centering-mixin/ CSS Tricks: Centering Mixin (for absolute option) >
+/// @link http://codepen.io/upstatement/pen/WQbNbE See it on Codepen
+/// @link https://css-tricks.com/snippets/sass/centering-mixin/ CSS Tricks: Centering Mixin (for absolute option)
 ///
 /// @example scss - SCSS
 /// .container {
@@ -12,8 +12,11 @@
 ///
 /// .item {
 ///   @include center();
-///   //@include absolute-center(vertical);
-///   //@include absolute-center(horizontal);
+///   //@include center(vertical);
+///   //@include center(horizontal);
+///   //@include center(vertical, absolute);
+///   //@include center(horizontal, absolute);
+///   //@include center(vertical, flex, 200px 200px);
 /// }
 ///
 /// @example css - CSS Output
