@@ -1,0 +1,60 @@
+/// Shorthand method for applying positioning while using the familiar multi-value declarations (`20px 40px 26px`) offered by CSS margin and padding. This mixin allows you to apply the `top`, `right`, `bottom`, and `left` properties without stating the position. You may also state a position (`absolute`, `fixed`, `relative`, `static`) if you wish.
+///
+/// @name static
+/// @param {Number[unit]} $value - Takes 1-4 values, following convention of traditional CSS shorthand properties for margin, padding, etc. One notable improvement: You can use the shorthand and still leave some values blank. Do so by placing an 'n' in place of any numeral.
+/// @link http://codepen.io/upstatement/pen/eNoMQe See it on Codepen
+///
+/// @example markup - HTML
+/// <div class="item focusable">Lorem ipsum dolor sit amet.</div>
+///
+/// @example scss - SCSS
+/// .item-1 {
+///   //@include position(10px);
+/// }
+///
+/// .item-2 {
+///   //@include position(0, relative);
+/// }
+///
+/// .item-3 {
+///   //@include position(x x 10px x, absolute);
+/// }
+///
+/// @example css - CSS Output
+/// .item-1 {
+///   top: 10px;
+///   right: 10px;
+///   bottom: 10px;
+///   left: 10px;
+/// }
+///
+/// .item-2 {
+///   position: relative;
+///   top: 10px;
+///   right: 10px;
+///   bottom: 10px;
+///   left: 10px;
+/// }
+///
+/// .item-3 {
+///   position: absolute;
+///   bottom: 10px;
+/// }
+///
+
+@mixin position($value, $position: null) {
+  // Allow user to enter value in either position
+  // - If user supplies a position for the value ...
+  // - Swap the position variable for the value variable
+  // - Note: Accepted values for $position found in `_upbase-default-settings.scss`
+  @if list-contains($positions, $value) {
+    $true-position: $value;
+    $value: $position;
+    $position: $true-position;
+    @warn "Looks like you mixed up the position and the value."
+        + "We tried to fix it by swapping the values, but you"
+        + "should double-check to see you got what you expected."
+  }
+
+  @include shorthander($position, $value);
+}

@@ -30,3 +30,10 @@ $em-base: 16px !default;
 /// CSS Target for grid() mixin
 /// @type String
 $grid-target: "*" !default;
+
+/// Define accepted values for position
+/// @type String
+$positions: "fixed",
+            "absolute",
+            "relative",
+            "static";

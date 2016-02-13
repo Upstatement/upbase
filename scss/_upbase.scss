@@ -7,6 +7,7 @@
 // Functions & Dependencies
 @import "functions/auto";
 @import "functions/em";
+@import "functions/list-contains";
 @import "functions/rem";
 @import "functions/shade";
 @import "functions/strip-units";
@@ -23,6 +24,7 @@
 @import "mixins/hide";
 @import "mixins/mq";
 @import "mixins/mq-dpi";
+@import "mixin/position";
 @import "mixin/position-absolute";
 @import "mixin/position-fixed";
 @import "mixin/position-relative";
