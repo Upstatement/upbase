@@ -1,19 +1,95 @@
-/// Make a useable object out of a pseudo element like :before or :after. You must set pseudo element to `inline-block` or `block` depending on your need.
+/// Make a useable object out of a pseudo element like :before or :after. Supplies the annoying-to-recall default values necessary to make a pseudo element actually appear. Element defaults to `display: block` but can changed via `$display` parameter.
 /// @link http://codepen.io/upstatement/pen/jPzLPZ See it on Codepen
 ///
 ///
 /// @example scss - SCSS
-/// .item:after {
+/// .item-1:after {
 ///   @include pseudo;
-///   display: inline-block; //or block
+/// }
+///
+/// .item-2:before {
+///   @include pseudo(inline-block);
+/// }
+///
+/// .item-3:after {
+///   @include pseudo(0);
 /// }
 ///
 /// @example css - CSS Output
-/// .item:after {
+/// .item-1:after {
+///   content: "\0020";
+///   display: block;
+/// }
+///
+/// .item-2:before {
 ///   content: "\0020";
 ///   display: inline-block;
 /// }
 ///
-@mixin pseudo() {
+/// .item-3:after {
+///   content: "\0020";
+///   display: block;
+///   position: absolute;
+///   top: 0;
+///   right: 0;
+///   bottom: 0;
+///   left: 0;
+/// }
+///
+
+@mixin pseudo(
+  $coordinates: null,
+  $position: absolute,
+  $display: block) {
+
+  // Allow user to enter positioning value/coordinates in either position
+  // - If user supplies a position for the value ...
+  // - Swap the position variable for the value variable
+  // - Note: Accepted values for $position found in `_upbase-default-settings.scss`
+  @if list-contains($position-values, $coordinates) {
+    // Store true position
+    $true-position: $coordinates;
+
+    // Check if $position has been filled out
+    @if $position != absolute {
+      $coordinates: $position;
+    } else {
+      $position: null;
+    }
+
+    // Set true position
+    $position: $true-position;
+    @warn "Looks like you mixed up the position and the value."
+        + "We tried to fix it by declaring `#{$position}` as the position"
+        + "and setting `#{$coordinates}` as the coordinates"
+        + "Please check to see you got the output you expected."
+  }
+
+  // - If user supplies a display value for the coordinates ...
+  // - Replace the display variable with the coordinates variable
+  // - Note: Accepted values for $display found in `_upbase-default-settings.scss`
+  @if list-contains($display-values, $coordinates) {
+    $true-display: $coordinates;
+    $coordinates: null;
+    $display: $true-display;
+    @warn "Looks like you want to declare the display of the pseudo element."
+        + "Your declaration `#{$display}`  is out of sequence, but we tried to fix it."
+        + "Please double-check to see you have the output you expect."
+  }
+
+  // - If user supplies an invalid value for position, warn them ...
+  @if list-contains($position-values, $position) {
+    // If true, do nothing
+  } @else {
+    @warn "It doesn't look like `#{$position}` is a valid position value."
+        + "Double-check to see you have the output you expect."
+        + "Accepted values for position values found in `_upbase-default-settings.scss`"
+  }
+
   content: "\0020";
+  display: $display;
+  @if $coordinates != null
+  and $position != null {
+    @include position($coordinates, $position);
+  }
 }
