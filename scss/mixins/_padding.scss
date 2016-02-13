@@ -1,0 +1,3 @@
+@mixin padding($value) {
+  @include shorthander(padding, $value);
+}

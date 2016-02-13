@@ -4,13 +4,16 @@
 // MIT License
 @import "upbase-default-settings";
 
+// Functions & Dependencies
 @import "functions/auto";
 @import "functions/em";
 @import "functions/rem";
 @import "functions/shade";
 @import "functions/strip-units";
 @import "functions/tint";
+@import "mixins/shorthander";
 
+// Mixins
 @import "mixins/aspect-ratio";
 @import "mixins/center";
 @import "mixins/circle";
@@ -20,10 +23,13 @@
 @import "mixins/hide";
 @import "mixins/mq";
 @import "mixins/mq-dpi";
+@import "mixin/position-absolute";
+@import "mixin/position-fixed";
+@import "mixin/position-relative";
+@import "mixin/position-static";
 @import "mixins/pseudo";
 @import "mixins/reset-input";
 @import "mixins/retina-bg";
-@import "mixins/shorthander";
 @import "mixins/size";
 @import "mixins/svg";
 @import "mixins/triangle";

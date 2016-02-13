@@ -1,0 +1,3 @@
+@mixin margin($value) {
+  @include shorthander(margin, $value);
+}
