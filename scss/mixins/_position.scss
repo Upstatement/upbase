@@ -47,7 +47,7 @@
   // - If user supplies a position for the value ...
   // - Swap the position variable for the value variable
   // - Note: Accepted values for $position found in `_upbase-default-settings.scss`
-  @if list-contains($positions, $value) {
+  @if list-contains($position-values, $value) {
     $true-position: $value;
     $value: $position;
     $position: $true-position;

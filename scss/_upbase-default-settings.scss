@@ -31,9 +31,30 @@ $em-base: 16px !default;
 /// @type String
 $grid-target: "*" !default;
 
-/// Define accepted values for position
+/// Define accepted values for certain CSS properties
 /// @type String
-$positions: "fixed",
-            "absolute",
-            "relative",
-            "static";
+$position-values: "fixed",
+                  "absolute",
+                  "relative",
+                  "static";
+
+/// @type String
+$display-values: "block",
+                 "flex",
+                 "inline-block",
+                 "inline-flex",
+                 "inline-table",
+                 "list-item",
+                 "run-in",
+                 "table",
+                 "table-caption",
+                 "table-column-group",
+                 "table-header-group",
+                 "table-footer-group",
+                 "table-row-group",
+                 "table-cell",
+                 "table-column",
+                 "table-row",
+                 "none",
+                 "initial",
+                 "inherit";
