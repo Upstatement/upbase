@@ -118,23 +118,3 @@
     }
   }
 }
-
-@mixin absolute($value) {
-  @include shorthander(absolute, $value);
-}
-
-@mixin relative($value) {
-  @include shorthander(relative, $value);
-}
-
-@mixin fixed($value) {
-  @include shorthander(fixed, $value);
-}
-
-@mixin padding($value) {
-  @include shorthander(padding, $value);
-}
-
-@mixin margin($value) {
-  @include shorthander(margin, $value);
-}
