@@ -34,6 +34,8 @@
   @if $position == "margin"
    or $position == "padding" {
     $position-prefix: $position + "-";
+  } @else if $position == "null" {
+    // do nothing
   } @else {
     position: $position;
   }
