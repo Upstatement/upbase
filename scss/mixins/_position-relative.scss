@@ -1,6 +1,6 @@
 /// Shorthand method for applying relative positioning while using the familiar multi-value declarations (`20px 40px 26px`) offered by CSS margin and padding.
 ///
-/// @name absolute
+/// @name relative
 /// @param {Number[unit]} $value - Takes 1-4 values, following convention of traditional CSS shorthand properties for margin, padding, etc. One notable improvement: You can use the shorthand and still leave some values blank. Do so by placing an 'n' in place of any numeral.
 /// @link http://codepen.io/upstatement/pen/eNoMQe See it on Codepen
 ///
