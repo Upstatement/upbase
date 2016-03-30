@@ -1,11 +1,12 @@
-/// Shorthand method for common multi-value declarations such as absolute, padding, and margin.
+/// Shorthand method for common multi-value declarations such as absolute, padding, and margin. Can also be used as the basis to create new multi-value declarations that we haven't conceived.
 ///
 /// @name shorthander
-/// @param {String} $accessible [true] - Triggers accessible clip method. Use "false" for font: 0 method.
+/// @param {String} $position - Takes name of attribute: margin, padding, absolute, fixed, relative, static.
+/// @param {Number[unit]} $value - Takes 1-4 values, following convention of traditional CSS shorthand properties for margin, padding, etc. One notable improvement: You can use the shorthand and still leave some values blank. Do so by placing an 'n' in place of any numeral.
 /// @link http://codepen.io/upstatement/pen/eNoMQe See it on Codepen
 ///
 /// @example markup - HTML
-/// <div class="item focusable">Lorem ipsum dolor sit amet.</div>
+/// <div class="item">Lorem ipsum dolor sit amet.</div>
 ///
 /// @example scss - SCSS
 /// .item {
@@ -33,6 +34,8 @@
   @if $position == "margin"
    or $position == "padding" {
     $position-prefix: $position + "-";
+  } @else if $position == "null" {
+    // do nothing
   } @else {
     position: $position;
   }
@@ -114,24 +117,4 @@
       #{$position-prefix}left: auto($value-left);
     }
   }
-}
-
-@mixin absolute($value) {
-  @include shorthander(absolute, $value);
-}
-
-@mixin relative($value) {
-  @include shorthander(relative, $value);
-}
-
-@mixin fixed($value) {
-  @include shorthander(fixed, $value);
-}
-
-@mixin padding($value) {
-  @include shorthander(padding, $value);
-}
-
-@mixin margin($value) {
-  @include shorthander(margin, $value);
 }

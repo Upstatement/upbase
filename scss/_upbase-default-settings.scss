@@ -29,4 +29,4 @@ $em-base: 16px !default;
 
 /// CSS Target for grid() mixin
 /// @type String
-$grid-target: "> *" !default;
+$grid-target: "*" !default;
