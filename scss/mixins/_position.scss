@@ -2,6 +2,7 @@
 ///
 /// @name static
 /// @param {Number[unit]} $value - Takes 1-4 values, following convention of traditional CSS shorthand properties for margin, padding, etc. One notable improvement: You can use the shorthand and still leave some values blank. Do so by placing an 'n' in place of any numeral.
+/// @param {Position} $position - Takes any valid position: absolute, fixed, relative, static.
 /// @link http://codepen.io/upstatement/pen/eNoMQe See it on Codepen
 ///
 /// @example markup - HTML
@@ -46,7 +47,7 @@
   // Allow user to enter value in either position
   // - If user supplies a position for the value ...
   // - Swap the position variable for the value variable
-  // - Note: Accepted values for $position found in `_upbase-default-settings.scss`
+  // - Note: Accepted values for $position found in `_upbase-property-values.scss`
   @if list-contains($position-values, $value) {
     $true-position: $value;
     $value: $position;

@@ -1,0 +1,41 @@
+/// Returns whether `$list` contains `$value`.
+///
+///
+/// @name list-does-not-contain
+///
+/// @param {List}    $list  - list to check
+/// @param {*}       $value - value to look for
+/// @return {Bool}
+/// @link https://github.com/at-import/SassyLists SassyLists: Contain Function
+///
+/// @example scss - SCSS
+///
+/// $positions: "fixed",
+///             "absolute",
+///             "relative",
+///             "static";
+///
+///   @if list-does-not-contain($positions, $value) {
+///     @warn "`#{$value}` isn't an accepted argument for `position`."
+///         + "Valid positions are `fixed`, `absolute`, `relative`, or `static`";
+///   }
+///
+///   html {
+///     foo: list-does-not-contain($positions, static);
+///   }
+///   body {
+///     bar: list-does-not-contain($positions, normal)
+///   }
+///
+/// @example css - CSS Output
+///   html {
+///     foo: false;
+///   }
+///   body {
+///     bar: true;
+///   }
+///
+
+@function list-does-not-contain($list, $value) {
+  @return not index($list, $value);
+}

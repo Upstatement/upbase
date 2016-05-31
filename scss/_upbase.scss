@@ -3,11 +3,13 @@
 // Copyright 2011-2015 Upstatement, LLC.
 // MIT License
 @import "upbase-default-settings";
+@import "upbase-property-values";
 
 // Functions & Dependencies
 @import "functions/auto";
 @import "functions/em";
 @import "functions/list-contains";
+@import "functions/list-does-not-contain";
 @import "functions/rem";
 @import "functions/shade";
 @import "functions/strip-units";

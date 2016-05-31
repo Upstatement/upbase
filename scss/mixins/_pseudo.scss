@@ -37,21 +37,47 @@
 /// }
 ///
 
+
+
+@mixin pseudo(
+  $var-1: null,
+  $var-2: null,
+  $var-3: null) {
+
+  $default-coordinates: null;
+  $default-position: absolute;
+  $default-display: block;
+
+  // How many values do I have?
+
+
+
+}
+
+
+
+
+
 @mixin pseudo(
   $coordinates: null,
   $position: absolute,
   $display: block) {
 
+  // POSITION: If user puts position first
+  //
   // Allow user to enter positioning value/coordinates in either position
   // - If user supplies a position for the value ...
   // - Swap the position variable for the value variable
-  // - Note: Accepted values for $position found in `_upbase-default-settings.scss`
+  // - Note: Accepted values for $position found in `_upbase-property-values.scss`
   @if list-contains($position-values, $coordinates) {
     // Store true position
     $true-position: $coordinates;
 
-    // Check if $position has been filled out
-    @if $position != absolute {
+    // Does position have a position value?
+    // - If no:  Assume that user has supplied the coordinates
+    // - If yes: That's weird. We thought they'd give us the coordinates.
+    //           Set to null and abort! This ensures mixin won't fail.
+    @if list-contains($position-values, $position) {
       $coordinates: $position;
     } else {
       $position: null;
@@ -59,35 +85,71 @@
 
     // Set true position
     $position: $true-position;
-    @warn "Looks like you mixed up the position and the value."
-        + "We tried to fix it by declaring `#{$position}` as the position"
-        + "and setting `#{$coordinates}` as the coordinates"
+    @warn "Looks like you mixed up the position and the value. "
+        + "We tried to fix it by declaring `#{$position}` as the position "
+        + "and setting `#{$coordinates}` as the coordinates "
         + "Please check to see you got the output you expected."
-  }
+  } // end POSITION first
 
+
+  // DISPLAY: If user puts display first
+  //
   // - If user supplies a display value for the coordinates ...
   // - Replace the display variable with the coordinates variable
-  // - Note: Accepted values for $display found in `_upbase-default-settings.scss`
+  // - Check following variables, assign position/coordinates values accordingly
+  // - Note: Accepted values for $display found in `_upbase-property-values.scss`
   @if list-contains($display-values, $coordinates) {
+
+    // Capture true display
     $true-display: $coordinates;
-    $coordinates: null;
-    $display: $true-display;
-    @warn "Looks like you want to declare the display of the pseudo element."
-        + "Your declaration `#{$display}`  is out of sequence, but we tried to fix it."
+    @warn "Looks like you want to declare the display of the pseudo element. "
+        + "Your declaration `#{$display}` is out of sequence, but we tried to fix it. "
         + "Please double-check to see you have the output you expect."
-  }
+
+    // Does display have a position value?
+    // - If yes: Assume that user has supplied the coordinates
+    //           in the position field
+    // - If no:  Set to null and abort! This ensures mixin won't fail.
+    @if list-contains($position-values, $display) {
+      $true-coordinates: $position;
+    } else {
+      $position: null;
+    }
+
+    // Does position have a position value?
+    // - If no:  Assume that user has supplied the coordinates
+    // - If yes: It might be the default value.
+    //           Check to see what's in the display field.
+    @if list-contains($position-values, $position) {
+      @if list-does-not-contain($display-values, $display) {
+          $true-coordinates: $display;
+        }
+      } //endif display
+    } else {
+      $true-coordinates: null;
+    }
+
+    // Set true values
+    $coordinates: $true-coordinates;
+    $position: $true-position;
+    $display: $true-display;
+
+  } // end DISPLAY first
 
   // - If user supplies an invalid value for position, warn them ...
   @if list-contains($position-values, $position) {
     // If true, do nothing
   } @else {
-    @warn "It doesn't look like `#{$position}` is a valid position value."
-        + "Double-check to see you have the output you expect."
-        + "Accepted values for position values found in `_upbase-default-settings.scss`"
+    @warn "It doesn't look like `#{$position}` is a valid position value. "
+        + "Double-check to see you have the output you expect. "
+        + "Accepted values for position values found in `_upbase-property-values.scss`"
   }
 
   content: "\0020";
   display: $display;
+
+  // Only run position function if user
+  // has supplied both coordinates & position
   @if $coordinates != null
   and $position != null {
     @include position($coordinates, $position);
