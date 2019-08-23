@@ -1,5 +1,5 @@
-upbase 0.1.0
-======
+# DEPRECATED
+## This is no longer supported, please use https://github.com/Upstatement/ups-mixin-lib instead
 
 This is a CSS helper library to assist in all kinds of common front-end tasks. It's not a "framework" like Boilerplate, but is meant to support a designer coding their own front end and make common tasks easier and more robust. 
 
